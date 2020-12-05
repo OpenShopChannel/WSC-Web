@@ -1,0 +1,26 @@
+<!doctype html>
+<title>Open Shop Channel - App - {{ package["display_name"] }}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='app_page.css') }}">
+<nav>
+    <ol class="breadcrumb">
+        <li>Open Shop Channel / Apps / {{ package["display_name"] }}</li>
+    </ol>
+</nav>
+<section class="content">
+    <div class="container">
+        <img src="{{ url_for('static', filename='app_view.png') }}" style="width:100%;">
+        <div class="category-label">{{ package["category"].upper() }}</div>
+        <div class="name-label">{{ package["display_name"] }}</div>
+        <div class="type-label">{{ package["package_type"].upper() }}</div>
+        <div class="coder-label">Made by {{ package["coder"] | truncate(50) }}</div>
+        <div class="description-title">Description:</div>
+        <div class="long-description-label" >{{ package["long_description"] | truncate(203) }}</div>
+        <div class="version-title">Version:</div>
+        <div class="version-label">{{ package["version"] | truncate(15) }}</div>
+        <div class="release-date-title">Release Date:</div>
+        <div class="release-date-label">{{ package["release_date"] | truncate(45) }}</div>
+        <p><a href="./apps" class="link_button" style="float: left;"><- Back to All Apps</a><a href="#" class="link_button" style="float: right;">Download App</a></p>
+    </div>
+
+</section>

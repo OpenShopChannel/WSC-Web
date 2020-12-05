@@ -1,0 +1,35 @@
+<!doctype html>
+<title>Open Shop Channel - Apps</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<nav>
+    <ol class="breadcrumb">
+        <li>Open Shop Channel / Application List</li>
+    </ol>
+    <h1>OSC's Apps</h1>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+    <table class="AppListTable">
+    <thead>
+        <tr>
+            <th>Icon</th>
+            <th>Application</th>
+            <th>Developer</th>
+            <th>Version</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for package in packages %}
+        <tr>
+        <td><img src="{{ package["icon_url"] }}"></td>
+        <td><a href="./app?package={{ package["internal_name"] }}">{{ package["display_name"] }}</a></td>
+        <td>{{ package["coder"] }}</td>
+        <td>{{ package["version"] }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    {% block content %}{% endblock %}
+</section>
