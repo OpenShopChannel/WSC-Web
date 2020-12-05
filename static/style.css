@@ -1,0 +1,58 @@
+.breadcrumb {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+    font-size: 20px;
+}
+
+.p {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.osc_big_title {
+    font-size: 48px;
+    margin-bottom: -15px
+}
+
+.link_button {
+    padding: 10px;
+    background-color: #3484ED;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+}
+
+table.FeaturedTable {
+    width: 100%;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    border-width: 2px;
+    border-color: #3484ED;
+    border-style: solid;
+    color: #000000;
+    margin-top: 40px;
+}
+
+table.FeaturedTable td, table.FeaturedTable th {
+    border-width: 2px;
+    border-color: #3484ED;
+    border-style: solid;
+    padding: 3px;
+}
+
+table.FeaturedTable thead {
+    background-color: #3484ED;
+    color: white;
+    text-align: left;
+}
+
+table.FeaturedTable tbody {
+    block-size: 50px
+}

@@ -1,0 +1,84 @@
+.container {
+    position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.category-label {
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.name-label {
+    position: absolute;
+    top: 45px;
+    left: 210px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.type-label {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.coder-label {
+    position: absolute;
+    top: 88px;
+    left: 210px;
+    font-size: 20px;
+}
+
+.description-title {
+    position: absolute;
+    top: 165px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.long-description-label {
+    position: absolute;
+    top: 195px;
+    left: 10px;
+    width: 720px;
+    font-size: 20px;
+}
+
+.version-title {
+    position: absolute;
+    top: 290px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.version-label {
+    position: absolute;
+    top: 310px;
+    left: 10px;
+    font-size: 20px;
+}
+
+.release-date-title {
+    position: absolute;
+    top: 290px;
+    left: 240px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.release-date-label {
+    position: absolute;
+    top: 310px;
+    left: 240px;
+    font-size: 20px;
+}
