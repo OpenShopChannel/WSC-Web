@@ -1,0 +1,32 @@
+.featured-title {
+    position: absolute;
+    top: 346px;
+    left: 12px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.news-title {
+    position: absolute;
+    top: 92px;
+    left: 562px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.osc-title {
+    position: absolute;
+    top: 95px;
+    left: 18px;
+    color: #3484ED;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.all-apps-button {
+    position: absolute;
+    top: 195px;
+    left: 18px;
+}
