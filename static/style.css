@@ -29,6 +29,14 @@
     font-size: 40px;
 }
 
+.link_button_error {
+    padding: 10px;
+    background-color: #FF0008;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+}
+
 .link_button_small {
     padding: 5px;
     background-color: #3484ED;
