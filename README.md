@@ -1,6 +1,12 @@
 # WSC-Web
 This could potentially be a server for the Open Shop Channel.
 
+## What is the Open Shop Channel?
+The Open Shop Channel was originally going to be a replacement to the Wii Shop Channel, but since it got wayyyyyyy too hard the developers decided to forget it
+temporarily, and they forked the Homebrew Browser which was way out of date.
+
+This and my `ShopChannel` repo are forks of the closest they really got publicly.
+
 ## Needs
 - support for downloading
 - improved look
