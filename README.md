@@ -11,7 +11,6 @@ This and my `ShopChannel` repo are forks of the closest they really got publicly
 - support for downloading
 - improved look
 - testers!
-- 
 
 ## Wants
 - themes, like "classic", "default", "dark", etc
