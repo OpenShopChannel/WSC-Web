@@ -43,7 +43,7 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template('error.html', code="HTTP-500",
-                           description="Something went wrong on the shop. Please report this event!")
+                           description="Something went wrong on the shop's server. Please report this event!")
 
 
 if __name__ == '__main__':
