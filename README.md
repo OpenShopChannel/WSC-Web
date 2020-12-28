@@ -28,3 +28,4 @@ I want to develop this repo so that it at least gets a bit better in terms of th
 - Create warning page
 - Create a warning page for patches
 - Create a placeholder for patches
+- Fix `./home` in certain pages to `/home`.
