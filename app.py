@@ -24,7 +24,7 @@ def apps():
 
 @app.route("/patches")
 def patches():
-    return render_template('warning.html', code="PATCH-WARN", 
+    return render_template('warning.html', code="PATCH-WARN", url="/patches/list",
                            description="Many patches could damage or brick your system. The Open Shop Channel is not responsbile for any damages to your Wii.")
 
 @app.route("/patches/list")
