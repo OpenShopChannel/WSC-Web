@@ -18,3 +18,12 @@ This and my `ShopChannel` repo are forks of the closest they really got publicly
 
 ## What is this fork?
 I want to develop this repo so that it at least gets a bit better in terms of the look and feel. I know nothing about support for downloading and I cannot test as I dont know how to patch a wad.
+
+# LIST OF CHANGES IN THIS FORK
+- Change "Browse Applications" to "Start Shopping" so its more like the WSC
+- Add .gitignore
+- Fix some CSS
+- Fix exit to wii menu button i think
+- Elaborate a bit
+- Create warning page
+- Create a warning page for patches
