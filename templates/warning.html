@@ -1,0 +1,19 @@
+<!doctype html>
+<title>Open Shop Channel - Warning</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='warning_page.css') }}">
+<nav>
+    <ol class="breadcrumb">
+        <li>Open Shop Channel / Warning / {{ code }}</li>
+    </ol>
+</nav>
+<section class="content">
+    <div class="container">
+        <img src="{{ url_for('static', filename='error_view.png') }}" style="width:100%;">
+        <div class="title-label">Open Shop Channel has encountered an error!</div>
+        <div class="error-description">{{ description }}</div>
+        <p><a href="./home" class="link_button_error" style="float: left;"><- Back Home</a></p>
+        <p><a href="#" class="link_button_error" style="float: left;"><- Continue</a></p>
+    </div>
+
+</section>
