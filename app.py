@@ -27,6 +27,10 @@ def patches():
     return render_template('warning.html', code="PATCH-WARN", 
                            description="Many patches could damage or brick your system. The Open Shop Channel is not responsbile for any damages to your Wii.")
 
+@app.route("/patches/list")
+def listpatches():
+    return
+
 @app.route("/app")
 def application():
     package = OpenShopChannel.package_by_name(request.args.get("package"))
