@@ -29,7 +29,8 @@ def patches():
 
 @app.route("/patches/list")
 def listpatches():
-    return
+    return render_template('error.html', code="HTTP-503", 
+                          description="This service is currently unavailable.")
 
 @app.route("/app")
 def application():
@@ -50,10 +51,14 @@ def page_not_found(e):
 
 
 @app.errorhandler(500)
-def page_not_found(e):
+def server_error(e):
     return render_template('error.html', code="HTTP-500",
                            description="Something went wrong on the shop's server. Please report this event!")
 
+@app.errorhandler(503)
+def not_implemented():
+    return render_template('error.html', code="HTTP-503", 
+                          description="This service is currently unavailable. Please report this event!")
 
 if __name__ == '__main__':
     app.run()
