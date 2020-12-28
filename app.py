@@ -29,7 +29,7 @@ def patches():
 
 @app.route("/patches/list")
 def listpatches():
-    return render_template('error.html', code="HTTP-503", 
+    return render_template('error.html', code="APP-503", 
                           description="This service is currently unavailable.")
 
 @app.route("/app")
