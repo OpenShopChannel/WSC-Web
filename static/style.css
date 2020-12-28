@@ -29,9 +29,16 @@
     font-size: 40px;
 }
 
-.link_button_error {
+.link_button_warning {
     padding: 10px;
     background-color: #FF4500;
+    color: white;
+    text-decoration: none;
+    font-size: 40px;
+}
+.link_button_error {
+    padding: 10px;
+    background-color: #FF0008;
     color: white;
     text-decoration: none;
     font-size: 40px;
