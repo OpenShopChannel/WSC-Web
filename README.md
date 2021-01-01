@@ -5,7 +5,7 @@ This could potentially be a server for the Open Shop Channel.
 The Open Shop Channel was originally going to be a replacement to the Wii Shop Channel, but since it got wayyyyyyy too hard the developers decided to forget it
 temporarily, and they forked the Homebrew Browser which was way out of date, and put updated software on it.
 
-This and my `ShopChannel` repo are forks of the closest they really got publicly.
+This and the `ShopChannel` repo are the closest they really got publicly.
 
 ## Needs
 - support for downloading
@@ -15,16 +15,3 @@ This and my `ShopChannel` repo are forks of the closest they really got publicly
 ## Wants
 - themes, like "classic", "default", "dark", etc
 - nice touches like the 8-bit mario
-
-## What is this fork?
-I want to develop this repo so that it at least gets a bit better in terms of the look and feel. I know nothing about support for downloading and I cannot test as I dont know how to patch a wad.
-
-# LIST OF CHANGES IN THIS FORK
-- Change "Browse Applications" to "Start Shopping" so its more like the WSC
-- Add .gitignore
-- Fix some CSS
-- Fix exit to wii menu button i think
-- Elaborate a bit
-- Create warning page
-- Create a placeholder for patches
-- Fix e.g. `./home` in certain pages to `/home`.
