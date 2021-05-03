@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import osc
 
+import ssl
+
 OpenShopChannel = osc.API()
 OpenShopChannel.load_packages()
 
@@ -47,4 +49,7 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
-    app.run()
+    context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    context.load_cert_chain('cert.pem', 'key.pem')
+
+    app.run(host='127.0.0.1', port=443, debug=True, ssl_context=context)
