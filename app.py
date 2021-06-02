@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from werkzeug.serving import WSGIRequestHandler
 import osc
 
 import ssl
@@ -49,6 +50,7 @@ def page_not_found(e):
 
 
 if __name__ == '__main__':
+    WSGIRequestHandler.protocol_version = "HTTP/1.1"
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     context.load_cert_chain('cert.pem', 'key.pem')
 
