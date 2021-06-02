@@ -43,7 +43,10 @@
         <div class="prev-page-button"><a href="{{ modify_query(p=page - 1) }}" class="link_button"><
             Page {{ page - 1 }}</a></div>
     {% endif %}
-    <div class="next-page-button"><a href="{{ modify_query(p=page + 1) }}" class="link_button">Page {{ page + 1 }} ></a>
+    {% if packages|length == 10 %}
+        <div class="next-page-button">
+        <a href="{{ modify_query(p=page + 1) }}" class="link_button">Page {{ page + 1 }} ></a>
+    {% endif %}
     </div>
 </section>
 </body>
