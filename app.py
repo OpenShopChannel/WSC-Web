@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request
 from werkzeug.serving import WSGIRequestHandler
+from werkzeug.urls import url_encode
+
 import osc
 
 import ssl
@@ -8,6 +10,16 @@ OpenShopChannel = osc.API()
 OpenShopChannel.load_packages()
 
 app = Flask(__name__)
+
+
+@app.template_global()
+def modify_query(**new_values):
+    args = request.args.copy()
+
+    for key, value in new_values.items():
+        args[key] = value
+
+    return '{}?{}'.format(request.path, url_encode(args))
 
 
 @app.route("/")
@@ -22,8 +34,23 @@ def home():
 
 @app.route("/apps")
 def apps():
-    # return render_template('list.html', packages=OpenShopChannel.get_packages())
-    return render_template('debug.html', packages=OpenShopChannel.get_packages())
+    # handle pagination
+    items_per_page = 10
+    if request.args.get("p"):
+        # Set to page one if page is invalid
+        try:
+            page = int(request.args.get("p"))
+        except ValueError:
+            page = 1
+        if page < 1:
+            page = 1
+    else:
+        page = 1
+    end_index = page * items_per_page
+    start_index = end_index - items_per_page
+
+    return render_template('list.html', packages=OpenShopChannel.get_packages()[start_index:end_index], page=page)
+    # return render_template('debug.html', packages=OpenShopChannel.get_packages())
 
 
 @app.route("/app")

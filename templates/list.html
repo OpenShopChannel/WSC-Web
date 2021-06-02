@@ -2,16 +2,17 @@
 <head>
     <title>Open Shop Channel - Apps</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='list_page.css') }}">
     <script rel="stylesheet" src="{{ url_for('static', filename='common.js') }}"></script>
 </head>
 <body>
-    <nav>
-        <ol class="breadcrumb">
-            <li>Open Shop Channel / Application List</li>
-        </ol>
-        <h1>OSC's Apps</h1>
-    </nav>
-    <section class="content">
+<nav>
+    <ol class="breadcrumb">
+        <li>Open Shop Channel / Application List</li>
+    </ol>
+</nav>
+<section class="content">
+    <div id="AppsBox" class="AppsBox">
         <header>
             {% block header %}{% endblock %}
         </header>
@@ -27,7 +28,7 @@
             <tbody>
             {% for package in packages %}
                 <tr>
-                    <td><img src="{{ package["icon_url"] }}"></td>
+                    <td></td>
                     <td><a href="./app?package={{ package["internal_name"] }}">{{ package["display_name"] }}</a></td>
                     <td>{{ package["coder"] }}</td>
                     <td>{{ package["version"] }}</td>
@@ -36,5 +37,9 @@
             </tbody>
         </table>
         {% block content %}{% endblock %}
-    </section>
+    </div>
+    <div class="backwards-button"><a href="#" class="link_button">HOME</a></div>
+    <div class="prev-page-button"><a href="{{ modify_query(p=page - 1) }}" class="link_button">< Page {{ page - 1 }}</a></div>
+    <div class="next-page-button"><a href="{{ modify_query(p=page + 1) }}" class="link_button">Page {{ page + 1 }} ></a></div>
+</section>
 </body>
