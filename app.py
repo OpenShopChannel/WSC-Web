@@ -72,7 +72,7 @@ def page_not_found(e):
 
 
 @app.errorhandler(500)
-def page_not_found(e):
+def server_error(e):
     return render_template('error.html', code="HTTP-500",
                            description="Something went wrong on the shop. Please report this event!")
 
