@@ -39,7 +39,11 @@
         {% block content %}{% endblock %}
     </div>
     <div class="backwards-button"><a href="#" class="link_button">HOME</a></div>
-    <div class="prev-page-button"><a href="{{ modify_query(p=page - 1) }}" class="link_button">< Page {{ page - 1 }}</a></div>
-    <div class="next-page-button"><a href="{{ modify_query(p=page + 1) }}" class="link_button">Page {{ page + 1 }} ></a></div>
+    {% if page > 1 %}
+        <div class="prev-page-button"><a href="{{ modify_query(p=page - 1) }}" class="link_button"><
+            Page {{ page - 1 }}</a></div>
+    {% endif %}
+    <div class="next-page-button"><a href="{{ modify_query(p=page + 1) }}" class="link_button">Page {{ page + 1 }} ></a>
+    </div>
 </section>
 </body>
