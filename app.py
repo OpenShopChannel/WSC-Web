@@ -22,7 +22,8 @@ def home():
 
 @app.route("/apps")
 def apps():
-    return render_template('list.html', packages=OpenShopChannel.get_packages())
+    # return render_template('list.html', packages=OpenShopChannel.get_packages())
+    return render_template('debug.html', packages=OpenShopChannel.get_packages())
 
 
 @app.route("/app")
