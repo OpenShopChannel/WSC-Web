@@ -7,17 +7,25 @@
 
 .category-label {
     position: absolute;
-    top: 3px;
+    top: 1px;
     left: 12px;
     color: white;
     font-size: 20px;
     font-weight: bold;
 }
 
+.icon-image {
+    position: absolute;
+    top: 33px;
+    left: 9px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
 .name-label {
     position: absolute;
-    top: 45px;
-    left: 210px;
+    top: 30px;
+    left: 160px;
     font-size: 24px;
     font-weight: bold;
 }
@@ -32,14 +40,14 @@
 
 .coder-label {
     position: absolute;
-    top: 88px;
-    left: 210px;
+    top: 55px;
+    left: 160px;
     font-size: 20px;
 }
 
 .description-title {
     position: absolute;
-    top: 165px;
+    top: 120px;
     left: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -47,7 +55,7 @@
 
 .long-description-label {
     position: absolute;
-    top: 195px;
+    top: 150px;
     left: 10px;
     width: 720px;
     font-size: 20px;
@@ -55,7 +63,7 @@
 
 .version-title {
     position: absolute;
-    top: 290px;
+    top: 210px;
     left: 10px;
     font-size: 20px;
     font-weight: bold;
@@ -63,14 +71,14 @@
 
 .version-label {
     position: absolute;
-    top: 310px;
+    top: 230px;
     left: 10px;
     font-size: 20px;
 }
 
 .release-date-title {
     position: absolute;
-    top: 290px;
+    top: 210px;
     left: 240px;
     font-size: 20px;
     font-weight: bold;
@@ -78,7 +86,7 @@
 
 .release-date-label {
     position: absolute;
-    top: 310px;
+    top: 230px;
     left: 240px;
     font-size: 20px;
 }
