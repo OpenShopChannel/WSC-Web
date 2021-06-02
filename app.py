@@ -27,6 +27,11 @@ def welcome():
     return render_template('welcome.html')
 
 
+@app.route("/debug")
+def debug():
+    return render_template('debug.html')
+
+
 @app.route("/home")
 def home():
     return render_template('home.html', packages=OpenShopChannel.get_packages())
