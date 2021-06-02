@@ -16,7 +16,7 @@ class API:
         for package in self.packages:
             if package["internal_name"] == name:
                 try:
-                    package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y at %R')
+                    package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
                 except ValueError:
                     pass
                 return package
