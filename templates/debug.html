@@ -11,7 +11,10 @@
     </ol>
 </nav>
 <section class="content">
-    <a href="/app?package=WiiVNC">Go to WiiVNC app page</a>
-    <a href="/app?package=danbo">Go to Danbo app page</a>
+    <a class="link_button_small" href="/app?package=WiiVNC">Go to WiiVNC app page</a>
+    <a class="link_button_small" href="/app?package=danbo">Go to Danbo app page</a>
+            <textarea id="evalInput" rows="4" style="width: 100%" onmousedown="keyboard.call( 0, 10, false, 'eval input');">eval input</textarea>
+        <textarea id="evalOutput" rows="4" style="width: 100%" readonly>eval output</textarea>
+        <button class="link_button_small" onmousedown="document.getElementById('evalOutput').value = eval(document.getElementById('evalInput').value)">execute</button>
 </section>
 </body>
