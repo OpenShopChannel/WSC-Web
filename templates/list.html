@@ -3,6 +3,7 @@
     <title>Open Shop Channel - Apps</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='list_page.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='app_entry.css') }}">
     <script rel="stylesheet" src="{{ url_for('static', filename='common.js') }}"></script>
 </head>
 <body>
@@ -13,30 +14,17 @@
 </nav>
 <section class="content">
     <div id="AppsBox" class="AppsBox">
-        <header>
-            {% block header %}{% endblock %}
-        </header>
-        <table class="AppListTable">
-            <thead>
-            <tr>
-                <th>Icon</th>
-                <th>Application</th>
-                <th>Developer</th>
-                <th>Version</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for package in packages %}
-                <tr>
-                    <td></td>
-                    <td><a href="./app?package={{ package["internal_name"] }}">{{ package["display_name"] }}</a></td>
-                    <td>{{ package["coder"] }}</td>
-                    <td>{{ package["version"] }}</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        {% block content %}{% endblock %}
+        {% for package in packages %}
+        <div class="container">
+        <a href="/app?package={{ package["internal_name"] }}">
+            {# TODO change the image to app_entry_view_hover.png on hover #}
+            <img src="{{ url_for('static', filename='app_entry_view.png') }}" style="width:100%;">
+            <div class="icon-image"><img src="http://hbb1.oscwii.org/hbb/{{ package["internal_name"] }}.png" height="49"></div>
+            <div class="category-label">{{ package["category"].upper() }}</div>
+            <div class="name-label">{{ package["display_name"] }}</div>
+        </a>
+        </div>
+        {% endfor %}
     </div>
     <div class="backwards-button"><a href="/home" class="link_button">HOME</a></div>
     {% if page > 1 %}

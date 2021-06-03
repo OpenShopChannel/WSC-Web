@@ -57,8 +57,9 @@
     position: absolute;
     top: 150px;
     left: 10px;
-    width: 650px;
+    width: 570px;
     font-size: 15px;
+    max-width:570px
 }
 
 .version-title {

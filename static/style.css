@@ -80,3 +80,7 @@ table.FeaturedTable thead {
 table.FeaturedTable tbody {
     block-size: 50px
 }
+
+a {
+    color: inherit;
+}
