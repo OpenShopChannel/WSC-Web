@@ -14,7 +14,8 @@
 <section class="content">
     <div class="container">
         <img src="{{ url_for('static', filename='app_view.png') }}" style="width:100%;">
-        <div class="icon-image"><img src="http://hbb1.oscwii.org/hbb/{{ package["internal_name"] }}.png" height="54"></div>
+        <div class="icon-image"><img src="http://hbb1.oscwii.org/hbb/{{ package["internal_name"] }}.png" height="54">
+        </div>
         <div class="category-label">{{ package["category"].upper() }}</div>
         <div class="name-label">{{ package["display_name"] }}</div>
         <div class="type-label">{{ package["package_type"].upper() }}</div>
@@ -25,10 +26,8 @@
         <div class="version-label">{{ package["version"] | truncate(15) }}</div>
         <div class="release-date-title">Release Date:</div>
         <div class="release-date-label">{{ package["release_date"] | truncate(45) }}</div>
-        <p><a href="./apps" class="link_button" style="float: left;"><- Back</a><a href="#"
-                                                                                               class="link_button"
-                                                                                               style="float: right;">Download
-            App</a></p>
+        <p><a onclick="window.history.back()" class="link_button" style="float: left;"><- Back</a><a href="#" class="link_button"
+              style="float: right;">Download App</a></p>
     </div>
 </section>
 </body>
