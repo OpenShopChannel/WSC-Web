@@ -20,7 +20,7 @@
         <div class="type-label">{{ package["package_type"].upper() }}</div>
         <div class="coder-label">Made by {{ package["coder"] | truncate(50) }}</div>
         <div class="description-title">Description:</div>
-        <div class="long-description-label">{{ package["long_description"] | truncate(203) }}</div>
+        <div style="max-width:570px" class="long-description-label">{{ package["long_description"] | truncate(203) }}</div>
         <div class="version-title">Version:</div>
         <div class="version-label">{{ package["version"] | truncate(15) }}</div>
         <div class="release-date-title">Release Date:</div>
