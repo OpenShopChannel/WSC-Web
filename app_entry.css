@@ -1,0 +1,48 @@
+.container {
+    position: relative;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+.container .img-top {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.container:hover .img-top{
+    background-image: url("/static/app_entry_view_hover.png");
+    background-repeat: no-repeat;
+    display: inline;
+
+}
+
+.category-label {
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    color: white;
+    font-size: 20px;
+    z-index: 99;
+    font-weight: bold;
+}
+
+.name-label {
+    position: absolute;
+    top: 25px;
+    left: 160px;
+    font-size: 24px;
+    z-index: 99;
+    font-weight: bold;
+}
+
+.icon-image {
+    position: absolute;
+    top: 30px;
+    left: 8px;
+    font-size: 24px;
+    z-index: 99;
+    font-weight: bold;
+}
