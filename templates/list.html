@@ -17,8 +17,8 @@
         {% for package in packages %}
         <div class="container">
         <a href="/app?package={{ package["internal_name"] }}">
-            {# TODO change the image to app_entry_view_hover.png on hover #}
             <img src="{{ url_for('static', filename='app_entry_view.png') }}" style="width:100%;">
+            <img src="{{ url_for('static', filename='app_entry_view_hover.png') }}" class="img-top" style="width:100%;">
             <div class="icon-image"><img src="http://hbb1.oscwii.org/hbb/{{ package["internal_name"] }}.png" height="49"></div>
             <div class="category-label">{{ package["category"].upper() }}</div>
             <div class="name-label">{{ package["display_name"] }}</div>
