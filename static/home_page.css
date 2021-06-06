@@ -25,15 +25,44 @@
     font-weight: bold;
 }
 
+.utility-button {
+    position: absolute;
+    top: 135px;
+    left: 150px;
+}
+
+.emulators-button {
+    position: absolute;
+    top: 180px;
+    left: 150px;
+}
+
+.games-button {
+    position: absolute;
+    top: 135px;
+    left: 280px;
+}
+
+.media-button {
+    position: absolute;
+    top: 180px;
+    left: 280px;
+}
+
+.demos-button {
+    position: absolute;
+    top: 180px;
+    left: 18px;
+}
+
 .all-apps-button {
     position: absolute;
-    top: 195px;
+    top: 135px;
     left: 18px;
 }
 
 .debug-button {
     position: absolute;
-    top: 195px;
-    left: 218px;
+    top: 135px;
+    left: 400px;
 }
-
