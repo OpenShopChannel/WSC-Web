@@ -26,7 +26,7 @@
         <div class="version-label">{{ package["version"] | truncate(15) }}</div>
         <div class="release-date-title">Release Date:</div>
         <div class="release-date-label">{{ package["release_date"] | truncate(45) }}</div>
-        <p><a onclick="window.history.back(); wiiSound().playSE(3)" class="link_button" style="float: left;"><- Back</a><a href="#" class="link_button"
+        <p><a onclick="window.history.back(); playSE(3)" onmouseover="playSE(2)" class="link_button" style="float: left;"><- Back</a><a href="#" class="link_button"
               style="float: right;">Download App</a></p>
     </div>
 </section>
