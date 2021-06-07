@@ -16,5 +16,5 @@ function playSE(num) {
 // Keyboard
 function keyboard(type, rowLimit, isPassword, title) {
     // example: keyboard(0, 10, false, "title")
-    var keyboard = keypad.call(type, rowLimit, isPassword, title);
+    keypad.call(type, rowLimit, isPassword, title);
 }
