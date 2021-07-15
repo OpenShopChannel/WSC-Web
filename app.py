@@ -53,7 +53,10 @@ def apps():
         page = 1
     end_index = page * items_per_page
     start_index = end_index - items_per_page
-
+    if request.args.get("cat"):
+        OpenShopChannel.load_packages(category=request.args.get("cat"))
+    else:
+        OpenShopChannel.load_packages()
     return render_template('list.html', packages=OpenShopChannel.get_packages()[start_index:end_index], page=page)
     # return render_template('debug.html', packages=OpenShopChannel.get_packages())
 

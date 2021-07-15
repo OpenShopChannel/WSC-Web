@@ -24,8 +24,8 @@ def filter_packages(packages, **filter_kwargs):
 class API:
     packages = None
 
-    def load_packages(self):
-        self.packages = json.loads(requests.get(f"https://api.oscwii.org/v2/primary/packages").text)
+    def load_packages(self, category=""):
+        self.packages = json.loads(requests.get(f"https://api.oscwii.org/v2/primary/packages?category={category}").text)
 
     def get_packages(self):
         return self.packages
