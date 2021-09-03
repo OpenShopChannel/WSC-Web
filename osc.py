@@ -5,6 +5,12 @@ from functools import reduce
 import requests
 import operator
 
+def sizeof_fmt(num, suffix='B'):
+    for unit in ['','Ki','Mi','Gi','Ti','Pi','Ei','Zi']:
+        if abs(num) < 1024.0:
+            return "%3.1f%s%s" % (num, unit, suffix)
+        num /= 1024.0
+    return "%.1f%s%s" % (num, 'Yi', suffix)
 
 def build_dictionary_filter_from_kwargs(**filter_kwargs):
     def _filter_fun(field, value):
@@ -39,6 +45,7 @@ class API:
             if package["internal_name"] == name:
                 try:
                     package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
+                    package["extracted"] = sizeof_fmt(package["extracted"])
                 except ValueError:
                     pass
                 return package
@@ -51,6 +58,7 @@ class API:
             if value.lower() in package[key].lower():
                 try:
                     package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
+                    package["extracted"] = sizeof_fmt(package["extracted"])
                 except ValueError:
                     pass
                 matching_packages.append(package)
