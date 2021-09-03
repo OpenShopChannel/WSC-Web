@@ -51,33 +51,33 @@ def modify_query(**new_values):
 
 @app.route("/")
 def splash():
-    return render_template('splash.j2')
+    return render_template('splash.html')
 
 @app.route("/landing")
 def landing():
-    return render_template('landing.j2', motd=getMOTD(), featuredApp=OpenShopChannel.package_by_name(getFeaturedApp()))
+    return render_template('landing.html', motd=getMOTD(), featuredApp=OpenShopChannel.package_by_name(getFeaturedApp()))
 
 @app.route("/donate")
 def donate():
-    return render_template('donate.j2') 
+    return render_template('donate.html') 
 
 @app.route("/browse")
 def browse():
-    return render_template('browse.j2', featuredApp=getFeaturedApp()) 
+    return render_template('browse.html', featuredApp=getFeaturedApp()) 
 
 @app.route("/keyword")
 def keyword():
-    return render_template('keyword.j2') 
+    return render_template('keyword.html') 
 
 @app.route("/category")
 def category():
-    return render_template('category.j2') 
+    return render_template('category.html') 
 
 @app.route("/startdownload")
 def startdownload():
     selectedApp = request.args.get('app', default = 'danbo', type = str)
     selectedApp = OpenShopChannel.package_by_name(selectedApp)
-    return render_template('startdownload.j2', app=selectedApp)
+    return render_template('startdownload.html', app=selectedApp)
 
 @app.route("/search")
 def search():
@@ -100,7 +100,7 @@ def search():
     elif len(results) > 0:
         lastPage = "search?key=" + key + "&value=" + value + "&page=" + str(page - 1)
 
-    return render_template('search.j2', results=results[page*8:(page*8)+8], lastPage=lastPage, nextPage=nextPage) 
+    return render_template('search.html', results=results[page*8:(page*8)+8], lastPage=lastPage, nextPage=nextPage) 
 
 @app.route("/app")
 def appPage():
@@ -109,7 +109,7 @@ def appPage():
     
     readableSize = sizeof_fmt(selectedApp["extracted"])
 
-    return render_template('app.j2', app=selectedApp, size=readableSize)
+    return render_template('app.html', app=selectedApp, size=readableSize)
 
 @app.route("/random")
 def randomApp():
@@ -125,20 +125,20 @@ def errorPage():
     if errorcode == "SUCCESS":
         return redirect("/", code=302)
     else:
-        return render_template('error.j2', errorcode=errorcode, errortext=errortext)
+        return render_template('error.html', errorcode=errorcode, errortext=errortext)
 
 @app.errorhandler(404)
 def page_not_found(e):
     errorcode = "HTTP_404"
     errortext = "The requested page could not be found."
-    return render_template('error.j2', errorcode=errorcode, errortext=errortext)
+    return render_template('error.html', errorcode=errorcode, errortext=errortext)
 
 
 @app.errorhandler(500)
 def server_error(e):
     errorcode = "HTTP_500"
     errortext = "The server has encountered an error. This isn't your fault- try your action again."
-    return render_template('error.j2', errorcode=errorcode, errortext=errortext)
+    return render_template('error.html', errorcode=errorcode, errortext=errortext)
 
 
 if __name__ == '__main__':
