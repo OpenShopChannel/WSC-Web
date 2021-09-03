@@ -1,0 +1,93 @@
+{
+    "DOL_OPEN_FAILED": [
+        {
+            "desc": "The forwarder channel was unable to open boot.dol in /apps/oscdownload/. Have you installed the downloader app?"
+        }
+    ],
+    "FAT_INIT_FAILED": [
+        {
+            "desc": "The forwarder channel was unable to access the SD card. Is your SD card inserted?"
+        }
+    ],
+    "DOL_BUFF_FAILED": [
+        {
+            "desc": "The forwarder channel was unable to load boot.dol in /apps/oscdownload/ into memory. Have you installed the downloader app?"
+        }
+    ],
+    "DNS_FAILED": [
+        {
+            "desc": "The downloader app was unable to find the IP address of the Open Shop Channel server. Please contact the Open Shop Channel developers at https://oscwii.org."
+        }
+    ],
+    "SOCK_CREATE_FAILED": [
+        {
+            "desc": "The downloader app was unable to establish a connection to the Open Shop Channel server. The Open Shop Channel's content delivery network may be down."
+        }
+    ],
+    "SOCK_CONNECT_FAILED": [
+        {
+            "desc": "The downloader app was unable to establish a connection to the Open Shop Channel server. The Open Shop Channel's content delivery network may be down."
+        }
+    ],
+    "CONLEN_SOCK_WRITE_FAILED": [
+        {
+            "desc": "The downloader app was able to connect to the Open Shop Channel server, but could not communicate with it."
+        }
+    ],
+    "CONLEN_SOCK_READ_FAILED": [
+        {
+            "desc": "The downloader app was able to connect to the Open Shop Channel server, but could not communicate with it."
+        }
+    ],
+    "CONLEN_HEADER_STRSTR_FAILED": [
+        {
+            "desc": "The downloader app was able to connect to the Open Shop Channel server, but it did not send a response that the downloader app could understand."
+        }
+    ],
+    "CONLEN_HEADER_STRSTR_END_FAILED": [
+        {
+            "desc": "The downloader app was able to connect to the Open Shop Channel server, but it did not send a response that the downloader app could understand."
+        }
+    ],
+    "CHUNK_SOCK_READ_FAILED": [
+        {
+            "desc": "The downloader app was able to connect to the Open Shop Channel server, but could not communicate with it."
+        }
+    ],
+    "CHUNK_FWRITE_FAILED": [
+        {
+            "desc": "The downloader app was able to download the app from the Open Shop Channel server, but could not save it to your SD card. Your SD card is likely out of space, or has the write-protect switch enabled."
+        }
+    ],
+    "ISFS_OPEN_FAILED": [
+        {
+            "desc": "The downloader app was unable to read from the system NAND."
+        }
+    ],
+    "NO_URL_IN_BIN": [
+        {
+            "desc": "The downloader app could not discover what app it needed to download. If you are running the downloader app independently, note that it will not function without being fed the appropriate data; please refer to the documentation on GitHub."
+        }
+    ],
+    "NET_INIT_FAILED": [
+        {
+            "desc": "The downloader app could not set-up the Wii networking subsystem."
+        }
+    ],
+    "NAND_INIT_FAILED": [
+        {
+            "desc": "The downloader app was unable to read from the system NAND."
+        }
+    ],
+    "ZIP_OPEN_FAILED": [
+        {
+            "desc": "The downloader app was able to download the app from the Open Shop Channel server, but could not save it to your SD card. Your SD card is likely out of space, or has the write-protect switch enabled."
+        }
+    ],
+    "SUCCESS": [
+        {
+            "desc": "You shouldn't be able to see this."
+        }
+    ]
+    
+}
