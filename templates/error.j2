@@ -1,0 +1,103 @@
+{% extends "base.j2" %}
+
+{% block title %}
+Error
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #titleBar {
+        width: 559px;
+        height: 41px;
+        left: 25px;
+        top: 24px;
+        background-color: #F3F3F3;
+    }
+    #titleText {
+        z-index: 1;
+        left: 40px;
+        top: 30px;
+        font-size: 20px;
+        color: #707070;
+    }
+    #errorBox {
+        width: 399px;
+        height: 169px;
+        left: 103px;
+        top: 181px;
+        background-color: #EE349F;
+    }    
+    #errorBoxForeground {
+        width: 382px;
+        height: 134px;
+        left: 112px;
+        top: 208px;
+        background-color: #FFE8F5;
+        z-index: 1;
+    }
+    #errorBoxCaption {
+        left: 112px;
+        top: 186px;
+        color: #FFFFFF;
+        font-size: 13px;
+        z-index: 1;
+    }
+    #errorText {
+        font-size: 12px;
+        color: #222222;
+        padding: 10px;
+        width: 362px;
+        word-wrap: break-word;
+    }
+    #errorIcon {
+        width: 70px;
+        height: 70px;
+        left: 269px;
+        top: 99px;
+    }
+    #backButton {
+        width: 180px;
+        height: 35px;
+        left: 214px;
+        top: 366px;
+        background-color: #35BEEC;
+    }
+    #backText {
+        left: 285px;
+        top: 373px;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+{% endblock %}
+
+{% block onload %}
+    setupButtons();
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="titleBar"></div>
+    <p id="titleText">Error</p>
+    <img id="errorIcon" src="{{ url_for('static', filename='img/error.png') }}"/>
+    <div id="errorBox">
+        <div id="errorBoxCaption">
+            {{ errorcode }}
+        </div>
+        <div id="errorBoxForeground">
+            <p id="errorText">
+                {{ errortext }}
+            </p>
+        </div>
+    </div>
+    <div class="button" id="backButton">
+        <a href="landing" class="buttonLink"></a>
+        <p id="backText">Back</p>
+    </div>
+{% endblock %}
