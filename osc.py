@@ -42,3 +42,16 @@ class API:
                 except ValueError:
                     pass
                 return package
+
+    def search_packages(self, key, value):
+        matching_packages = []
+        if key not in self.packages[0]:
+            return "err"
+        for package in self.packages:
+            if value.lower() in package[key].lower():
+                try:
+                    package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
+                except ValueError:
+                    pass
+                matching_packages.append(package)
+        return matching_packages
