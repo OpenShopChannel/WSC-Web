@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+Donate
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #titleBar {
+        width: 559px;
+        height: 41px;
+        left: 25px;
+        top: 24px;
+        background-color: #F3F3F3;
+    }
+    #titleText {
+        z-index: 1;
+        left: 40px;
+        top: 30px;
+        font-size: 20px;
+        color: #707070;
+    }
+    #donateQR {
+        width: 172px;
+        height: 172px;
+        left: 219px;
+        top: 184px;
+    }
+    #donateText {
+        width: 440px;
+        height: 97px;
+        left: 85px;
+        top: 88px;
+        text-align: center;
+        font-size: 12px;
+        color: #707070;
+    }
+    #backButton {
+        width: 180px;
+        height: 35px;
+        left: 214px;
+        top: 366px;
+        background-color: #35BEEC;
+    }
+    #backText {
+        left: 285px;
+        top: 373px;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+
+{% endblock %}
+
+{% block onload %}
+    setupButtons();
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="titleBar"></div>
+    <p id="titleText">Donate</p>
+    <img id="donateQR" src="{{ url_for('static', filename='img/donateqr.png') }}"/>
+    <div id="donateText">We accept donations to be able to fund the upkeep costs of the<br>
+                        Open Shop Channel open source projects, and dedicate more time to it.<br>
+                        We appreciate every donation and patron, who take an active part in<br>
+                        keeping the project running. You can donate at our Patreon by scanning this<br>
+                        QR code with a mobile device.
+    </div>
+    <div class="button" id="backButton">
+        <a href="landing" class="buttonLink"></a>
+        <p id="backText">Back</p>
+    </div>
+{% endblock %}

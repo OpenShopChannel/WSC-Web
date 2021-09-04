@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+
+{% block title %}
+Browse
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #titleBar {
+        width: 559px;
+        height: 41px;
+        left: 25px;
+        top: 24px;
+        background-color: #F3F3F3;
+    }
+    #titleText {
+        z-index: 1;
+        left: 40px;
+        top: 30px;
+        font-size: 20px;
+        color: #707070;
+    }
+    #keywordBox {
+        width: 195px;
+        height: 107px;
+        left: 99px;
+        top: 99px;
+        background-color: #33BEED;
+    }
+    #keywordText {
+        left: 108px;
+        top: 104px;
+        font-size: 13px;
+        color: #FFFFFF;
+    }
+    #keywordInnerBox {
+        width: 178px;
+        height: 74px;
+        left: 108px;
+        top: 124px;
+        background-color: #DEF7FF;
+    }
+    #keywordIcon {
+        width: 51px;
+        height: 51px;
+        left: 171px;
+        top: 136px;
+    }
+    #categoryBox {
+        width: 195px;
+        height: 107px;
+        left: 314px;
+        top: 99px;
+        background-color: #34ED90;
+    }
+    #categoryText {
+        left: 323px;
+        top: 104px;
+        font-size: 13px;
+        color: #FFFFFF;
+    }
+    #categoryInnerBox {
+        width: 178px;
+        height: 74px;
+        left: 323px;
+        top: 124px;
+        background-color: #E3FFF1;
+    }
+    #categoryIcon {
+        width: 51px;
+        height: 51px;
+        left: 386px;
+        top: 136px;
+    }
+    #featuredBox {
+        width: 195px;
+        height: 107px;
+        left: 99px;
+        top: 221px;
+        background-color: #EDD034;
+    }
+    #featuredText {
+        left: 108px;
+        top: 226px;
+        font-size: 13px;
+        color: #FFFFFF;
+    }
+    #featuredInnerBox {
+        width: 178px;
+        height: 74px;
+        left: 108px;
+        top: 246px;
+        background-color: #FFFADE;
+    }
+    #featuredIcon {
+        width: 51px;
+        height: 51px;
+        left: 171px;
+        top: 256px;
+    }
+    #randomBox {
+        width: 195px;
+        height: 107px;
+        left: 314px;
+        top: 221px;
+        background-color: #EE349F;
+    }
+    #randomText {
+        left: 323px;
+        top: 226px;
+        font-size: 13px;
+        color: #FFFFFF;
+    }
+    #randomInnerBox {
+        width: 178px;
+        height: 74px;
+        left: 323px;
+        top: 246px;
+        background-color: #FFE8F5;
+    }
+    #randomIcon {
+        width: 51px;
+        height: 51px;
+        left: 387px;
+        top: 258px;
+    }
+    #backButton {
+        width: 180px;
+        height: 35px;
+        left: 215px;
+        top: 353px;
+        background-color: #35BEEC;
+    }
+    #backText {
+        left: 286px;
+        top: 360px;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+{% endblock %}
+
+{% block onload %}
+    setupButtons();
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="titleBar"></div>
+    <p id="titleText">Browse</p>
+    <div class="button" id="keywordBox">
+        <a href="keyword" class="buttonLink"></a>
+        <p id="keywordText">Search by Keyword</p>
+        <div id="keywordInnerBox">
+            <img id="keywordIcon" src="{{ url_for('static', filename='img/magnify.png') }}"/>
+        </div>
+    </div>
+    <div class="button" id="categoryBox">
+        <a href="category" class="buttonLink"></a>
+        <p id="categoryText">Search by Category</p>
+        <div id="categoryInnerBox">
+            <img id="categoryIcon" src="{{ url_for('static', filename='img/category.png') }}"/>
+        </div>
+    </div>
+    <div class="button" id="featuredBox">
+        <a href="app?app={{ featuredApp }}" class="buttonLink"></a>
+        <p id="featuredText">Featured Application</p>
+        <div id="featuredInnerBox">
+            <img id="featuredIcon" src="{{ url_for('static', filename='img/star.png') }}"/>
+        </div>
+    </div>
+    <div class="button" id="randomBox">
+        <a href="random" class="buttonLink"></a>
+        <p id="randomText">Random Application</p>
+        <div id="randomInnerBox">
+            <img id="randomIcon" src="{{ url_for('static', filename='img/die.png') }}"/>
+        </div>
+    </div>
+    <div class="button" id="backButton">
+        <a href="landing" class="buttonLink"></a>
+        <p id="backText">Back</p>
+    </div>
+{% endblock %}

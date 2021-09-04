@@ -1,33 +1,182 @@
-<!doctype html>
-<head>
-    <title>Open Shop Channel - App - {{ package["display_name"] }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='app_page.css') }}">
-    <script rel="stylesheet" src="{{ url_for('static', filename='common.js') }}"></script>
-</head>
-<body style="overflow: hidden">
-<nav>
-    <ol class="breadcrumb">
-        <li>Open Shop Channel / Apps / {{ package["display_name"] }}</li>
-    </ol>
-</nav>
-<section class="content">
-    <div class="container">
-        <img src="{{ url_for('static', filename='app_view.png') }}" style="width:100%;">
-        <div class="icon-image"><img src="http://hbb1.oscwii.org/hbb/{{ package["internal_name"] }}.png" height="54">
+{% extends "base.html" %}
+
+{% block title %}
+Application
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #titleBar {
+        width: 559px;
+        height: 41px;
+        left: 25px;
+        top: 24px;
+        background-color: #F3F3F3;
+    }
+    #titleText {
+        z-index: 1;
+        left: 40px;
+        top: 30px;
+        font-size: 20px;
+        color: #707070;
+    }
+    #appTopBox {
+        width: 394px;
+        height: 107px;
+        left: 107px;
+        top: 106px;
+        background-color: #34ED90;
+    }
+    #appCategory {
+        left: 115px;
+        top: 111px;
+        color: #FFFFFF;
+        font-size: 13px;
+    }
+    #appTopFrame {
+        width: 377px;
+        height: 74px;
+        left: 116px;
+        top: 131px;
+        background-color: #E3FFF1;
+    }
+    #appIcon {
+        width: 128px;
+        height: 48px;
+        left: 124px;
+        top: 144px;
+        background-color: #ffffff;
+        border: 1px solid #373737;
+    }
+    #appName {
+        left: 265px;
+        top: 151px;
+        color: #373737;
+        font-size: 13px;
+    }
+    #appCoder {
+        left: 265px;
+        top: 169px;
+        color: #373737;
+        font-size: 12px;
+    }
+    #appBottomBox {
+        width: 394px;
+        height: 138px;
+        left: 107px;
+        top: 205px;
+        background-color: #34ED90;
+    }
+    #appBottomFrame {
+        width: 377px;
+        height: 124px;
+        left: 116px;
+        top: 212px;
+        background-color: #E3FFF1;
+    }
+    #backButton {
+        width: 180px;
+        height: 35px;
+        left: 118px;
+        top: 356px;
+        background-color: #35BEEC;
+    }
+    #backButtonText {
+        left: 189px;
+        top: 363px;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+    #downloadButton {
+        width: 180px;
+        height: 35px;
+        left: 311px;
+        top: 356px;
+        background-color: #35BEEC;
+    }
+    #downloadButtonText {
+        left: 363px;
+        top: 363px;
+        font-size: 16px;
+        color: #FFFFFF;
+    }
+    #appDescriptionBox {
+        width: 360px;
+        height: 68px;
+        left: 125px;
+        top: 222px;
+        color: #373737;
+        font-size: 11px;
+    }
+    #appDetailsBox {
+        width: 377px;
+        height: 26px;
+        left: 116px;
+        top: 310px;
+        text-align: center;
+        color: #373737;
+        font-size: 12px;
+    }
+    #appDetailsBox * {
+        position: static;
+    }
+    #fadeCover {
+        width: 608px;
+        height: 456px;
+        background-color: black;
+        z-index: 999;
+    }
+{% endblock %}
+
+{% block onload %}
+    setupButtons();
+{% endblock %}
+
+{% block script %}
+    function fadeOut() {
+        playSE(3);
+        window.location.href = "startdownload?app={{ app['internal_name'] }}"
+    }
+{% endblock %}
+
+{% block content %}
+    <div id="titleBar"></div>
+    <p id="titleText">Application</p>
+
+
+    <div id="appTopBox">
+        <p id="appCategory"><b>{{ app["category"].title() }}</b></p>
+        <div id="appTopFrame">
+            <img id="appIcon" src="{{ app['icon_url'].replace('https', 'http') }}"/>
+            <p id="appName">{{ app["display_name"] }}</p>
+            <p id="appCoder">{{ app["coder"] }}</p>
         </div>
-        <div class="category-label">{{ package["category"].upper() }}</div>
-        <div class="name-label">{{ package["display_name"] }}</div>
-        <div class="type-label">{{ package["package_type"].upper() }}</div>
-        <div class="coder-label">Made by {{ package["coder"] | truncate(50) }}</div>
-        <div class="description-title">Description:</div>
-        <div class="long-description-label">{{ package["long_description"] | truncate(203) }}</div>
-        <div class="version-title">Version:</div>
-        <div class="version-label">{{ package["version"] | truncate(15) }}</div>
-        <div class="release-date-title">Release Date:</div>
-        <div class="release-date-label">{{ package["release_date"] | truncate(45) }}</div>
-        <p><a onclick="window.history.back(); playSE(3)" onmouseover="playSE(2)" class="link_button" style="float: left;"><- Back</a><a href="#" class="link_button"
-              style="float: right;">Download App</a></p>
     </div>
-</section>
-</body>
+    <div id="appBottomBox">
+        <div id="appBottomFrame">
+            <div id="appDescriptionBox">
+                {{ app["long_description"][0:220] }}
+            </div>
+        </div>
+        <div id="appDetailsBox">
+            <span id="appVersion">Version {{ app["version"] }} </span>
+            |
+            <span id="appDate">{{ app["release_date"] }} </span>
+            |
+            <span id="appSize">{{ app["extracted_human_size"] }}</span>
+        </div>
+    </div>
+
+    <div class="button" id="backButton">
+        <a href="javascript:history.back()" class="buttonLink"></a>
+        <p id="backButtonText">Back</p>
+    </div>
+    <div onmouseover="if (!startingDownload) {buttonMouseOver('downloadButton')}" onmouseout="if (!startingDownload) {buttonMouseOut('downloadButton')}" onmousedown="fadeOut();" id="downloadButton">
+        <p id="downloadButtonText">Download</p>
+    </div>
+
+{% endblock %}

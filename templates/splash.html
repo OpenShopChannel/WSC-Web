@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+Splash
+{% endblock %}
+
+{% block style %}
+    * {
+        position: absolute;
+        padding: 0px;
+        margin: 0px;
+    }
+    #animatedLogo {
+        top: 101px;
+        left: 130px;
+        width: 345px;
+        height: 145px;
+    }
+    #versionText {
+        font-size: 12px;
+        left: 248px;
+        top: 420px;
+        color: #b1b1b1;
+    }
+{% endblock %}
+
+{% block onload %}
+    shop.beginWaiting();
+    setTimeout(baDing, 500);
+    setTimeout(redirect, 4500);
+{% endblock %}
+
+{% block script %}
+    function baDing() {
+        playSE(7);
+    }
+    function redirect() {
+        window.location.href = "landing";
+    }
+{% endblock %}
+
+{% block content %}
+    <img id="animatedLogo" src="{{ url_for('static', filename='img/osclogoanimated.gif') }}"/>
+    <p id="versionText">Open Shop Channel</p>
+{% endblock %}

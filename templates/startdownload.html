@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}
+Start Download
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #fadeCover {
+        width: 608px;
+        height: 456px;
+        background-color: black;
+        z-index: 999;
+    }
+{% endblock %}
+
+{% block onload %}
+    setTimeout(function(){
+        startDownload('{{ app['zip_url'].replace('https', 'http') }}');
+    }, 1500);
+{% endblock %}
+
+{% block script %}
+{% endblock %}
+
+{% block content %}
+    <img id="fadeCover" src="{{ url_for('static', filename='img/fadegif.gif') }}"/>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block title %}
+Search by Category
+{% endblock %}
+
+{% block style %}
+    * {
+        position: fixed;
+        padding: 0px;
+        margin: 0px;
+    }
+    #titleBar {
+        width: 559px;
+        height: 41px;
+        left: 25px;
+        top: 24px;
+        background-color: #F3F3F3;
+    }
+    #titleText {
+        z-index: 1;
+        left: 40px;
+        top: 30px;
+        font-size: 20px;
+        color: #707070;
+    }
+    #keywordBox {
+        width: 415px;
+        height: 107px;
+        left: 96px;
+        top: 175px;
+        background-color: #33BEED;
+    }
+    #keywordText {
+        left: 105px;
+        top: 180px;
+        font-size: 13px;
+        color: #FFFFFF;
+    }
+    #keywordInnerBox {
+        width: 398px;
+        height: 74px;
+        left: 105px;
+        top: 200px;
+        background-color: #DEF7FF;
+    }
+    #keywordTextArea {
+        width: 371px;
+        height: 42px;
+        left: 116px;
+        top: 216px;
+        background-color: #FFFFFF;
+        border: 1px solid #33BEED;
+        overflow: hidden;
+        color: #707070;
+        font-size: 26px;
+        padding-left: 5px;
+        padding-top: 2px;
+    }
+    #backButton {
+        width: 180px;
+        height: 35px;
+        left: 118px;
+        top: 301px;
+        background-color: #35BEEC;
+    }
+    #backButtonText {
+        left: 189px;
+        top: 308px;
+        color: #ffffff;
+        font-size: 16px;
+    }
+    #searchButton {
+        width: 180px;
+        height: 35px;
+        left: 311px;
+        top: 301px;
+        background-color: #35BEEC;
+    }
+    #searchButtonText {
+        left: 375px;
+        top: 308px;
+        color: #ffffff;
+        font-size: 16px;
+    }
+{% endblock %}
+
+{% block onload %}
+    setupButtons();
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <div id="titleBar"></div>
+    <p id="titleText">Search by Category</p>
+    <div id="keywordBox">
+        <p id="keywordText">Search by Category</p>
+        <div id="keywordInnerBox">
+            <select id="keywordTextArea" name="value">
+                <option value="demos">Demos</option>
+                <option value="emulators">Emulators</option>
+                <option value="games">Games</option>
+                <option value="media">Media</option>
+                <option value="utilities">Utilities</option>
+            </select>
+        </div>
+    </div>
+    <div class="button" id="backButton">
+        <a href="browse" class="buttonLink"></a>
+        <p id="backButtonText">Back</p>
+    </div>
+    <div onmouseover="buttonMouseOver('searchButton')" onmouseout="buttonMouseOut('searchButton')" onmousedown="playSE(3); window.location.href='search?key=category&value=' + $('#keywordTextArea').val();" id="searchButton">
+        <p id="searchButtonText">Search</p>
+    </div>
+{% endblock %}
