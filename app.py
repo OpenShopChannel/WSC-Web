@@ -16,19 +16,22 @@ app = Flask(__name__)
 
 lastCheckedFeaturedApp = 0
 
-def getErrorText(code):
+
+def get_error_text(code):
     with open("data/errors.json", 'r') as f:
         data = json.load(f)
         return data[code][0]["desc"]
 
-def getMOTD():
+
+def get_motd():
     with open("data/motd.txt") as f:
         lines = f.readlines()
         return random.choice(lines).rstrip("\n")
 
-def getFeaturedApp():
+
+def get_featured_app():
     global lastCheckedFeaturedApp
-    if (time.time() - lastCheckedFeaturedApp > 1800):
+    if time.time() - lastCheckedFeaturedApp > 1800:
         lastCheckedFeaturedApp = time.time()
         req = Request('https://oscwii.org')
         req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0')
@@ -36,8 +39,9 @@ def getFeaturedApp():
         with open('data/featuredApp.txt', "w") as f:
             f.write(contents)
     with open('data/featuredApp.txt', "r") as f:
-        featuredApp = f.read()
-    return featuredApp
+        featured_app = f.read()
+    return featured_app
+
 
 @app.template_global()
 def modify_query(**new_values):
@@ -53,94 +57,108 @@ def modify_query(**new_values):
 def splash():
     return render_template('splash.html')
 
+
 @app.route("/landing")
 def landing():
-    return render_template('landing.html', motd=getMOTD(), featuredApp=OpenShopChannel.package_by_name(getFeaturedApp()))
+    return render_template('landing.html', motd=get_motd(),
+                           featured_app=OpenShopChannel.package_by_name(get_featured_app()))
+
 
 @app.route("/donate")
 def donate():
-    return render_template('donate.html') 
+    return render_template('donate.html')
+
 
 @app.route("/browse")
 def browse():
-    return render_template('browse.html', featuredApp=getFeaturedApp()) 
+    return render_template('browse.html', featuredApp=get_featured_app())
+
 
 @app.route("/keyword")
 def keyword():
-    return render_template('keyword.html') 
+    return render_template('keyword.html')
+
 
 @app.route("/category")
 def category():
-    return render_template('category.html') 
+    return render_template('category.html')
+
 
 @app.route("/startdownload")
-def startdownload():
-    selectedApp = request.args.get('app', default = 'danbo', type = str)
-    selectedApp = OpenShopChannel.package_by_name(selectedApp)
-    return render_template('startdownload.html', app=selectedApp)
+def start_download():
+    selected_app = request.args.get('app', default='danbo', type=str)
+    selected_app = OpenShopChannel.package_by_name(selected_app)
+    return render_template('startdownload.html', app=selected_app)
+
 
 @app.route("/search")
 def search():
-    key = request.args.get('key', default = 'display_name', type = str)
-    value = request.args.get('value', default = 'danbo', type = str).lower()
-    page = request.args.get('page', default = 0, type = int)
+    key = request.args.get('key', default='display_name', type=str)
+    value = request.args.get('value', default='danbo', type=str).lower()
+    page = request.args.get('page', default=0, type=int)
 
     results = OpenShopChannel.search_packages(key, value)
 
-    lastPage = ""
-    nextPage = ""
+    last_page = ""
+    next_page = ""
 
-    if len(results[page*2*8:(page*2*8)+8]) == 0 or len(results[page*8:(page*8)+8]) < 4:
-        nextPage = ""
+    if len(results[page * 2 * 8:(page * 2 * 8) + 8]) == 0 or len(results[page * 8:(page * 8) + 8]) < 4:
+        next_page = ""
     elif len(results) > 0:
-        nextPage = "search?key=" + key + "&value=" + value + "&page=" + str(page + 1)
+        next_page = "search?key=" + key + "&value=" + value + "&page=" + str(page + 1)
 
     if page == 0:
-        lastPage = ""
+        last_page = ""
     elif len(results) > 0:
-        lastPage = "search?key=" + key + "&value=" + value + "&page=" + str(page - 1)
+        last_page = "search?key=" + key + "&value=" + value + "&page=" + str(page - 1)
 
-    return render_template('search.html', results=results[page*8:(page*8)+8], lastPage=lastPage, nextPage=nextPage) 
+    return render_template('search.html', results=results[page * 8:(page * 8) + 8], lastPage=last_page,
+                           nextPage=next_page)
+
 
 @app.route("/app")
-def appPage():
-    selectedApp = request.args.get('app', default = 'danbo', type = str)
-    selectedApp = OpenShopChannel.package_by_name(selectedApp)
-    
-    readableSize = sizeof_fmt(selectedApp["extracted"])
+def app_page():
+    selected_app = request.args.get('app', default='danbo', type=str)
+    selected_app = OpenShopChannel.package_by_name(selected_app)
 
-    return render_template('app.html', app=selectedApp, size=readableSize)
+    return render_template('app.html', app=selected_app)
+
 
 @app.route("/random")
-def randomApp():
+def random_app():
     response = Response('')
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Location"] = "/app?app=" + random.choice(OpenShopChannel.get_packages())["internal_name"]
     return response, 301
 
+
 @app.route("/error")
-def errorPage():
-    errorcode = request.args.get('error', default = 'danbo', type = str)
-    errortext = getErrorText(errorcode)
-    if errorcode == "SUCCESS":
+def error_age():
+    error_code = request.args.get('error', default='danbo', type=str)
+    error_text = get_error_text(error_code)
+    if error_code == "SUCCESS":
         return redirect("/", code=302)
     else:
-        return render_template('error.html', errorcode=errorcode, errortext=errortext)
+        return render_template('error.html', error_code=error_code, error_text=error_text)
+
 
 @app.errorhandler(404)
 def page_not_found(e):
-    errorcode = "HTTP_404"
-    errortext = "The requested page could not be found."
-    return render_template('error.html', errorcode=errorcode, errortext=errortext)
+    error_code = "HTTP_404"
+    error_text = "The requested page could not be found."
+    return render_template('error.html', error_code=error_code, error_text=error_text)
 
 
 @app.errorhandler(500)
 def server_error(e):
-    errorcode = "HTTP_500"
-    errortext = "The server has encountered an error. This isn't your fault- try your action again."
-    return render_template('error.html', errorcode=errorcode, errortext=errortext)
+    error_code = "HTTP_500"
+    error_text = "The server has encountered an error. This isn't your fault- try your action again."
+    return render_template('error.html', error_code=error_code, errortext=error_text)
 
 
 if __name__ == '__main__':
     WSGIRequestHandler.protocol_version = "HTTP/1.1"
-    app.run(host='0.0.0.0', port=80, debug=True)
+    context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    context.load_cert_chain('cert.pem', 'key.pem')
+
+    app.run(host='127.0.0.1', port=443, debug=True, ssl_context=context)

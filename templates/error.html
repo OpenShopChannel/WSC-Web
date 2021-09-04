@@ -1,4 +1,4 @@
-{% extends "base.j2" %}
+{% extends "base.html" %}
 
 {% block title %}
 Error
@@ -88,11 +88,11 @@ Error
     <img id="errorIcon" src="{{ url_for('static', filename='img/error.png') }}"/>
     <div id="errorBox">
         <div id="errorBoxCaption">
-            {{ errorcode }}
+            {{ error_code }}
         </div>
         <div id="errorBoxForeground">
             <p id="errorText">
-                {{ errortext }}
+                {{ error_text }}
             </p>
         </div>
     </div>

@@ -1,4 +1,4 @@
-{% extends "base.j2" %}
+{% extends "base.html" %}
 
 {% block title %}
 Landing
@@ -122,11 +122,11 @@ Landing
     </div>
     <div class="button" id="featuredAppBackground">
         <p id="featuredAppTitleText">★ App of the Day</p>
-        <a href="app?app={{ featuredApp['internal_name'] }}" class="buttonLink"></a>
+        <a href="app?app={{ featured_app['internal_name'] }}" class="buttonLink"></a>
         <div id="featuredAppForeground">
-            <img id="featuredAppIcon" src="{{ featuredApp['icon_url'].replace('https', 'http') }}"/>
-            <p id="featuredAppName">{{ featuredApp['display_name'] }}</p>
-            <p id="featuredAppCoder">{{ featuredApp['display_name'] }}</p>
+            <img id="featuredAppIcon" src="{{ featured_app['icon_url'].replace('https', 'http') }}"/>
+            <p id="featuredAppName">{{ featured_app['display_name'] }}</p>
+            <p id="featuredAppCoder">{{ featured_app['display_name'] }}</p>
         </div>
     </div>
 {% endblock %}

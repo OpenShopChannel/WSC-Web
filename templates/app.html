@@ -1,4 +1,4 @@
-{% extends "base.j2" %}
+{% extends "base.html" %}
 
 {% block title %}
 Application
@@ -147,10 +147,11 @@ Application
     <div id="titleBar"></div>
     <p id="titleText">Application</p>
 
+
     <div id="appTopBox">
         <p id="appCategory"><b>{{ app["category"].title() }}</b></p>
         <div id="appTopFrame">
-            <img id="appIcon" src="{{ app['icon_url'].replace('https', 'http') }}"/></td>
+            <img id="appIcon" src="{{ app['icon_url'].replace('https', 'http') }}"/>
             <p id="appName">{{ app["display_name"] }}</p>
             <p id="appCoder">{{ app["coder"] }}</p>
         </div>
@@ -166,7 +167,7 @@ Application
             |
             <span id="appDate">{{ app["release_date"] }} </span>
             |
-            <span id="appSize">{{ size }}</span>
+            <span id="appSize">{{ app["extracted_human_size"] }}</span>
         </div>
     </div>
 
