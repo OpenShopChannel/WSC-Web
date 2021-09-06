@@ -1,7 +1,7 @@
 {
     "DOL_OPEN_FAILED": [
         {
-            "desc": "The forwarder channel was unable to open boot.dol in /apps/oscdownload/. Have you installed the downloader app?"
+            "desc": "The forwarder channel was unable to open boot.dol in /openshopchannel/downloader/. Have you installed the downloader app?"
         }
     ],
     "FAT_INIT_FAILED": [
@@ -11,7 +11,7 @@
     ],
     "DOL_BUFF_FAILED": [
         {
-            "desc": "The forwarder channel was unable to load boot.dol in /apps/oscdownload/ into memory. Have you installed the downloader app?"
+            "desc": "The forwarder channel was unable to load boot.dol in /openshopchannel/downloader/ into memory. Have you installed the downloader app?"
         }
     ],
     "DNS_FAILED": [
