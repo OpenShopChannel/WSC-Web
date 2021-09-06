@@ -84,6 +84,11 @@
             "desc": "The downloader app was able to download the app from the Open Shop Channel server, but could not save it to your SD card. Your SD card is likely out of space, or has the write-protect switch enabled."
         }
     ],
+    "ZIP_EXTRACT_FAILED": [
+        {
+            "desc": "The downloader app was able to download the app from the Open Shop Channel server, but could not save it to your SD card. Your SD card is likely out of space, or has the write-protect switch enabled."
+        }
+    ],
     "SUCCESS": [
         {
             "desc": "You shouldn't be able to see this."
