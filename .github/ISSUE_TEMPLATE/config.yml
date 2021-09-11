@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Support
+    url: https://github.com/OpenShopChannel/WSC-Web/discussions
+    about: Ask the community for support
+  - name: Get help on Discord
+    url: https://discord.com/invite/by6mR5N
+    about: Have a quick question? Join the Discord server and ask on the appropriate channel.
+  - name: Where did these issue templates come from?
+    url: https://github.com/ohmyzsh/ohmyzsh/tree/master/.github/ISSUE_TEMPLATE
+    about: These issue templates are based on the Oh My Zsh ones.
