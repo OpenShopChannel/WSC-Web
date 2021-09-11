@@ -1,0 +1,58 @@
+name: Bug report
+description: Create a report to help us improve
+labels: 'bug'
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Self Check
+        - Try searching existing [GitHub Issues](https://github.com/TheTechRobo/openclassroom/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc) (open or closed) for similar issues.
+        - Try reaching out on the Discord server or the Discussions tab for help.
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Describe the bug
+      description: A clear description of what the bug is.
+      placeholder: I see a 418 I'm a Teapot error when opening the Channel!
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Steps to reproduce
+      description: |
+        Steps to reproduce the problem.
+      placeholder: |
+        For example:
+        1. Load Open Shop Channel
+        2. See error
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Expected behavior
+      description: A brief description of what should happen.
+  - type: textarea
+    attributes:
+      label: Screenshots and recordings
+      description: |
+        If applicable, add screenshots or videos to help explain your problem. (Videos should be as short as possible! Avoid watermarks too.)
+  - type: input
+    validations:
+      required: true
+    attributes:
+      label: Flask version
+      placeholder: e.g. 2.0.1
+  - type: dropdown
+    id: dolphin
+    attributes:
+      label: What does this issue happen with?
+      multiple: true
+      options:
+        - Dolphin
+        - Real Wii
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+
