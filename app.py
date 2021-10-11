@@ -146,14 +146,14 @@ def error_age():
 def page_not_found(e):
     error_code = "HTTP_404"
     error_text = "The requested page could not be found."
-    return render_template('error.html', error_code=error_code, error_text=error_text)
+    return render_template('error.html', error_code=error_code, error_text=error_text), 404
 
 
 @app.errorhandler(500)
 def server_error(e):
     error_code = "HTTP_500"
     error_text = "The server has encountered an error. This isn't your fault- try your action again."
-    return render_template('error.html', error_code=error_code, errortext=error_text)
+    return render_template('error.html', error_code=error_code, errortext=error_text), 500
 
 
 if __name__ == '__main__':
