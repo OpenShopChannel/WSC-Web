@@ -9,7 +9,7 @@ var NWC24 = new wiiNwc24();
 var sound = new wiiSound();
 var keypad = new wiiKeyboard();
 
-shop.setWallpaper(1);
+shop.setWallpaper(2);
 
 /**
  * Timeout prevention
