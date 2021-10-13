@@ -5,30 +5,11 @@ Search Results
 {% endblock %}
 
 {% block style %}
-    * {
-        position: fixed;
-        padding: 0px;
-        margin: 0px;
-    }
     #logo {
         width: 192px;
         height: 68px;
         left: 208px;
         top: 98px;
-    }
-    #titleBar {
-        width: 559px;
-        height: 41px;
-        left: 25px;
-        top: 24px;
-        background-color: #F3F3F3;
-    }
-    #titleText {
-        z-index: 1;
-        left: 40px;
-        top: 30px;
-        font-size: 20px;
-        color: #707070;
     }
     #resultsBox {
         width: 517px;
@@ -140,7 +121,6 @@ Search Results
 {% endblock %}
 
 {% block onload %}
-    setupButtons();
 {% endblock %}
 
 {% block script %}
@@ -148,9 +128,6 @@ Search Results
 {% endblock %}
 
 {% block content %}
-    <div id="titleBar"></div>
-    <p id="titleText">Search Results</p>
-
     <div id="resultsBox">
         <p id="resultsTitle">Search Results</p>
         <div id="resultsFrame">

@@ -5,25 +5,6 @@ Error
 {% endblock %}
 
 {% block style %}
-    * {
-        position: fixed;
-        padding: 0px;
-        margin: 0px;
-    }
-    #titleBar {
-        width: 559px;
-        height: 41px;
-        left: 25px;
-        top: 24px;
-        background-color: #F3F3F3;
-    }
-    #titleText {
-        z-index: 1;
-        left: 40px;
-        top: 30px;
-        font-size: 20px;
-        color: #707070;
-    }
     #errorBox {
         width: 399px;
         height: 169px;
@@ -75,7 +56,6 @@ Error
 {% endblock %}
 
 {% block onload %}
-    setupButtons();
 {% endblock %}
 
 {% block script %}
@@ -83,8 +63,6 @@ Error
 {% endblock %}
 
 {% block content %}
-    <div id="titleBar"></div>
-    <p id="titleText">Error</p>
     <img id="errorIcon" src="{{ url_for('static', filename='img/error.png') }}"/>
     <div id="errorBox">
         <div id="errorBoxCaption">

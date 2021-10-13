@@ -5,30 +5,11 @@ Landing
 {% endblock %}
 
 {% block style %}
-    * {
-        position: fixed;
-        padding: 0px;
-        margin: 0px;
-    }
     #logo {
         width: 192px;
         height: 68px;
         left: 208px;
         top: 98px;
-    }
-    #titleBar {
-        width: 559px;
-        height: 41px;
-        left: 25px;
-        top: 24px;
-        background-color: #F3F3F3;
-    }
-    #titleText {
-        z-index: 1;
-        left: 40px;
-        top: 30px;
-        font-size: 20px;
-        color: #707070;
     }
     #motd {
         width: 608px;
@@ -104,7 +85,6 @@ Landing
 {% block onload %}
     shop.endWaiting();
     sound.playBGM(1);
-    setupButtons();
 {% endblock %}
 
 {% block script %}
@@ -113,8 +93,6 @@ Landing
 
 {% block content %}
     <img id="logo" onmouseover="playSE(2)" onmousedown="playSE(12); window.location.href='donate';" src="{{ url_for('static', filename='img/osclogo.jpg') }}"/>
-    <div id="titleBar"></div>
-    <p id="titleText">Landing</p>
     <div id="motd">"{{ motd }}"</div>
     <div class="button" id="browseButton">
         <a href="browse" class="buttonLink"></a>

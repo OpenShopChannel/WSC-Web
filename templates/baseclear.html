@@ -12,22 +12,6 @@
             margin: 0px;
         }
 
-        #titleBar {
-            width: 559px;
-            height: 41px;
-            left: 25px;
-            top: 24px;
-            background-color: #F3F3F3;
-        }
-
-        #titleText {
-            z-index: 1;
-            left: 40px;
-            top: 30px;
-            font-size: 20px;
-            color: #707070;
-        }
-
         {% block style %} {% endblock %}</style>
 
     <script src="{{ url_for('static', filename='js/jquery-1.3.2.min.js') }}"></script>
@@ -36,16 +20,12 @@
     <script src="{{ url_for('static', filename='js/buttons.js') }}"></script>
     <script>{% block script %}{% endblock %}</script>
     <script>function onLoad() { {% block onload %}{% endblock %}
-        setupButtons();
-    }
-    </script>
+    }</script>
 
     <title>{% block title %}{% endblock %} - Open Shop Channel</title>
 </head>
 <body onload="onLoad()">
 <div id="mainContent">
-    <div id="titleBar"></div>
-    <p id="titleText">{{ self.title() }}</p>
     {% block content %}{% endblock %}
 </div>
 </body>

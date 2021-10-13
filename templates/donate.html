@@ -5,25 +5,6 @@ Donate
 {% endblock %}
 
 {% block style %}
-    * {
-        position: fixed;
-        padding: 0px;
-        margin: 0px;
-    }
-    #titleBar {
-        width: 559px;
-        height: 41px;
-        left: 25px;
-        top: 24px;
-        background-color: #F3F3F3;
-    }
-    #titleText {
-        z-index: 1;
-        left: 40px;
-        top: 30px;
-        font-size: 20px;
-        color: #707070;
-    }
     #donateQR {
         width: 172px;
         height: 172px;
@@ -56,7 +37,6 @@ Donate
 {% endblock %}
 
 {% block onload %}
-    setupButtons();
 {% endblock %}
 
 {% block script %}
@@ -64,8 +44,6 @@ Donate
 {% endblock %}
 
 {% block content %}
-    <div id="titleBar"></div>
-    <p id="titleText">Donate</p>
     <img id="donateQR" src="{{ url_for('static', filename='img/donateqr.png') }}"/>
     <div id="donateText">We accept donations to be able to fund the upkeep costs of the<br>
                         Open Shop Channel open source projects, and dedicate more time to it.<br>

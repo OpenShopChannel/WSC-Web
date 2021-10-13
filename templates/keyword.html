@@ -5,25 +5,6 @@ Search by Keyword
 {% endblock %}
 
 {% block style %}
-    * {
-        position: fixed;
-        padding: 0px;
-        margin: 0px;
-    }
-    #titleBar {
-        width: 559px;
-        height: 41px;
-        left: 25px;
-        top: 24px;
-        background-color: #F3F3F3;
-    }
-    #titleText {
-        z-index: 1;
-        left: 40px;
-        top: 30px;
-        font-size: 20px;
-        color: #707070;
-    }
     #keywordBox {
         width: 415px;
         height: 107px;
@@ -86,7 +67,6 @@ Search by Keyword
 {% endblock %}
 
 {% block onload %}
-    setupButtons();
 {% endblock %}
 
 {% block script %}
@@ -94,8 +74,6 @@ Search by Keyword
 {% endblock %}
 
 {% block content %}
-    <div id="titleBar"></div>
-    <p id="titleText">Search by Keyword</p>
     <div id="keywordBox">
         <p id="keywordText">Search by Keyword</p>
         <div id="keywordInnerBox">

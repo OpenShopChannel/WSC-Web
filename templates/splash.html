@@ -1,15 +1,10 @@
-{% extends "base.html" %}
+{% extends "baseclear.html" %}
 
 {% block title %}
 Splash
 {% endblock %}
 
 {% block style %}
-    * {
-        position: absolute;
-        padding: 0px;
-        margin: 0px;
-    }
     #animatedLogo {
         top: 101px;
         left: 130px;
@@ -31,12 +26,14 @@ Splash
 {% endblock %}
 
 {% block script %}
+    var info = ec.getDeviceInfo();
     function baDing() {
         playSE(7);
     }
     function redirect() {
         window.location.href = "landing";
     }
+    document.cookie = "language=" + info.language;
 {% endblock %}
 
 {% block content %}

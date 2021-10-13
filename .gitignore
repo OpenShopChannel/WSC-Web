@@ -6,3 +6,4 @@ pyvenv.cfg
 bin/*
 include/*
 lib/*
+data/featuredApp.txt
