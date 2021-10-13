@@ -1,35 +1,37 @@
-# Translations template for PROJECT.
+# French translations for PROJECT.
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 20:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-10-13 19:19+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: templates/app.html:4
+#, fuzzy
 msgid "Application"
-msgstr ""
+msgstr "Application aléatoire"
 
 #: templates/app.html:152 templates/browse.html:193 templates/category.html:91
 #: templates/donate.html:56 templates/error.html:79 templates/keyword.html:85
 #: templates/search.html:152
 msgid "Back"
-msgstr ""
+msgstr "Retour"
 
 #: templates/app.html:155
 msgid "Download"
-msgstr ""
+msgstr "Télécharger"
 
 #: templates/browse.html:4
 msgid "Browse"
@@ -37,44 +39,44 @@ msgstr ""
 
 #: templates/browse.html:165 templates/keyword.html:4 templates/keyword.html:78
 msgid "Search by Keyword"
-msgstr ""
+msgstr "Recherche par mot"
 
 #: templates/browse.html:172 templates/category.html:4
 #: templates/category.html:78
 msgid "Search by Category"
-msgstr ""
+msgstr "Recherche par catégorie"
 
 #: templates/browse.html:179
 msgid "Featured Application"
-msgstr ""
+msgstr "Application en vedette"
 
 #: templates/browse.html:186
 msgid "Random Application"
-msgstr ""
+msgstr "Application aléatoire"
 
 #: templates/category.html:81
 msgid "Demos"
-msgstr ""
+msgstr "Démos"
 
 #: templates/category.html:82
 msgid "Emulators"
-msgstr ""
+msgstr "Emulateurs"
 
 #: templates/category.html:83
 msgid "Games"
-msgstr ""
+msgstr "Jeux"
 
 #: templates/category.html:84
 msgid "Media"
-msgstr ""
+msgstr "Médias"
 
 #: templates/category.html:85
 msgid "Utilities"
-msgstr ""
+msgstr "Outils"
 
 #: templates/category.html:94 templates/keyword.html:88
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
 #: templates/donate.html:4
 msgid "Donate"
@@ -82,33 +84,34 @@ msgstr ""
 
 #: templates/error.html:4
 msgid "Error"
-msgstr ""
+msgstr "Erreur"
 
 #: templates/landing.html:4
 msgid "Landing"
-msgstr ""
+msgstr "Bonjour !!"
 
 #: templates/landing.html:99
 msgid "Start Browsing"
-msgstr ""
+msgstr "Démarrer"
 
 #: templates/landing.html:102
 msgid "App of the Day"
-msgstr ""
+msgstr "Application du jour"
 
 #: templates/search.html:4 templates/search.html:132
 msgid "Search Results"
-msgstr ""
+msgstr "Résultats de la recherche"
 
 #: templates/search.html:157
 msgid "Previous"
-msgstr ""
+msgstr "Précédent"
 
 #: templates/search.html:163
 msgid "Next"
-msgstr ""
+msgstr "Suivant"
 
 #: templates/startdownload.html:4
+#, fuzzy
 msgid "Start Download"
-msgstr ""
+msgstr "Télécharger"
 

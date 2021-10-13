@@ -1,35 +1,37 @@
-# Translations template for PROJECT.
+# Dutch translations for PROJECT.
 # Copyright (C) 2021 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2021-10-13 20:27+0300\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-10-13 16:24+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl\n"
+"Language-Team: Dutch; Flemish\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
 #: templates/app.html:4
+#, fuzzy
 msgid "Application"
-msgstr ""
+msgstr "Willekeurige Applicatie"
 
 #: templates/app.html:152 templates/browse.html:193 templates/category.html:91
 #: templates/donate.html:56 templates/error.html:79 templates/keyword.html:85
 #: templates/search.html:152
 msgid "Back"
-msgstr ""
+msgstr "Terug"
 
 #: templates/app.html:155
 msgid "Download"
-msgstr ""
+msgstr "Download"
 
 #: templates/browse.html:4
 msgid "Browse"
@@ -37,44 +39,44 @@ msgstr ""
 
 #: templates/browse.html:165 templates/keyword.html:4 templates/keyword.html:78
 msgid "Search by Keyword"
-msgstr ""
+msgstr "Zoeken op Trefwoord"
 
 #: templates/browse.html:172 templates/category.html:4
 #: templates/category.html:78
 msgid "Search by Category"
-msgstr ""
+msgstr "Zoeken op Categorie"
 
 #: templates/browse.html:179
 msgid "Featured Application"
-msgstr ""
+msgstr "Uitgelichte Applicaties\n"
 
 #: templates/browse.html:186
 msgid "Random Application"
-msgstr ""
+msgstr "Willekeurige Applicatie"
 
 #: templates/category.html:81
 msgid "Demos"
-msgstr ""
+msgstr "Demo's"
 
 #: templates/category.html:82
 msgid "Emulators"
-msgstr ""
+msgstr "Emulators"
 
 #: templates/category.html:83
 msgid "Games"
-msgstr ""
+msgstr "Games"
 
 #: templates/category.html:84
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: templates/category.html:85
 msgid "Utilities"
-msgstr ""
+msgstr "Hulpprogramma's"
 
 #: templates/category.html:94 templates/keyword.html:88
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: templates/donate.html:4
 msgid "Donate"
@@ -82,33 +84,34 @@ msgstr ""
 
 #: templates/error.html:4
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: templates/landing.html:4
 msgid "Landing"
-msgstr ""
+msgstr "Start"
 
 #: templates/landing.html:99
 msgid "Start Browsing"
-msgstr ""
+msgstr "Begin met browsen"
 
 #: templates/landing.html:102
 msgid "App of the Day"
-msgstr ""
+msgstr "App van de dag"
 
 #: templates/search.html:4 templates/search.html:132
 msgid "Search Results"
-msgstr ""
+msgstr "Zoek Resultaten"
 
 #: templates/search.html:157
 msgid "Previous"
-msgstr ""
+msgstr "Vorige"
 
 #: templates/search.html:163
 msgid "Next"
-msgstr ""
+msgstr "Volgende"
 
 #: templates/startdownload.html:4
+#, fuzzy
 msgid "Start Download"
-msgstr ""
+msgstr "Download"
 
