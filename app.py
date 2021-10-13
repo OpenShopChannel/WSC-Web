@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, Response
+from flask_babel import Babel, gettext, ngettext
 from werkzeug.serving import WSGIRequestHandler
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
@@ -13,8 +14,18 @@ OpenShopChannel = osc.API()
 OpenShopChannel.load_packages()
 
 app = Flask(__name__)
+babel = Babel(app)
 
 lastCheckedFeaturedApp = 0
+
+
+@babel.localeselector
+def get_locale():
+    if request.cookies.get('language'):
+        print("hi " + request.cookies.get('language'))
+        return request.cookies.get('language')
+    else:
+        return 'en'
 
 
 def get_error_text(code):
@@ -57,9 +68,14 @@ def modify_query(**new_values):
 def splash():
     return render_template('splash.html')
 
+@app.route("/debug")
+def debug():
+    return render_template('debug.html')
+
 
 @app.route("/landing")
 def landing():
+    print(request.cookies.get('language'))
     return render_template('landing.html', motd=get_motd(),
                            featured_app=OpenShopChannel.package_by_name(get_featured_app()))
 

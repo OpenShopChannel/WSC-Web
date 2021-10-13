@@ -75,16 +75,16 @@ Search by Keyword
 
 {% block content %}
     <div id="keywordBox">
-        <p id="keywordText">Search by Keyword</p>
+        <p id="keywordText">{% trans %}Search by Keyword{% endtrans %}</p>
         <div id="keywordInnerBox">
             <textarea id="keywordTextArea" onmousedown="keyboard.call( 1, 1, false, 'Search by Keyword')"></textarea>
         </div>
     </div>
     <div class="button" id="backButton">
         <a href="browse" class="buttonLink"></a>
-        <p id="backButtonText">Back</p>
+        <p id="backButtonText">{% trans %}Back{% endtrans %}</p>
     </div>
     <div onmouseover="buttonMouseOver('searchButton')" onmouseout="buttonMouseOut('searchButton')" onmousedown="playSE(3); window.location.href='search?key=display_name&value=' + $('#keywordTextArea').val();" id="searchButton">
-        <p id="searchButtonText">Search</p>
+        <p id="searchButtonText">{% trans %}Search{% endtrans %}</p>
     </div>
 {% endblock %}

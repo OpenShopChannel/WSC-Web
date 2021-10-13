@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Search by Category
+{% trans %}Search by Category{% endtrans %}
 {% endblock %}
 
 {% block style %}
@@ -75,22 +75,22 @@ Search by Category
 
 {% block content %}
     <div id="keywordBox">
-        <p id="keywordText">Search by Category</p>
+        <p id="keywordText">{% trans %}Search by Category{% endtrans %}</p>
         <div id="keywordInnerBox">
             <select id="keywordTextArea" name="value">
-                <option value="demos">Demos</option>
-                <option value="emulators">Emulators</option>
-                <option value="games">Games</option>
-                <option value="media">Media</option>
-                <option value="utilities">Utilities</option>
+                <option value="demos">{% trans %}Demos{% endtrans %}</option>
+                <option value="emulators">{% trans %}Emulators{% endtrans %}</option>
+                <option value="games">{% trans %}Games{% endtrans %}</option>
+                <option value="media">{% trans %}Media{% endtrans %}</option>
+                <option value="utilities">{% trans %}Utilities{% endtrans %}</option>
             </select>
         </div>
     </div>
     <div class="button" id="backButton">
         <a href="browse" class="buttonLink"></a>
-        <p id="backButtonText">Back</p>
+        <p id="backButtonText">{% trans %}Back{% endtrans %}</p>
     </div>
     <div onmouseover="buttonMouseOver('searchButton')" onmouseout="buttonMouseOut('searchButton')" onmousedown="playSE(3); window.location.href='search?key=category&value=' + $('#keywordTextArea').val();" id="searchButton">
-        <p id="searchButtonText">Search</p>
+        <p id="searchButtonText">{% trans %}Search{% endtrans %}</p>
     </div>
 {% endblock %}

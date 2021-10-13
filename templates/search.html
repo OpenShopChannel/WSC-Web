@@ -129,7 +129,7 @@ Search Results
 
 {% block content %}
     <div id="resultsBox">
-        <p id="resultsTitle">Search Results</p>
+        <p id="resultsTitle">{% trans %}Search Results{% endtrans %}</p>
         <div id="resultsFrame">
             {% for result in results %}
                 <div class="button" id="result{{ result['internal_name'] }}">
@@ -149,18 +149,18 @@ Search Results
     </div>
     <div class="button" id="backButton">
         <a href="browse" class="buttonLink"></a>
-        <p id="backButtonText">Back</p>
+        <p id="backButtonText">{% trans %}Back{% endtrans %}</p>
     </div>
     {% if lastPage %}
         <div class="button" id="previousButton">
             <a href="{{ lastPage }}" class="buttonLink"></a>
-            <p id="previousButtonText">Previous</p>
+            <p id="previousButtonText">{% trans %}Previous{% endtrans %}</p>
         </div>
     {% endif %}
     {% if nextPage %}
         <div class="button" id="nextButton">
             <a href="{{ nextPage }}" class="buttonLink"></a>
-            <p id="nextButtonText">Next</p>
+            <p id="nextButtonText">{% trans %}Next{% endtrans %}</p>
         </div>
     {% endif %}
 

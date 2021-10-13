@@ -131,8 +131,21 @@ Browse
         top: 353px;
         background-color: #35BEEC;
     }
+    #debugButton {
+        width: 100px;
+        height: 35px;
+        left: 425px;
+        top: 353px;
+        background-color: #35BEEC;
+    }
     #backText {
         left: 286px;
+        top: 360px;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
+    #debugText {
+        left: 450px;
         top: 360px;
         color: #FFFFFF;
         font-size: 16px;
@@ -149,34 +162,38 @@ Browse
 {% block content %}
     <div class="button" id="keywordBox">
         <a href="keyword" class="buttonLink"></a>
-        <p id="keywordText" class="boxText">Search by Keyword</p>
+        <p id="keywordText" class="boxText">{% trans %}Search by Keyword{% endtrans %}</p>
         <div id="keywordInnerBox">
             <img id="keywordIcon" src="{{ url_for('static', filename='img/magnify.png') }}"/>
         </div>
     </div>
     <div class="button" id="categoryBox">
         <a href="category" class="buttonLink"></a>
-        <p id="categoryText" class="boxText">Search by Category</p>
+        <p id="categoryText" class="boxText">{% trans %}Search by Category{% endtrans %}</p>
         <div id="categoryInnerBox">
             <img id="categoryIcon" src="{{ url_for('static', filename='img/category.png') }}"/>
         </div>
     </div>
     <div class="button" id="featuredBox">
         <a href="app?app={{ featuredApp }}" class="buttonLink"></a>
-        <p id="featuredText" class="boxText">Featured Application</p>
+        <p id="featuredText" class="boxText">{% trans %}Featured Application{% endtrans %}</p>
         <div id="featuredInnerBox">
             <img id="featuredIcon" src="{{ url_for('static', filename='img/star.png') }}"/>
         </div>
     </div>
     <div class="button" id="randomBox">
         <a href="random" class="buttonLink"></a>
-        <p id="randomText" class="boxText">Random Application</p>
+        <p id="randomText" class="boxText">{% trans %}Random Application{% endtrans %}</p>
         <div id="randomInnerBox">
             <img id="randomIcon" src="{{ url_for('static', filename='img/die.png') }}"/>
         </div>
     </div>
     <div class="button" id="backButton">
         <a href="landing" class="buttonLink"></a>
-        <p id="backText">Back</p>
+        <p id="backText">{% trans %}Back{% endtrans %}</p>
+    </div>
+    <div class="button" id="debugButton">
+        <a href="debug" class="buttonLink"></a>
+        <p id="debugText">Debug</p>
     </div>
 {% endblock %}

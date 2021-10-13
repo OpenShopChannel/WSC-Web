@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+Debug
+{% endblock %}
+
+{% block style %}
+    #TextLine1 {
+        left: 25px;
+        top: 74px;
+        z-index: 1;
+    }
+{% endblock %}
+
+{% block onload %}
+
+{% endblock %}
+
+{% block script %}
+
+{% endblock %}
+
+{% block content %}
+    <p id="TextLine1">Language: {{ request.cookies.get('language') }}</p>
+
+    <a href="browse">Return to Browse</a>
+{% endblock %}

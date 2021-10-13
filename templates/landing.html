@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Landing
+{% trans %}Landing{% endtrans %}
 {% endblock %}
 
 {% block style %}
@@ -96,10 +96,10 @@ Landing
     <div id="motd">"{{ motd }}"</div>
     <div class="button" id="browseButton">
         <a href="browse" class="buttonLink"></a>
-        <p id="browseText">Start Browsing</p>
+        <p id="browseText">{% trans %}Start Browsing{% endtrans %}</p>
     </div>
     <div class="button" id="featuredAppBackground">
-        <p id="featuredAppTitleText">★ App of the Day</p>
+        <p id="featuredAppTitleText">★ {% trans %}App of the Day{% endtrans %}</p>
         <a href="app?app={{ featured_app['internal_name'] }}" class="buttonLink"></a>
         <div id="featuredAppForeground">
             <img id="featuredAppIcon" src="{{ featured_app['icon_url'].replace('https', 'http') }}"/>

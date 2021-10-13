@@ -149,10 +149,10 @@ Application
 
     <div class="button" id="backButton">
         <a href="javascript:history.back()" class="buttonLink"></a>
-        <p id="backButtonText">Back</p>
+        <p id="backButtonText">{% trans %}Back{% endtrans %}</p>
     </div>
     <div onmouseover="if (!startingDownload) {buttonMouseOver('downloadButton')}" onmouseout="if (!startingDownload) {buttonMouseOut('downloadButton')}" onmousedown="fadeOut();" id="downloadButton">
-        <p id="downloadButtonText">Download</p>
+        <p id="downloadButtonText">{% trans %}Download{% endtrans %}</p>
     </div>
 
 {% endblock %}
