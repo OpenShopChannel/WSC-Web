@@ -19,6 +19,22 @@ babel = Babel(app)
 lastCheckedFeaturedApp = 0
 
 
+def category_translation(category):
+    if category == "demos":
+        return gettext("Demos")
+    elif category == "utilities":
+        return gettext("Utilities")
+    elif category == "emulators":
+        return gettext("Emulators")
+    elif category == "games":
+        return gettext("Games")
+    elif category == "media":
+        return gettext("Media")
+
+
+app.jinja_env.globals.update(category_translation=category_translation)
+
+
 @babel.localeselector
 def get_locale():
     if request.cookies.get('language'):

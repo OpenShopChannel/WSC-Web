@@ -134,7 +134,7 @@
             {% for result in results %}
                 <div class="button" id="result{{ result['internal_name'] }}">
                     <a href="app?app={{ result['internal_name'] }}" class="buttonLink"></a>
-                    <p id="resultsResultCategory"><b>{{ result["category"].title() }}</b></p>
+                    <p id="resultsResultCategory"><b>{{ category_translation(result["category"]) }}</b></p>
                     <div id="resultsResultFrame">
                         <table id="resultsResultTable">
                             <tr>
