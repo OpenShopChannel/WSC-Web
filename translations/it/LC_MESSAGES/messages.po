@@ -1,115 +1,108 @@
-# Italian translations for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 20:27+0300\n"
-"PO-Revision-Date: 2021-10-14 16:02+0300\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: it\n"
-"Language-Team: it <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Open Shop Channel Shop Client\n"
+"Language: it\n"
 
 #: templates/app.html:4
 msgid "Application"
-msgstr ""
+msgstr "Applicazione"
 
-#: templates/app.html:152 templates/browse.html:193 templates/category.html:91
+#: templates/app.html:152 templates/browse.html:180 templates/category.html:91
 #: templates/donate.html:56 templates/error.html:79 templates/keyword.html:85
 #: templates/search.html:152
 msgid "Back"
-msgstr ""
+msgstr "Indietro"
 
 #: templates/app.html:155
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
-#: templates/browse.html:4
-msgid "Browse"
-msgstr ""
-
-#: templates/browse.html:165 templates/keyword.html:4 templates/keyword.html:78
+#: templates/browse.html:152 templates/keyword.html:4 templates/keyword.html:78
 msgid "Search by Keyword"
-msgstr ""
+msgstr "Cerca per parola chiave"
 
-#: templates/browse.html:172 templates/category.html:4
+#: templates/browse.html:159 templates/category.html:4
 #: templates/category.html:78
 msgid "Search by Category"
-msgstr ""
+msgstr "Cerca per categoria"
 
-#: templates/browse.html:179
+#: templates/browse.html:166
 msgid "Featured Application"
-msgstr ""
+msgstr "Applicazione consigliata"
 
-#: templates/browse.html:186
+#: templates/browse.html:173
 msgid "Random Application"
-msgstr ""
+msgstr "Applicazione casuale"
 
 #: templates/category.html:81
 msgid "Demos"
-msgstr ""
+msgstr "Demo"
 
 #: templates/category.html:82
 msgid "Emulators"
-msgstr ""
+msgstr "Emulatori"
 
 #: templates/category.html:83
 msgid "Games"
-msgstr ""
+msgstr "Giochi"
 
 #: templates/category.html:84
 msgid "Media"
-msgstr ""
+msgstr "Media"
 
 #: templates/category.html:85
 msgid "Utilities"
-msgstr ""
+msgstr "Strumenti"
 
 #: templates/category.html:94 templates/keyword.html:88
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: templates/donate.html:4
 msgid "Donate"
-msgstr ""
+msgstr "Dona"
 
 #: templates/error.html:4
 msgid "Error"
-msgstr ""
-
-#: templates/landing.html:4
-msgid "Landing"
-msgstr ""
+msgstr "Errore"
 
 #: templates/landing.html:99
 msgid "Start Browsing"
-msgstr ""
+msgstr "Naviga"
 
 #: templates/landing.html:102
 msgid "App of the Day"
-msgstr ""
+msgstr "Applicazione del giorno"
 
 #: templates/search.html:4 templates/search.html:132
 msgid "Search Results"
-msgstr ""
+msgstr "Risultati ricerca"
 
 #: templates/search.html:157
 msgid "Previous"
-msgstr ""
+msgstr "Precedente"
 
 #: templates/search.html:163
 msgid "Next"
-msgstr ""
+msgstr "Successivo"
 
 #: templates/startdownload.html:4
 msgid "Start Download"
-msgstr ""
+msgstr "Inizia a scaricare"
+
+#: templates/landing.html:4
+msgid "Welcome"
+msgstr "Benvenuto"
+
+#: app.py:162
+msgid "The requested page could not be found."
+msgstr "La pagina richiesta non è stata trovata."
+
+#: app.py:169
+msgid "The server has encountered an error. Try again later."
+msgstr "Il server ha riscontrato un problema. Riprova più tardi."
 
