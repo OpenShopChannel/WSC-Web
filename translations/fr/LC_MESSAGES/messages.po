@@ -8,11 +8,10 @@ msgstr ""
 "Language: fr\n"
 
 #: templates/app.html:4
-#, fuzzy
 msgid "Application"
 msgstr "Application aléatoire"
 
-#: templates/app.html:152 templates/browse.html:193 templates/category.html:91
+#: templates/app.html:152 templates/browse.html:180 templates/category.html:91
 #: templates/donate.html:56 templates/error.html:79 templates/keyword.html:85
 #: templates/search.html:152
 msgid "Back"
@@ -22,24 +21,20 @@ msgstr "Retour"
 msgid "Download"
 msgstr "Télécharger"
 
-#: templates/browse.html:4
-msgid "Browse"
-msgstr "Parcourir"
-
-#: templates/browse.html:165 templates/keyword.html:4 templates/keyword.html:78
+#: templates/browse.html:152 templates/keyword.html:4 templates/keyword.html:78
 msgid "Search by Keyword"
 msgstr "Recherche par mot"
 
-#: templates/browse.html:172 templates/category.html:4
+#: templates/browse.html:159 templates/category.html:4
 #: templates/category.html:78
 msgid "Search by Category"
 msgstr "Recherche par catégorie"
 
-#: templates/browse.html:179
+#: templates/browse.html:166
 msgid "Featured Application"
 msgstr "Application en vedette"
 
-#: templates/browse.html:186
+#: templates/browse.html:173
 msgid "Random Application"
 msgstr "Application aléatoire"
 
@@ -75,10 +70,6 @@ msgstr "Donner"
 msgid "Error"
 msgstr "Erreur"
 
-#: templates/landing.html:4
-msgid "Landing"
-msgstr "Bonjour !!"
-
 #: templates/landing.html:99
 msgid "Start Browsing"
 msgstr "Démarrer"
@@ -103,4 +94,16 @@ msgstr "Suivant"
 #, fuzzy
 msgid "Start Download"
 msgstr "Télécharger"
+
+#: templates/landing.html:4
+msgid "Welcome"
+msgstr ""
+
+#: app.py:162
+msgid "The requested page could not be found."
+msgstr ""
+
+#: app.py:169
+msgid "The server has encountered an error. Try again later."
+msgstr ""
 
