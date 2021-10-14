@@ -23,5 +23,6 @@ Debug
 {% block content %}
     <p id="TextLine1">Language: {{ request.cookies.get('language') }}</p>
 
-    <a href="browse">Return to Browse</a>
+
+    <a href="javascript:history.back()">Return to Shop</a>
 {% endblock %}
