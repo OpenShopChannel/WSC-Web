@@ -1,14 +1,29 @@
 {% extends "base.html" %}
 
 {% block title %}
-Debug
+    Debug
 {% endblock %}
 
 {% block style %}
     #TextLine1 {
-        left: 25px;
-        top: 74px;
-        z-index: 1;
+    left: 25px;
+    top: 74px;
+    z-index: 1;
+    }
+    #TextLine2 {
+    left: 25px;
+    top: 104px;
+    z-index: 1;
+    }
+    #languagesPicker {
+    left: 155px;
+    top: 104px;
+    z-index: 1;
+    }
+    #languagesSubmitButton {
+    left: 250px;
+    top: 104px;
+    z-index: 1;
     }
 {% endblock %}
 
@@ -17,11 +32,25 @@ Debug
 {% endblock %}
 
 {% block script %}
-
+    function SetLanguage() {
+        var lang = document.getElementById("languagesPicker").value;
+        document.cookie = "language=" + lang;
+        location.reload();
+    }
 {% endblock %}
 
 {% block content %}
-    <p id="TextLine1">Language: {{ request.cookies.get('language') }}</p>
+    <p id="TextLine1">Current Language: {{ request.cookies.get('language') }}</p>
+    <p id="TextLine2">Force Language:</p>
+    <select name="languages" id="languagesPicker">
+        <option value="en">English</option>
+        <option value="de">German</option>
+        <option value="fr">French</option>
+        <option value="it">Italian</option>
+        <option value="ja">Japanese</option>
+        <option value="nl">Dutch</option>
+    </select>
+    <button type="button" onclick="SetLanguage()" id="languagesSubmitButton">Apply</button>
 
 
     <a href="javascript:history.back()">Return to Shop</a>
