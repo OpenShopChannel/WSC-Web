@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, Response
-from flask_babel import Babel, gettext, ngettext
+from flask_babel import Babel, gettext
 from werkzeug.serving import WSGIRequestHandler
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
@@ -159,14 +159,14 @@ def error_age():
 @app.errorhandler(404)
 def page_not_found(e):
     error_code = "HTTP_404"
-    error_text = "The requested page could not be found."
+    error_text = gettext("The requested page could not be found.")
     return render_template('error.html', error_code=error_code, error_text=error_text), 404
 
 
 @app.errorhandler(500)
 def server_error(e):
     error_code = "HTTP_500"
-    error_text = "The server has encountered an error. This isn't your fault- try your action again."
+    error_text = gettext("The server has encountered an error. Try again later.")
     return render_template('error.html', error_code=error_code, errortext=error_text), 500
 
 
