@@ -22,7 +22,6 @@ lastCheckedFeaturedApp = 0
 @babel.localeselector
 def get_locale():
     if request.cookies.get('language'):
-        print("hi " + request.cookies.get('language'))
         return request.cookies.get('language')
     else:
         return 'en'
@@ -75,7 +74,6 @@ def debug():
 
 @app.route("/landing")
 def landing():
-    print(request.cookies.get('language'))
     return render_template('landing.html', motd=get_motd(),
                            featured_app=OpenShopChannel.package_by_name(get_featured_app()))
 
