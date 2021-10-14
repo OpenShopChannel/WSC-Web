@@ -98,3 +98,11 @@ msgstr "ダウンロード開始"
 msgid "Welcome"
 msgstr "ようこそ！"
 
+#: app.py:162
+msgid "The requested page could not be found."
+msgstr "このページは見つかりませんでした。"
+
+#: app.py:169
+msgid "The server has encountered an error. Try again later."
+msgstr "サーバーにエラーが発生しました。後でもう一度やり直してください。"
+
