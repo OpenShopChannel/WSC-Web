@@ -1,29 +1,17 @@
-# Spanish translations for PROJECT.
-# Copyright (C) 2021 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-13 20:27+0300\n"
-"PO-Revision-Date: 2021-10-13 19:05+0300\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: es\n"
-"Language-Team: es <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: Open Shop Channel Shop Client\n"
+"Language: es\n"
 
 #: templates/app.html:4
-#, fuzzy
 msgid "Application"
-msgstr "Aplicación al azar"
+msgstr "Aplicación"
 
-#: templates/app.html:152 templates/browse.html:193 templates/category.html:91
+#: templates/app.html:152 templates/browse.html:180 templates/category.html:91
 #: templates/donate.html:56 templates/error.html:79 templates/keyword.html:85
 #: templates/search.html:152
 msgid "Back"
@@ -33,24 +21,20 @@ msgstr "Atrás"
 msgid "Download"
 msgstr "Descargar"
 
-#: templates/browse.html:4
-msgid "Browse"
-msgstr ""
-
-#: templates/browse.html:165 templates/keyword.html:4 templates/keyword.html:78
+#: templates/browse.html:152 templates/keyword.html:4 templates/keyword.html:78
 msgid "Search by Keyword"
 msgstr "Buscar por término"
 
-#: templates/browse.html:172 templates/category.html:4
+#: templates/browse.html:159 templates/category.html:4
 #: templates/category.html:78
 msgid "Search by Category"
 msgstr "Buscar por categoría"
 
-#: templates/browse.html:179
+#: templates/browse.html:166
 msgid "Featured Application"
 msgstr "Aplicación destacada"
 
-#: templates/browse.html:186
+#: templates/browse.html:173
 msgid "Random Application"
 msgstr "Aplicación al azar"
 
@@ -80,15 +64,11 @@ msgstr "Buscar"
 
 #: templates/donate.html:4
 msgid "Donate"
-msgstr ""
+msgstr "Donar"
 
 #: templates/error.html:4
 msgid "Error"
 msgstr "Error"
-
-#: templates/landing.html:4
-msgid "Landing"
-msgstr "Inicio"
 
 #: templates/landing.html:99
 msgid "Start Browsing"
@@ -114,4 +94,16 @@ msgstr "Siguiente"
 #, fuzzy
 msgid "Start Download"
 msgstr "Descargar"
+
+#: templates/landing.html:4
+msgid "Welcome"
+msgstr "Bienvenido"
+
+#: app.py:162
+msgid "The requested page could not be found."
+msgstr "No se ha podido encontrar la página solicitada."
+
+#: app.py:169
+msgid "The server has encountered an error. Try again later."
+msgstr "El servidor ha encontrado un error. Vuelve a intentarlo más tarde."
 
