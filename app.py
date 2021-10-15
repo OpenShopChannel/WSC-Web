@@ -46,7 +46,7 @@ def get_locale():
 def get_error_text(code):
     with open("data/errors.json", 'r') as f:
         data = json.load(f)
-        return data[code][0]["desc"]
+        return gettext(data[code][0]["desc"])
 
 
 def get_motd():

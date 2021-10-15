@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2021-10-14 20:59+0300\n"
+"POT-Creation-Date: 2021-10-15 19:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,108 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app.py:162
+#: app.py:24 templates/category.html:81
+msgid "Demos"
+msgstr ""
+
+#: app.py:26 templates/category.html:85
+msgid "Utilities"
+msgstr ""
+
+#: app.py:28 templates/category.html:82
+msgid "Emulators"
+msgstr ""
+
+#: app.py:30 templates/category.html:83
+msgid "Games"
+msgstr ""
+
+#: app.py:32 templates/category.html:84
+msgid "Media"
+msgstr ""
+
+#: app.py:49
+msgid "desc"
+msgstr ""
+
+#: app.py:178
 msgid "The requested page could not be found."
 msgstr ""
 
-#: app.py:169
+#: app.py:185
 msgid "The server has encountered an error. Try again later."
+msgstr ""
+
+#: data/messages.txt:1
+msgid ""
+"The forwarder channel was unable to open boot.dol in "
+"/openshopchannel/downloader/. Have you installed the downloader app?"
+msgstr ""
+
+#: data/messages.txt:2
+msgid ""
+"The forwarder channel was unable to access the SD card. Is your SD card "
+"inserted?"
+msgstr ""
+
+#: data/messages.txt:3
+msgid ""
+"The forwarder channel was unable to load boot.dol in "
+"/openshopchannel/downloader/ into memory. Have you installed the "
+"downloader app?"
+msgstr ""
+
+#: data/messages.txt:4
+msgid ""
+"The downloader app was unable to find the IP address of the Open Shop "
+"Channel server. Please contact the Open Shop Channel developers at "
+"https://oscwii.org."
+msgstr ""
+
+#: data/messages.txt:5
+msgid ""
+"The downloader app was unable to establish a connection to the Open Shop "
+"Channel server. The Open Shop Channel's content delivery network may be "
+"down."
+msgstr ""
+
+#: data/messages.txt:6
+msgid ""
+"The downloader app was able to connect to the Open Shop Channel server, "
+"but could not communicate with it."
+msgstr ""
+
+#: data/messages.txt:7
+msgid ""
+"The downloader app was able to connect to the Open Shop Channel server, "
+"but it did not send a response that the downloader app could understand."
+msgstr ""
+
+#: data/messages.txt:8
+msgid ""
+"The downloader app was able to download the app from the Open Shop "
+"Channel server, but could not save it to your SD card. Your SD card is "
+"likely out of space, or has the write-protect switch enabled."
+msgstr ""
+
+#: data/messages.txt:9
+msgid "The downloader app was unable to read from the internal system memory."
+msgstr ""
+
+#: data/messages.txt:10
+msgid ""
+"The downloader app could not discover what app it needed to download. If "
+"you are running the downloader app independently, note that it will not "
+"function without being fed the appropriate data; please refer to the "
+"documentation on GitHub."
+msgstr ""
+
+#: data/messages.txt:11
+msgid "The downloader app could not set-up the Wii networking subsystem."
+msgstr ""
+
+#: data/messages.txt:12
+msgid "You shouldn't be able to see this."
 msgstr ""
 
 #: templates/app.html:4
@@ -54,26 +150,6 @@ msgstr ""
 
 #: templates/browse.html:173
 msgid "Random Application"
-msgstr ""
-
-#: templates/category.html:81
-msgid "Demos"
-msgstr ""
-
-#: templates/category.html:82
-msgid "Emulators"
-msgstr ""
-
-#: templates/category.html:83
-msgid "Games"
-msgstr ""
-
-#: templates/category.html:84
-msgid "Media"
-msgstr ""
-
-#: templates/category.html:85
-msgid "Utilities"
 msgstr ""
 
 #: templates/category.html:94 templates/keyword.html:88

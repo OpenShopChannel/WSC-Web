@@ -61,7 +61,7 @@
     ],
     "ISFS_OPEN_FAILED": [
         {
-            "desc": "The downloader app was unable to read from the system NAND."
+            "desc": "The downloader app was unable to read from the internal system memory."
         }
     ],
     "NO_URL_IN_BIN": [
@@ -76,7 +76,7 @@
     ],
     "NAND_INIT_FAILED": [
         {
-            "desc": "The downloader app was unable to read from the system NAND."
+            "desc": "The downloader app was unable to read from the internal system memory."
         }
     ],
     "ZIP_OPEN_FAILED": [
