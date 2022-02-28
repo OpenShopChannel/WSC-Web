@@ -1,0 +1,2 @@
+# API endpoint URL
+api_endpoint = "https://api.oscwii.org/v2/primary/packages"

@@ -5,6 +5,8 @@ from functools import reduce
 import requests
 import operator
 
+import config
+
 
 def sizeof_fmt(num, suffix='B'):
     for unit in ['', 'Ki', 'Mi', 'Gi', 'Ti', 'Pi', 'Ei', 'Zi']:
@@ -34,7 +36,7 @@ class API:
     packages = None
 
     def load_packages(self):
-        self.packages = json.loads(requests.get(f"https://api.oscwii.org/v2/primary/packages").text)
+        self.packages = json.loads(requests.get(config.api_endpoint).text)
 
     def get_packages(self):
         return self.packages
