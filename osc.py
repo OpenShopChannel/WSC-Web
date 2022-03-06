@@ -1,4 +1,3 @@
-import json
 from datetime import datetime
 from functools import reduce
 
@@ -36,7 +35,7 @@ class API:
     packages = None
 
     def load_packages(self):
-        self.packages = json.loads(requests.get(config.api_endpoint).text)
+        self.packages = requests.get(config.api_endpoint).json()
 
     def get_packages(self):
         return self.packages
