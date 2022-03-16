@@ -189,6 +189,8 @@ def server_error(e):
 if __name__ == '__main__':
     WSGIRequestHandler.protocol_version = "HTTP/1.1"
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
+    # Hint that we are about to use very brittle ciphers.
+    context.set_ciphers('ALL:@SECLEVEL=0')
     context.load_cert_chain('cert.pem', 'key.pem')
 
     app.run(host='127.0.0.1', port=443, debug=True, ssl_context=context)
