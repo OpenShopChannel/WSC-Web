@@ -83,6 +83,7 @@ def modify_query(**new_values):
 def splash():
     return render_template('splash.html')
 
+
 @app.route("/debug")
 def debug():
     return render_template('debug.html')

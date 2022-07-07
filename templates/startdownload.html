@@ -15,7 +15,8 @@
 
 {% block onload %}
     setTimeout(function(){
-        startDownload('{{ app['zip_url'].replace('https', 'http') }}');
+        // TODO: handle NAND/forwarder titles
+        startDownload('{{ app['title_ids']['sd_title'] }}');
     }, 1500);
 {% endblock %}
 
@@ -25,5 +26,6 @@
 {% endblock %}
 
 {% block content %}
+    <script src="{{ url_for('static', filename='js/download.js') }}"></script>
     <img id="fadeCover" src="{{ url_for('static', filename='img/fadegif.gif') }}"/>
 {% endblock %}
