@@ -66,12 +66,33 @@ function wiiShop() {
 function wiiKeyboard() {
     /**
      * Brings up a keyboard.
-     * @param type {number} Type of keyboard. See also: https://docs.oscwii.org/wii-shop-channel/js/keyboard
-     * @param rowLimit {number} Number of rows the user should be able to type.
-     * @param isPasswordField {boolean} Whether to treat text entered as a password or not.
-     * @param title {string} Content to show as a hint while typing.
+     * @param {number} type Type of keyboard. See also: https://docs.oscwii.org/wii-shop-channel/js/keyboard
+     * @param {number} rowLimit Number of rows the user should be able to type.
+     * @param {boolean} isPasswordField Whether to treat text entered as a password or not.
+     * @param {string} title Content to show as a hint while typing.
      */
     this.call = function(type, rowLimit, isPasswordField, title) {}
+}
+
+/**
+ * Represents the wiiSound object type inserted into the engine on any Wii.
+ * This object allows using a native keyboard.
+ * You should instantiate it without any parameters.
+ *
+ * @constructor
+ */
+function wiiSound() {
+    /**
+     * Plays the Wii Shop Channel theme.
+     */
+    this.playBGM = function() {}
+
+    /**
+     * Plays the given sound.
+     *
+     * @param {number} sound The sound to play.
+     */
+    this.playSE = function(sound) {}
 }
 
 /**

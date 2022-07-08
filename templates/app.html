@@ -118,7 +118,7 @@
 
 {% block script %}
     function fadeOut() {
-        playSE(3);
+        playSE(SoundType.SELECT);
         window.location.href = "startdownload?app={{ app['internal_name'] }}"
     }
 {% endblock %}

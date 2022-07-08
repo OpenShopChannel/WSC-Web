@@ -17,7 +17,31 @@ shop.setWallpaper(2);
 const unused = shop.connecting;
 
 /**
- * Sound
+ * Enum describing sounds available to play.
+ * @readonly
+ * @enum {number}
+ */
+var SoundType = {
+    PUSH: 1,
+    HOVER: 2,
+    SELECT: 3,
+    CANCEL: 4,
+    CHOICE_CHANGE: 5,
+    ERROR: 6,
+    ADD_POINT: 7,
+    DOWNLOAD_COMPLETE: 8,
+    SMALL_MARIO_JUMP: 9,
+    LARGE_MARIO_JUMP: 10,
+    FIRE_BALL: 11,
+    COIN: 12,
+    HIT_BLOCK: 13,
+    COPYING: 14,
+    LOADING: 15
+};
+
+/**
+ * Plays the given sound type.
+ * @param {SoundType} num
  */
 function playSE(num) {
     sound.playSE(num);

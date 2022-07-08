@@ -6,18 +6,33 @@ function setupButtons() {
     });
 }
 
+/**
+ * Plays a selection sound, and loads the given URL.
+ *
+ * @param url {string} The URL to navigate to.
+ */
 function buttonMouseDown(url) {
-    playSE(3);
+    playSE(SoundType.SELECT);
     window.location.href = url;
 }
 
+/**
+ * Plays a hover sound and changes the button's color slightly.
+ *
+ * @param {string} buttonID The ID of the hovered element.
+ */
 function buttonMouseOver(buttonID) {
-    playSE(2);
+    playSE(SoundType.HOVER);
     var backgroundColor = tinycolor($("#" + buttonID).css("background-color"));
     var lighterColor = backgroundColor.lighten(10).toHexString();
     $("#" + buttonID).css("background-color", lighterColor);
 }
 
+/**
+ * Reverts the button's color change from hover.
+ *
+ * @param {string} buttonID The ID of the hovered element.
+ */
 function buttonMouseOut(buttonID) {
     var backgroundColor = tinycolor($("#" + buttonID).css("background-color"));
     var darkerColor = backgroundColor.darken(10).toHexString();
