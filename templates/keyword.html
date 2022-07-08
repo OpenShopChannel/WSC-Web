@@ -84,7 +84,7 @@
         <a href="browse" class="buttonLink"></a>
         <p id="backButtonText">{% trans %}Back{% endtrans %}</p>
     </div>
-    <div onmouseover="buttonMouseOver('searchButton')" onmouseout="buttonMouseOut('searchButton')" onmousedown="playSE(3); window.location.href='search?key=display_name&value=' + $('#keywordTextArea').val();" id="searchButton">
+    <div onmouseover="buttonMouseOver('searchButton')" onmouseout="buttonMouseOut('searchButton')" onmousedown="playSE(SoundType.SELECT); window.location.href='search?key=display_name&value=' + $('#keywordTextArea').val();" id="searchButton">
         <p id="searchButtonText">{% trans %}Search{% endtrans %}</p>
     </div>
 {% endblock %}

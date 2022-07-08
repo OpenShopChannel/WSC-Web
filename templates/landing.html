@@ -92,7 +92,7 @@
 {% endblock %}
 
 {% block content %}
-    <img id="logo" onmouseover="playSE(2)" onmousedown="playSE(12); window.location.href='donate';" src="{{ url_for('static', filename='img/osclogo.jpg') }}"/>
+    <img id="logo" onmouseover="playSE(SoundType.HOVER)" onmousedown="playSE(SoundType.COIN); window.location.href='donate';" src="{{ url_for('static', filename='img/osclogo.jpg') }}"/>
     <div id="motd">"{{ motd }}"</div>
     <div class="button" id="browseButton">
         <a href="browse" class="buttonLink"></a>
