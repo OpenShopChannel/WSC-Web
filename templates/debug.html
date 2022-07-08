@@ -6,29 +6,37 @@
 
 {% block style %}
     #TextLine1 {
-    left: 25px;
-    top: 74px;
-    z-index: 1;
+        left: 25px;
+        top: 74px;
+        z-index: 1;
     }
+
     #TextLine2 {
-    left: 25px;
-    top: 104px;
-    z-index: 1;
+        left: 25px;
+        top: 104px;
+        z-index: 1;
     }
+
     #languagesPicker {
-    left: 155px;
-    top: 104px;
-    z-index: 1;
+        left: 155px;
+        top: 104px;
+        z-index: 1;
     }
+
     #languagesSubmitButton {
-    left: 250px;
-    top: 104px;
-    z-index: 1;
+        left: 255px;
+        top: 104px;
+        z-index: 1;
+    }
+
+    #consoleOutput {
+        top: 130px;
+        z-index: 1;
     }
 {% endblock %}
 
 {% block onload %}
-
+    document.getElementById('consoleOutput').value = ec.getLog();
 {% endblock %}
 
 {% block script %}
@@ -40,6 +48,8 @@
 {% endblock %}
 
 {% block content %}
+    <a href="javascript:history.back()">Return to Shop</a>
+
     <p id="TextLine1">Current Language: {{ request.cookies.get('language') }}</p>
     <p id="TextLine2">Force Language:</p>
     <select name="languages" id="languagesPicker">
@@ -52,6 +62,5 @@
     </select>
     <button type="button" onclick="SetLanguage()" id="languagesSubmitButton">Apply</button>
 
-
-    <a href="javascript:history.back()">Return to Shop</a>
+    <textarea id="consoleOutput" rows="16" style="width: 100%" readonly>EC Logging</textarea>
 {% endblock %}
