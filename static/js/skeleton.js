@@ -96,6 +96,22 @@ function wiiSound() {
 }
 
 /**
+ * Represents the wiiSound object type inserted into the engine on any Wii.
+ * This object allows using a native keyboard.
+ * While this can be instantiated alone, it's not recommended.
+ *
+ * @see ECommerceInterface.getTitleInfo
+ * @constructor
+ */
+function ECTitleInfo() {
+    /**
+     * The current title version.
+     * @type {number}
+     */
+    this.version = 0
+}
+
+/**
  * Represents the ECommerceInterface object type inserted into the engine on any Wii.
  * This high-level object allows a great amount of interaction with the underlying EC library.
  * You should instantiate it without any parameters, and only have one per page.
@@ -150,52 +166,99 @@ function ECommerceInterface() {
     this.getLog = function() {}
 
     /**
+     * Requests for a challenge from the server.
      *
+     * Note that with WiiSOAP as the backend,
+     * the challenge is hardcoded to "NintyWhyPls".
+     *
+     * @see getChallengeResp
      * @returns {ECProgress}
      */
     this.sendChallengeReq = function() {}
 
     /**
-    *
-    * @returns {string}
-    */
+     * Returns the challenge as requested from the server.
+     *
+     * @returns {string}
+     */
     this.getChallengeResp = function() {}
 
     /**
-    *
-    * @returns {ECProgress}
-    */
+     * Returns progress for the foremost operation.
+     *
+     * @returns {ECProgress}
+     */
     this.getProgress = function() {}
 
     /**
+     * Synchronizes identifiers such as ticket sync times
+     * and the device account's balance.
      *
      * @returns {ECProgress}
      */
     this.checkDeviceStatus = function() {}
 
     /**
+     * Returns information about this device's identifiers,
+     * storage, and service status.
      *
      * @returns {ECDeviceInfo}
      */
     this.getDeviceInfo = function() {}
 
     /**
+     * Syncronizes the device's registration status.
      *
+     * @see ECDeviceInfo.registrationStatus
      * @returns {ECProgress}
      */
     this.checkRegistration = function() {}
 
     /**
+     * Requests for this console to be registered.
+     *
      * @param {string} challenge The challenge returned from the server.
      * @returns {ECProgress}
      */
     this.register = function(challenge) {}
 
     /**
+     * Syncs the device's tokens from the server.
+     *
      * @param {string} challenge The challenge returned from the server.
      * @returns {ECProgress}
      */
     this.syncRegistration = function(challenge) {}
+
+    /**
+     * Sets a persistent value within the device's EC configuration.
+     *
+     * By default, this is the configuration file present within
+     * "/title/00010002/48414241/data/ec.cfg".
+     * OSC patches rename it to "osc.cfg" to avoid conflict.
+     *
+     * @param {string} key Name of the config key to set.
+     * @param {string} value Contents of the value to set.
+     */
+    this.setPersistentValue = function(key, value) {}
+
+    /**
+     * Launches the given channel by title ID and ticket ID.
+     *
+     * @param {string} titleId Title ID of the channel.
+     * @param {string} ticketId Ticket ID of the channel.
+     */
+    this.launchTitle = function(titleId, ticketId) {}
+
+    /**
+     * Returns title metadata for the given title ID.
+     *
+     * @param {string} titleId The title ID to retrieve metadata for.
+     * @returns {ECTitleInfo} If metadata could be retrieved.
+     * @returns {ECReturnCodes} If an error occurred while retrieving metadata
+     * (for example, ECReturnCodes.TITLE_NOT_INSTALLED).
+     */
+    this.getTitleInfo = function(titleId) {}
 }
 
 /**

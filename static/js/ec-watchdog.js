@@ -1,15 +1,4 @@
 /**
- * Enum describing possible error codes via ECProgress.
- * @readonly
- * @enum {number}
- */
-const ECReturnCodes = {
-    COMPLETE: 0,
-    NO_OPERATION: -4007,
-    ONGOING: -4009
-};
-
-/**
  * Completes an operation with helpful debugging output regarding state.
  *
  * @param {ECProgress} progress

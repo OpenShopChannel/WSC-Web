@@ -1,4 +1,16 @@
 /**
+ * Enum describing possible error codes via ECProgress.
+ * @readonly
+ * @enum {number}
+ */
+const ECReturnCodes = {
+    COMPLETE: 0,
+    NO_OPERATION: -4007,
+    ONGOING: -4009,
+    TITLE_NOT_INSTALLED: -4050,
+};
+
+/**
  * Enum describing possible registration states for this console.
  * @readonly
  * @enum {string}
