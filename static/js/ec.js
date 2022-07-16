@@ -7,7 +7,7 @@ const ECReturnCodes = {
     COMPLETE: 0,
     NO_OPERATION: -4007,
     ONGOING: -4009,
-    TITLE_NOT_INSTALLED: -4050,
+    TITLE_NOT_INSTALLED: -4050
 };
 
 /**

@@ -96,7 +96,7 @@ function wiiSound() {
 }
 
 /**
- * Represents the wiiSound object type inserted into the engine on any Wii.
+ * Represents the ECTitleInfo object type inserted into the engine on any Wii.
  * This object allows using a native keyboard.
  * While this can be instantiated alone, it's not recommended.
  *
@@ -109,6 +109,38 @@ function ECTitleInfo() {
      * @type {number}
      */
     this.version = 0
+}
+
+/**
+ * Represents the ECPrice object type inserted into the engine on any Wii.
+ * This object represents the price a client wishes to pay when
+ * sending to the server.
+ * While this can be instantiated alone, it's not recommended.
+ *
+ * @param {string} amount The amount to pay, such as '4.99'.
+ * @param {string} currency The currency desired, such as 'POINTS', or 'USD'.
+ * @constructor
+ */
+function ECPrice(amount, currency) {
+
+}
+
+/**
+ * A native object representing a payment with the device's shop account.
+ *
+ * @constructor
+ */
+function ECAccountPayment() {
+
+}
+
+/**
+ * A native object representing an array of title limits.
+ *
+ * @constructor
+ */
+function ECTitleLimits() {
+
 }
 
 /**
@@ -254,11 +286,26 @@ function ECommerceInterface() {
      * Returns title metadata for the given title ID.
      *
      * @param {string} titleId The title ID to retrieve metadata for.
-     * @returns {ECTitleInfo} If metadata could be retrieved.
-     * @returns {ECReturnCodes} If an error occurred while retrieving metadata
+     * @returns {(ECTitleInfo|ECReturnCodes)} Title metadata, or an error if necessary
      * (for example, ECReturnCodes.TITLE_NOT_INSTALLED).
      */
     this.getTitleInfo = function(titleId) {}
+
+    /**
+     * Purchases a title.
+     *
+     * @param {string} titleId The title ID to purchase.
+     * @param {string} itemId Unknown.
+     * @param {ECPrice} price The price the client wishes to use.
+     * @param {ECAccountPayment} payment The payment method to use. Note that ECard/CreditCard payment types are also available.
+     * @param {ECTitleLimits} limits An array of limits to apply with this title.
+     * @param {boolean} downloadContent Whether to download title upon purchase.
+     * @param {string} [taxes]
+     * @param {string} [purchaseInfo]
+     * @param {string} [discount]
+     * @returns {ECReturnCodes}
+     */
+    this.purchaseTitle = function(titleId, itemId, price, payment, limits, downloadContent, taxes, purchaseInfo, discount) {}
 }
 
 /**
