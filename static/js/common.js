@@ -21,7 +21,7 @@ const unused = shop.connecting;
  * @readonly
  * @enum {number}
  */
-var SoundType = {
+const SoundType = {
     PUSH: 1,
     HOVER: 2,
     SELECT: 3,
@@ -52,7 +52,7 @@ function playSE(num) {
  * @readonly
  * @enum {number}
  */
-var KeyboardType = {
+const KeyboardType = {
     // The "default" keyboard.
     DEFAULT: 0,
     // Also the "default" keyboard.
@@ -93,4 +93,16 @@ var KeyboardType = {
 function keyboard(type, rowLimit, isPassword, title) {
     // example: keyboard(0, 10, false, "title")
     keypad.call(type, rowLimit, isPassword, title);
+}
+
+/**
+ * Hastily displays an error message within logging.
+ * Please rewrite this function later.
+ *
+ * @param {string} message The message to display.
+ */
+function error(message) {
+    // TODO: should this become an enum of errors for easier localization?
+    trace("An error occurred: " + message);
+    window.location.href = "/debug";
 }

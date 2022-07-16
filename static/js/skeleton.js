@@ -178,6 +178,24 @@ function ECommerceInterface() {
      * @returns {ECDeviceInfo}
      */
     this.getDeviceInfo = function() {}
+
+    /**
+     *
+     * @returns {ECProgress}
+     */
+    this.checkRegistration = function() {}
+
+    /**
+     * @param {string} challenge The challenge returned from the server.
+     * @returns {ECProgress}
+     */
+    this.register = function(challenge) {}
+
+    /**
+     * @param {string} challenge The challenge returned from the server.
+     * @returns {ECProgress}
+     */
+    this.syncRegistration = function(challenge) {}
 }
 
 /**
@@ -187,7 +205,12 @@ function ECommerceInterface() {
  * @constructor
  */
 function ECDeviceInfo() {
-
+    /**
+     * The state of the console's registration.
+     * To populate, please call ec.checkDeviceStatus();
+     * @returns {ECRegistrationStates}
+     */
+    this.registrationStatus = ""
 }
 
 /**
@@ -199,7 +222,7 @@ function ECDeviceInfo() {
 function ECProgress() {
     /**
      * Status returned by EC internally.
-     * -4009 appears to mean "incomplete".
+     * @returns
      */
     this.status = 0
     /**
