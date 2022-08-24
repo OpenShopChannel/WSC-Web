@@ -23,12 +23,14 @@ Splash
     shop.beginWaiting();
     setTimeout(baDing, 500);
 
+    {% if should_handle_ec %}
     // We'll take the opportunity to register the Wii with our server.
     doRegistrationDosido(function() {
         // TODO: should we ensure a pause of at least 4500 seconds
         // so that the animation smoothly plays?
         redirect();
     });
+    {% endif %}
 {% endblock %}
 
 {% block script %}

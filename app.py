@@ -1,9 +1,9 @@
 # Hack to permit no "Connection: close".
+import config
 import no_connection_close
 
 from flask import Flask, render_template, request, redirect, Response
 from flask_babel import Babel, gettext
-from werkzeug.serving import WSGIRequestHandler
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
 
@@ -84,7 +84,7 @@ def modify_query(**new_values):
 
 @app.route("/")
 def splash():
-    return render_template('splash.html')
+    return render_template('splash.html', should_handle_ec=config.should_handle_ec)
 
 
 @app.route("/debug")

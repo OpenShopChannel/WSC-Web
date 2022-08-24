@@ -10,7 +10,8 @@ By default, the frontend will be exposed over TLS. In order to test the default 
 You can typically start the frontend with the following steps:
 1. Configure a virtual environment. For example, `python3 -m venv venv && source venv/bin/activate`
 2. Install the requirements. `pip3 install -r requirements.txt`
-3. Run via `app.py`. `python3 app.py`
+3. Copy `config.py.example` to `config.py`, and edit accordingly.
+4. Run via `app.py`. `python3 app.py`
 
 
 ## Contributing
