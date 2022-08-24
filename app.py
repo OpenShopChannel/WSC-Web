@@ -1,5 +1,4 @@
 # Hack to permit no "Connection: close".
-import config
 import no_connection_close
 
 from flask import Flask, render_template, request, redirect, Response
@@ -20,6 +19,7 @@ app = Flask(__name__)
 babel = Babel(app)
 
 lastCheckedFeaturedApp = 0
+should_handle_ec = True
 
 
 def category_translation(category):
@@ -84,7 +84,7 @@ def modify_query(**new_values):
 
 @app.route("/")
 def splash():
-    return render_template('splash.html', should_handle_ec=config.should_handle_ec)
+    return render_template('splash.html', should_handle_ec=should_handle_ec)
 
 
 @app.route("/debug")
@@ -191,6 +191,8 @@ def server_error(e):
 
 
 if __name__ == '__main__':
+    # Allow UI easier prototyping by nullify all EC requests.
+    should_handle_ec = False
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     # Hint that we are about to use very brittle ciphers.
     context.set_ciphers('ALL:@SECLEVEL=0')

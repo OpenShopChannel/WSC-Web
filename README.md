@@ -13,6 +13,8 @@ You can typically start the frontend with the following steps:
 3. Copy `config.py.example` to `config.py`, and edit accordingly.
 4. Run via `app.py`. `python3 app.py`
 
+By default, EC-related requests (the backing API to download titles) will be disabled when run individually.
+Consider starting this server via `flask run` for development, or `gunicorn` if in production.
 
 ## Contributing
 Ensure you have tested all changes via the Wii Shop Channel, either on Dolphin or a physical Wii/vWii. Please do not make changes to translations directly - they will be periodically synced from translations elsewhere.

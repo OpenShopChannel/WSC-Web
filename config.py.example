@@ -1,7 +1,2 @@
 # API endpoint URL
 api_endpoint = "https://api.oscwii.org/v2/primary/packages"
-
-# Whether to perform EC requests.
-# Setting this to False is helpful when prototyping UI.
-# Otherwise, the app will immediately error out without a backend.
-should_handle_ec = True
