@@ -1,3 +1,6 @@
+# Hack to permit no "Connection: close".
+import no_connection_close
+
 from flask import Flask, render_template, request, redirect, Response
 from flask_babel import Babel, gettext
 from werkzeug.serving import WSGIRequestHandler
@@ -188,7 +191,6 @@ def server_error(e):
 
 
 if __name__ == '__main__':
-    WSGIRequestHandler.protocol_version = "HTTP/1.1"
     context = ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     # Hint that we are about to use very brittle ciphers.
     context.set_ciphers('ALL:@SECLEVEL=0')
