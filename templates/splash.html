@@ -30,6 +30,8 @@ Splash
         // so that the animation smoothly plays?
         redirect();
     });
+    {% else %}
+    setTimeout(redirect, 4500);
     {% endif %}
 {% endblock %}
 
