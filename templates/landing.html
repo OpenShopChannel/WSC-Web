@@ -103,8 +103,8 @@
         <a href="app?app={{ featured_app['slug'] }}" class="buttonLink"></a>
         <div id="featuredAppForeground">
             <img id="featuredAppIcon" src="{{ featured_app['url']['icon'].replace('https', 'http') }}"/>
-            <p id="featuredAppName">{{ featured_app['display_name'] }}</p>
-            <p id="featuredAppCoder">{{ featured_app['display_name'] }}</p>
+            <p id="featuredAppName">{{ featured_app['name'] }}</p>
+            <p id="featuredAppCoder">{{ featured_app['author'] }}</p>
         </div>
     </div>
 {% endblock %}
