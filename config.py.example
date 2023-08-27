@@ -1,2 +1,2 @@
 # API endpoint URL
-api_endpoint = "https://api.oscwii.org/v2/primary/packages"
+api_endpoint = "https://hbb1.oscwii.org/api/v3/contents"

@@ -100,9 +100,9 @@
     </div>
     <div class="button" id="featuredAppBackground">
         <p id="featuredAppTitleText">★ {% trans %}App of the Day{% endtrans %}</p>
-        <a href="app?app={{ featured_app['internal_name'] }}" class="buttonLink"></a>
+        <a href="app?app={{ featured_app['slug'] }}" class="buttonLink"></a>
         <div id="featuredAppForeground">
-            <img id="featuredAppIcon" src="{{ featured_app['icon_url'].replace('https', 'http') }}"/>
+            <img id="featuredAppIcon" src="{{ featured_app['url']['icon'].replace('https', 'http') }}"/>
             <p id="featuredAppName">{{ featured_app['display_name'] }}</p>
             <p id="featuredAppCoder">{{ featured_app['display_name'] }}</p>
         </div>

@@ -46,10 +46,10 @@ class API:
 
     def package_by_name(self, name):
         for package in self.packages:
-            if package["internal_name"] == name:
+            if package["slug"] == name:
                 try:
                     package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
-                    package["extracted_human_size"] = sizeof_fmt(package["extracted"])
+                    package["extracted_human_size"] = sizeof_fmt(package["file_size"]["zip_uncompressed"])
                 except ValueError:
                     pass
                 return package
@@ -62,7 +62,7 @@ class API:
             if value.lower() in package[key].lower():
                 try:
                     package["release_date"] = datetime.fromtimestamp(int(package["release_date"])).strftime('%B %e, %Y')
-                    package["extracted"] = sizeof_fmt(package["extracted"])
+                    package["file_size"]["zip_uncompressed"] = sizeof_fmt(package["file_size"]["zip_uncompressed"])
                 except ValueError:
                     pass
                 matching_packages.append(package)

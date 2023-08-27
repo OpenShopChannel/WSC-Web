@@ -162,7 +162,7 @@ def app_page():
 def random_app():
     response = Response('')
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    response.headers["Location"] = "/app?app=" + random.choice(OpenShopChannel.get_packages())["internal_name"]
+    response.headers["Location"] = "/app?app=" + random.choice(OpenShopChannel.get_packages())["slug"]
     return response, 301
 
 

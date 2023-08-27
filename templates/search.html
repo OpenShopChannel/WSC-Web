@@ -132,13 +132,13 @@
         <p id="resultsTitle">{% trans %}Search Results{% endtrans %}</p>
         <div id="resultsFrame">
             {% for result in results %}
-                <div class="button" id="result{{ result['internal_name'] }}">
-                    <a href="app?app={{ result['internal_name'] }}" class="buttonLink"></a>
+                <div class="button" id="result{{ result['slug'] }}">
+                    <a href="app?app={{ result['slug'] }}" class="buttonLink"></a>
                     <p id="resultsResultCategory"><b>{{ category_translation(result["category"]) }}</b></p>
                     <div id="resultsResultFrame">
                         <table id="resultsResultTable">
                             <tr>
-                                <td id="resultsResultIconCell"><img id="resultsResultIcon" src="{{ result['icon_url'].replace('https', 'http') }}"/></td>
+                                <td id="resultsResultIconCell"><img id="resultsResultIcon" src="{{ result['url']['icon'].replace('https', 'http') }}"/></td>
                                 <td><p><span id="resultsResultName">{{ result["display_name"] }}</span><br><span id="resultsResultCoder">{{ result["coder"] }}</span></p></td>
                             </tr>
                         </table>

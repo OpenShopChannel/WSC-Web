@@ -119,7 +119,7 @@
 {% block script %}
     function fadeOut() {
         playSE(SoundType.SELECT);
-        window.location.href = "startdownload?app={{ app['internal_name'] }}"
+        window.location.href = "startdownload?app={{ app['slug'] }}"
     }
 {% endblock %}
 
@@ -127,15 +127,17 @@
     <div id="appTopBox">
         <p id="appCategory"><b>{{ category_translation(app["category"]) }}</b></p>
         <div id="appTopFrame">
-            <img id="appIcon" src="{{ app['icon_url'].replace('https', 'http') }}"/>
+            <img id="appIcon" src="{{ app['url']['icon'].replace('https', 'http') }}"/>
             <p id="appName">{{ app["display_name"] }}</p>
-            <p id="appCoder">{{ app["coder"] }}</p>
+            <p id="appCoder">{{ app["author"] }}</p>
         </div>
     </div>
     <div id="appBottomBox">
         <div id="appBottomFrame">
             <div id="appDescriptionBox">
-                {{ app["long_description"][0:220] }}
+                {% if app["description"]["long"] %}
+                    {{ app["description"]["long"][0:220] }}
+                {% endif %}
             </div>
         </div>
         <div id="appDetailsBox">
