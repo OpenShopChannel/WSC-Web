@@ -16,7 +16,7 @@
 {% block onload %}
     setTimeout(function(){
         // TODO: handle NAND/forwarder titles
-        installChannel('0001000157554e45', '{{ app["slug"] }}');
+        installChannel('{{ app["shop"]["title_id"] }}', '{{ app["slug"] }}');
     }, 1500);
 {% endblock %}
 
