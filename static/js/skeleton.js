@@ -54,6 +54,16 @@ function wiiShop() {
      * See https://docs.oscwii.org/wii-shop-channel/js/shop
      */
     this.setWallpaper = function(wallpaper) {}
+
+    /**
+     * Changes the appearance of Mario.
+     * 0 is small Mario
+     * 1 is star Mario
+     * 2 is Mario running against Bullet Bill
+     * 3 is Fire Mario
+     * @param {number} value
+     */
+    this.setSCARank = function (value) {}
 }
 
 /**
@@ -109,6 +119,12 @@ function ECTitleInfo() {
      * @type {number}
      */
     this.version = 0
+
+    /**
+     * Whether the title is installed onto the device.
+     * @type {boolean}
+     */
+    this.isOnDevice = false
 }
 
 /**
@@ -286,8 +302,7 @@ function ECommerceInterface() {
      * Returns title metadata for the given title ID.
      *
      * @param {string} titleId The title ID to retrieve metadata for.
-     * @returns {(ECTitleInfo|ECReturnCodes)} Title metadata, or an error if necessary
-     * (for example, ECReturnCodes.TITLE_NOT_INSTALLED).
+     * @returns {ECTitleInfo} Title metadata.
      */
     this.getTitleInfo = function(titleId) {}
 
@@ -303,9 +318,41 @@ function ECommerceInterface() {
      * @param {string} [taxes]
      * @param {string} [purchaseInfo]
      * @param {string} [discount]
-     * @returns {ECReturnCodes}
+     * @returns {ECProgress}
      */
     this.purchaseTitle = function(titleId, itemId, price, payment, limits, downloadContent, taxes, purchaseInfo, discount) {}
+
+    /**
+     * Quite possibly downloads a title.
+     *
+     * @param {string} titleId
+     */
+    this.downloadTitle = function (titleId) {}
+}
+
+/**
+ * SD Card innit
+ *
+ * @constructor
+ */
+function wiiSDCard() {
+    /**
+     *
+     * @param {string} titleId
+     */
+    this.backupToSDCard = function (titleId) {}
+
+    /**
+     *
+     * @param {string} titleId
+     */
+    this.setJournalFlag = function (titleId) {}
+
+    /**
+     *
+     * @returns Number
+     */
+    this.hasProgressFinished = function () {}
 }
 
 /**

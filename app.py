@@ -166,6 +166,11 @@ def random_app():
     return response, 301
 
 
+@app.route("/finishdownload")
+def finish_download():
+    return render_template("finishdownload.html")
+
+
 @app.route("/error")
 def error_age():
     error_code = request.args.get('error', default='danbo', type=str)

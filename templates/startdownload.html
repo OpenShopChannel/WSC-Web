@@ -4,28 +4,11 @@
 {% trans %}Start Download{% endtrans %}
 {% endblock %}
 
-{% block style %}
-    #fadeCover {
-        width: 608px;
-        height: 456px;
-        background-color: black;
-        z-index: 999;
-    }
-{% endblock %}
 
 {% block onload %}
-    setTimeout(function(){
-        // TODO: handle NAND/forwarder titles
-        installChannel('{{ app["shop"]["title_id"] }}', '{{ app["slug"] }}');
-    }, 1500);
-{% endblock %}
-
-{% block script %}
-        // Have the sidebars be pitch black.
-        shop.setWallpaper(1);
+    preDownload('{{ app["shop"]["title_id"] }}');
 {% endblock %}
 
 {% block content %}
     <script src="{{ url_for('static', filename='js/download.js') }}"></script>
-    <img id="fadeCover" src="{{ url_for('static', filename='img/fadegif.gif') }}"/>
 {% endblock %}

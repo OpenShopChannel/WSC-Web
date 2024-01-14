@@ -3,14 +3,32 @@
  */
 var startingDownload = false;
 
+/**
+ * Current title ID for download
+ */
+var _titleId = "";
+
+
+function preDownload(titleId) {
+    _titleId = titleId;
+    // TODO: Allow installation to the SD Card.
+    /*
+    ec.setParameter("SPACE_CHECK_POLICY", "SPACE_CHECK_ENTIRE_FS");
+    sdCard.isJournaling();
+    const journalRet = sdCard.setJournalFlag(titleId);
+    if (journalRet !== 0) {
+        error("setJournalFlag failed with " + journalRet);
+    }
+
+    pollSDProgress(noop, installChannel);
+     */
+    installChannel();
+}
 
 /**
  * Installs a channel for the given title ID.
- *
- * @param {string} titleId The title ID to install.
- * @param {string} itemId The item ID of the title
  */
-function installChannel(titleId, itemId) {
+function installChannel() {
     if (!startingDownload) {
         startingDownload = true;
 
@@ -21,10 +39,9 @@ function installChannel(titleId, itemId) {
         // Apply empty limits.
         const limits = new ECTitleLimits();
 
-
-        const result = ec.purchaseTitle(titleId, itemId, price, method, limits, true);
-        if (result !== ECReturnCodes.COMPLETE) {
-            error("Encountered error while purchasing title: " + result);
-        }
+        const result = ec.purchaseTitle(_titleId, "0", price, method, limits, true);
+        completeOp(result, function () {
+            window.location.href = "/finishdownload";
+        });
     }
 }

@@ -7,19 +7,19 @@
 function completeOp(progress, callback) {
     trace("hi! status: " + progress.status + ", operation: " + progress.operation + ", description: " + progress.description + ", phase: " + progress.phase + ", isCancelRequested: " + progress.isCancelRequested + ", downloadedSize: " + progress.downloadedSize + ", totalSize: " + progress.totalSize + ", errCode: " + progress.errCode + ", errInfo: " + progress.errInfo);
 
-    const watchdog = new Watchdog(3000);
+    const watchdog = new ECWatchdog(3000);
     watchdog.complete(callback);
 }
 
 /**
- * Watchdog is designed to monitor the gradual progression of an asynchronous EC operation.
+ * ECWatchdog is designed to monitor the gradual progression of an asynchronous EC operation.
  * It operates by comparing state across poll intervals.
  * If it has not made progress for an amount of time, it errors.
  *
  * @param timeout {number} The amount of milliseconds to wait until calling it quits
  * @constructor
  */
-function Watchdog(timeout) {
+function ECWatchdog(timeout) {
     /**
      * The amount of milliseconds this function should poll throughout until timeout.
      */

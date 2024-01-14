@@ -72,6 +72,19 @@
         color: #FFFFFF;
         font-size: 16px;
     }
+    #backButtonCentered {
+        width: 180px;
+        height: 35px;
+        left: 211px;
+        top: 356px;
+        background-color: #35BEEC;
+    }
+    #backButtonTextCentered {
+        left: 282px;
+        top: 363px;
+        color: #FFFFFF;
+        font-size: 16px;
+    }
     #downloadButton {
         width: 180px;
         height: 35px;
@@ -157,4 +170,26 @@
         <p id="downloadButtonText">{% trans %}Download{% endtrans %}</p>
     </div>
 
+    <script>
+        var info = ec.getTitleInfo('{{  app["shop"]["title_id"] }}');
+
+        // If it is undefined just return out
+        if (info !== undefined) {
+            if (info.isOnDevice && info.version >= parseInt('{{ app["shop"]["title_version"] }}')) {
+                var installButton = document.getElementById('downloadButton');
+                installButton.style.display = "none";
+
+                var backButton = document.getElementById("backButton");
+                backButton.id = "backButtonCentered";
+
+                var backButtonText = document.getElementById("backButtonText");
+                backButtonText.id = "backButtonTextCentered";
+            }
+
+            if (info.isOnDevice && info.version < parseInt('{{ app["shop"]["title_version"] }}')) {
+                var text = document.getElementById("downloadButtonText");
+                text.innerText = "Update";
+            }
+        }
+    </script>
 {% endblock %}
