@@ -38,12 +38,13 @@ def category_translation(category):
 app.jinja_env.globals.update(category_translation=category_translation)
 
 
-@babel.localeselector
 def get_locale():
     if request.cookies.get('language'):
         return request.cookies.get('language')
     else:
         return 'en'
+
+babel.init_app(app, locale_selector=get_locale)
 
 
 def get_error_text(code):
