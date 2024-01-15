@@ -172,7 +172,7 @@ def finish_download():
 
 
 @app.route("/error")
-def error_age():
+def error_page():
     error_code = request.args.get('error', default='danbo', type=str)
     error_text = get_error_text(error_code)
     if error_code == "SUCCESS":
@@ -192,7 +192,7 @@ def page_not_found(e):
 def server_error(e):
     error_code = "HTTP_500"
     error_text = gettext("The server has encountered an error. Try again later.")
-    return render_template('error.html', error_code=error_code, errortext=error_text), 500
+    return render_template('error.html', error_code=error_code, error_text=error_text), 500
 
 
 if __name__ == '__main__':
