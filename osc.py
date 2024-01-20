@@ -32,10 +32,11 @@ def filter_packages(packages, **filter_kwargs):
 
 
 class API:
+    featured_app = "danbo"
     packages = None
 
     def load_packages(self):
-        self.packages = requests.get(config.api_endpoint).json()
+        self.packages = requests.get(f"{config.REPOMAN_HOST}/api/v3/contents").json()
 
     def get_packages(self):
         return self.packages
@@ -67,3 +68,8 @@ class API:
                     pass
                 matching_packages.append(package)
         return matching_packages
+
+    def retrieve_featured_app(self):
+        package = requests.get(f"{config.REPOMAN_HOST}/api/v3/featured-app").json()
+        self.featured_app = package["slug"]
+        return self.featured_app

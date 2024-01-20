@@ -6,8 +6,10 @@ from flask_babel import Babel, gettext
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
 
+import config
 import time
 import random
+import requests
 import json
 import osc
 import ssl
@@ -63,14 +65,8 @@ def get_featured_app():
     global lastCheckedFeaturedApp
     if time.time() - lastCheckedFeaturedApp > 1800:
         lastCheckedFeaturedApp = time.time()
-        req = Request('https://oscwii.org')
-        req.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0')
-        contents = str(urlopen(req).read()).split("App of the Day: ")[1].split("/library/app/")[1].split("\"")[0]
-        with open('data/featuredApp.txt', "w") as f:
-            f.write(contents)
-    with open('data/featuredApp.txt', "r") as f:
-        featured_app = f.read()
-    return featured_app
+        OpenShopChannel.retrieve_featured_app()
+    return OpenShopChannel.featured_app
 
 
 @app.template_global()

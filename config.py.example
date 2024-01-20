@@ -1,2 +1,2 @@
 # API endpoint URL
-api_endpoint = "https://hbb1.oscwii.org/api/v3/contents"
+REPOMAN_HOST = "https://hbb1.oscwii.org"
