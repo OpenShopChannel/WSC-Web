@@ -6,10 +6,8 @@ from flask_babel import Babel, gettext
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
 
-import config
 import time
 import random
-import requests
 import json
 import osc
 import ssl
