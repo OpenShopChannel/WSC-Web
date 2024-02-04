@@ -1,8 +1,97 @@
-#mainContent {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    width: 608px;
-    height: 456px;
-    background-color: #ffffff;
+html {
+	/* Makes visualising the boundaries of the page easier */
+	background-color: gray;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 608px;
+	height: 456px;
+
+	position: absolute;
+
+	background-color: white;
+	color: black;
+
+	font-family: "Wii NTLG PGothic JPN Regular";
+}
+
+#main-header {
+	width: 100%;
+	height: 82px;
+	position: relative;
+}
+
+#main-content {
+	height: 281px; /* 456 - (82 + 93) = 281px (i hate this) */
+	margin: 0px 7px;
+	overflow: auto;
+}
+
+#main-footer {
+	width: 100%;
+	height: 93px;
+	position: relative;
+}
+
+#main-header-contents {
+	width: 100%;
+	padding: 28px 28px 0px 28px;
+}
+
+#main-footer-contents {
+	width: 100%;
+	/* left margin on reference screenshot of error page is actually about 25px. much consistency, thanks nintendo */
+	padding: 0px 22px 22px 25px;
+}
+
+#main-heading {
+	/* line-height: 1; */
+}
+
+.dots {
+	width: 100%;
+	line-height: 23px;
+	text-align: center;
+	color: #8c8c8c;
+	font-size: 16px;
+}
+
+#main-header > *, #main-footer > * {
+	position: absolute;
+}
+#main-header > #main-header-contents { top: 0; }
+#main-header > .dots { bottom: 0; }
+#main-footer > .dots { top: 0; }
+#main-footer > #main-footer-contents { bottom: 0; }
+
+.osc-o { color: #34beed; }
+.osc-p { color: #34ed90; }
+.osc-e { color: #edd134; }
+.osc-n { color: #ed349f; }
+
+.blue { color: #34beed; }
+
+.title {
+	color: #34beed;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.btn {
+	display: table;
+	font-size: 18px;
+	color: #323232;
+}
+
+/* Nintendo is so horribly inaccurate on the positioning on buttons that I'm not even going to bother */
+.btn-body {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }

@@ -1,0 +1,46 @@
+{% extends "base-layout.html" %}
+
+{% block title %}Connecting{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		var info = ec.getDeviceInfo();
+		document.cookie = "language=" + info.language;
+
+		shop.setWallpaper(DOTTED_HORIZONTAL_LINES);
+
+		function redirect() {
+			window.location.href = "/landing";
+		}
+
+		function onLoad() {
+			onLoadCommon();
+
+			shop.beginWaiting();
+
+			{% if should_handle_ec %}
+			// We'll take the opportunity to register the Wii with our server.
+			doRegistrationDosido(function() {
+				redirect();
+			});
+			{% else %}
+			setTimeout(redirect, 4500);
+			{% endif %}
+
+			// Prevent the classic 209601 timeout error
+			$("#connecting").text(shop.connecting);
+		}
+	</script>
+
+	<style>
+		#connecting {
+			text-align: center;
+			margin: 20px 80px 0 80px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<p class="title" id="connecting">Connecting. Please wait...</p>
+{% endblock %}

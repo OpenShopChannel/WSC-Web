@@ -1,0 +1,56 @@
+{% extends "base-layout.html" %}
+
+{% block title %}Test{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+{% endblock %}
+
+{% block content %}
+		<p>hi</p>
+		<p>i'm content</p>
+		<p>and</p>
+		<p>i'm</p>
+		<p>{{ openify("scrooooolllingggg")|safe }}</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+		<p>hi</p>
+		<p>hai</p>
+{% endblock %}
+
+{% block footer %}
+	<div class="btn btn-test" style="width: 187px; height: 55px; float: left;">
+		<span class="btn-body">Wii Menu</span>
+	</div>
+	<div class="btn btn-test" style="width: 187px; height: 55px; float: right;">
+		<span class="btn-body">Something</span>
+	</div>
+{% endblock %}

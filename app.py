@@ -77,51 +77,62 @@ def modify_query(**new_values):
     return '{}?{}'.format(request.path, url_encode(args))
 
 
+@app.template_global()
+def openify(text):
+    openified = ""
+
+    for i, c in enumerate(text):
+        osc_char = 'open'[i % 4]
+        openified += '<span class="osc-{}">{}</span>'.format(osc_char, c)
+
+    return openified
+
+
 @app.route("/")
-def splash():
-    return render_template('splash.html', should_handle_ec=should_handle_ec)
+def initial_page():
+    return render_template('initial.html', should_handle_ec=should_handle_ec)
 
 
 @app.route("/debug")
-def debug():
+def debug_page():
     return render_template('debug.html')
 
 
 @app.route("/landing")
-def landing():
+def landing_page():
     return render_template('landing.html', motd=get_motd(),
                            featured_app=OpenShopChannel.package_by_name(get_featured_app()))
 
 
 @app.route("/donate")
-def donate():
+def donate_page():
     return render_template('donate.html')
 
 
 @app.route("/browse")
-def browse():
+def browse_page():
     return render_template('browse.html', featuredApp=get_featured_app())
 
 
 @app.route("/keyword")
-def keyword():
+def keyword_page():
     return render_template('keyword.html')
 
 
 @app.route("/category")
-def category():
+def category_page():
     return render_template('category.html')
 
 
 @app.route("/startdownload")
-def start_download():
+def start_download_page():
     selected_app = request.args.get('app', default='danbo', type=str)
     selected_app = OpenShopChannel.package_by_name(selected_app)
     return render_template('startdownload.html', app=selected_app)
 
 
 @app.route("/search")
-def search():
+def search_page():
     key = request.args.get('key', default='display_name', type=str)
     value = request.args.get('value', default='danbo', type=str).lower()
     page = request.args.get('page', default=0, type=int)
@@ -154,7 +165,7 @@ def app_page():
 
 
 @app.route("/random")
-def random_app():
+def random_app_page():
     response = Response('')
     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
     response.headers["Location"] = "/app?app=" + random.choice(OpenShopChannel.get_packages())["slug"]
@@ -162,7 +173,7 @@ def random_app():
 
 
 @app.route("/finishdownload")
-def finish_download():
+def finish_download_page():
     return render_template("finishdownload.html")
 
 
@@ -174,6 +185,11 @@ def error_page():
         return redirect("/", code=302)
     else:
         return render_template('error.html', error_code=error_code, error_text=error_text)
+
+
+@app.route("/eval")
+def eval_page():
+    return render_template("eval.html")
 
 
 @app.errorhandler(404)

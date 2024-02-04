@@ -16,6 +16,16 @@ function trace(message) {}
  */
 function wiiShop() {
     /**
+     * Shows the main loading spinner.
+     */
+    this.beginWaiting = function() {}
+
+    /**
+     * Hides the main loading spinner.
+     */
+    this.endWaiting = function() {}
+
+    /**
      * Resets the channel.
      **/
     this.retry = function() {}

@@ -1,110 +1,52 @@
-{% extends "base.html" %}
+{% extends "base-layout.html" %}
 
-{% block title %}
-{% trans %}Welcome{% endtrans %}
+{% set dots = false %}
+
+{% block title %}Landing{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		// hmm, maybe something can be done here where if the dots variable is false, it implicitly sets the wallpaper to white
+		shop.setWallpaper(WallpaperType.WHITE);
+
+		function onLoad() {
+			onLoadCommon();
+
+			shop.endWaiting();
+			sound.playBGM();
+		}
+	</script>
+
+	<style>
+		#main-header-contents {
+			text-align: center;
+		}
+
+		#main-heading {
+			display: inline;
+			font-size: 30px;
+		}
+
+		#start-shopping-btn {
+			margin: auto;
+			font-size: 24px;
+		}
+	</style>
 {% endblock %}
 
-{% block style %}
-    #logo {
-        width: 192px;
-        height: 68px;
-        left: 208px;
-        top: 98px;
-    }
-    #motd {
-        width: 608px;
-        height: 18px;
-        left: 0px;
-        top: 179px;
-        font-size: 14px;
-        color: #707070;
-        text-align: center;
-    }
-    #browseButton {
-        width: 180px;
-        height: 35px;
-        left: 214px;
-        top: 226px;
-        background-color: #35BEEC;
-    }
-    #browseText {
-        left: 249px;
-        top: 233px;
-        color: #ffffff;
-        font-size: 16px;
-        font-weight: bold;
-        z-index: 1;
-    }
-    #featuredAppBackground {
-        width: 356px;
-        height: 98px;
-        left: 126px;
-        top: 288px;
-        background-color: #EDD034;
-    }
-    #featuredAppForeground {
-        width: 342px;
-        height: 68px;
-        left: 132px;
-        top: 310px;
-        background-color: #FFFAE1;
-        z-index: 1;
-    }
-    #featuredAppTitleText {
-        left: 133px;
-        top: 290px;
-        font-size: 13px;
-        color: #FFFFFF;
-        font-weight: bold;
-        z-index: 1;
-    }
-    #featuredAppIcon {
-        width: 128px;
-        height: 48px;
-        left: 142px;
-        top: 320px;
-        z-index: 2;
-    }
-    #featuredAppName {
-        left: 280px;
-        top: 328px;
-        font-size: 12px;
-        color: #373737;
-        font-weight: bold;
-        z-index: 2;
-    }
-    #featuredAppCoder {
-        left: 280px;
-        top: 346px;
-        font-size: 11px;
-        color: #373737;
-        z-index: 2; 
-    }
-{% endblock %}
-
-{% block onload %}
-    shop.endWaiting();
-    sound.playBGM(1);
-{% endblock %}
-
-{% block script %}
-
+{% block header %}
+	{{ super() }}
+	<span class="blue">Recommended Titles</span>
 {% endblock %}
 
 {% block content %}
-    <img id="logo" onmouseover="playSE(SoundType.HOVER)" onmousedown="playSE(SoundType.COIN); window.location.href='donate';" src="{{ url_for('static', filename='img/osclogo.png') }}"/>
-    <div id="motd">"{{ motd }}"</div>
-    <div class="button" id="browseButton">
-        <a href="browse" class="buttonLink"></a>
-        <p id="browseText">{% trans %}Start Browsing{% endtrans %}</p>
-    </div>
-    <div class="button" id="featuredAppBackground">
-        <p id="featuredAppTitleText">★ {% trans %}App of the Day{% endtrans %}</p>
-        <a href="app?app={{ featured_app['slug'] }}" class="buttonLink"></a>
-        <div id="featuredAppForeground">
-            <img id="featuredAppIcon" src="{{ featured_app['url']['icon'].replace('https', 'http') }}"/>
-            <p id="featuredAppName">{{ featured_app['name'] }}</p>
-            <p id="featuredAppCoder">{{ featured_app['author'] }}</p>
-        </div>
-    </div>
+	<p>hai</p>
+{% endblock %}
+
+{% block footer %}
+	<!-- rework how buttons work later -->
+	<div class="btn btn-test" id="start-shopping-btn" style="width: 353px; height: 56px;">
+		<span class="btn-body">{% trans %}Start Browsing{% endtrans %}</span>
+	</div>
 {% endblock %}

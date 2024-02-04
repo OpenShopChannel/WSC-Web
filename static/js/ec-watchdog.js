@@ -5,10 +5,10 @@
  * @param {function} callback
  */
 function completeOp(progress, callback) {
-    trace("hi! status: " + progress.status + ", operation: " + progress.operation + ", description: " + progress.description + ", phase: " + progress.phase + ", isCancelRequested: " + progress.isCancelRequested + ", downloadedSize: " + progress.downloadedSize + ", totalSize: " + progress.totalSize + ", errCode: " + progress.errCode + ", errInfo: " + progress.errInfo);
+	trace("hi! status: " + progress.status + ", operation: " + progress.operation + ", description: " + progress.description + ", phase: " + progress.phase + ", isCancelRequested: " + progress.isCancelRequested + ", downloadedSize: " + progress.downloadedSize + ", totalSize: " + progress.totalSize + ", errCode: " + progress.errCode + ", errInfo: " + progress.errInfo);
 
-    const watchdog = new ECWatchdog(3000);
-    watchdog.complete(callback);
+	const watchdog = new ECWatchdog(3000);
+	watchdog.complete(callback);
 }
 
 /**
@@ -20,94 +20,94 @@ function completeOp(progress, callback) {
  * @constructor
  */
 function ECWatchdog(timeout) {
-    /**
-     * The amount of milliseconds this function should poll throughout until timeout.
-     */
-    this.pollInterval = 1000;
+	/**
+	 * The amount of milliseconds this function should poll throughout until timeout.
+	 */
+	this.pollInterval = 1000;
 
-    // However, we can't listen beneath the minimal poll interval.
-    if (this.pollInterval > timeout) {
-        error("You can't watch beneath the minimal poll interval, every 1 second.");
-    }
+	// However, we can't listen beneath the minimal poll interval.
+	if (this.pollInterval > timeout) {
+		error("You can't watch beneath the minimal poll interval, every 1 second.");
+	}
 
-    /**
-     * Amount of time to sleep in total.
-     */
-    this.timeout = timeout;
+	/**
+	 * Amount of time to sleep in total.
+	 */
+	this.timeout = timeout;
 
-    /**
-     * Current amount of time spent without progress.
-     */
-    var elapsedLackOfProgress = 0;
+	/**
+	 * Current amount of time spent without progress.
+	 */
+	var elapsedLackOfProgress = 0;
 
-    /**
-     * Cached state of operation.
-     */
-    var cachedPhase = 0;
+	/**
+	 * Cached state of operation.
+	 */
+	var cachedPhase = 0;
 
-    /**
-     * Cached download amount.
-     */
-    var cachedDownloadSize = 0;
+	/**
+	 * Cached download amount.
+	 */
+	var cachedDownloadSize = 0;
 
-    /**
-     * Run a Watchdog lifecycle.
-     *
-     * @param callback {function} What to call on success
-     */
-    this.complete = function(callback) {
-        // Get the foremost operation's progress.
-        const progress = ec.getProgress();
+	/**
+	 * Run a Watchdog lifecycle.
+	 *
+	 * @param callback {function} What to call on success
+	 */
+	this.complete = function(callback) {
+		// Get the foremost operation's progress.
+		const progress = ec.getProgress();
 
-        trace("Milliseconds since last accident: " + elapsedLackOfProgress + "\n" +
-            "Current status: " + progress.status);
+		trace("Milliseconds since last accident: " + elapsedLackOfProgress + "\n" +
+			"Current status: " + progress.status);
 
-        // See if this already has a state in some way that isn't STILL_WORKING.
-        const status = progress.status;
-        if (status < 0 && status !== ECReturnCodes.ONGOING) {
-            // Uh oh...
-            error("requested operation to complete came in with status " + status);
-            return;
-        } else if (status === 0) {
-            // We're free!
-            callback();
-            return;
-        }
-        // status should never be above zero.
-        // Here's hoping no bits flip...
+		// See if this already has a state in some way that isn't STILL_WORKING.
+		const status = progress.status;
+		if (status < 0 && status !== ECReturnCodes.ONGOING) {
+			// Uh oh...
+			error("requested operation to complete came in with status " + status);
+			return;
+		} else if (status === 0) {
+			// We're free!
+			callback();
+			return;
+		}
+		// status should never be above zero.
+		// Here's hoping no bits flip...
 
-        var didProgress;
-        // Progress means one of two states:
-        if (progress.totalSize !== 0) {
-            // ...one, that we are a download operation with a total size,
-            // and our attributed downloaded size is different from before.
-            didProgress = (progress.downloadedSize !== cachedDownloadSize);
-        } else {
-            // ...two, that we are waiting for the proper response of an action
-            // and our phase has changed.
-            didProgress = (progress.phase !== cachedPhase);
-        }
+		var didProgress;
+		// Progress means one of two states:
+		if (progress.totalSize !== 0) {
+			// ...one, that we are a download operation with a total size,
+			// and our attributed downloaded size is different from before.
+			didProgress = (progress.downloadedSize !== cachedDownloadSize);
+		} else {
+			// ...two, that we are waiting for the proper response of an action
+			// and our phase has changed.
+			didProgress = (progress.phase !== cachedPhase);
+		}
 
-        // If we've progressed, we need to update our cache and reset our failure timer.
-        if (didProgress) {
-            cachedDownloadSize = progress.downloadedSize;
-            cachedPhase = progress.phase;
-            elapsedLackOfProgress = 0;
-        } else {
-            // If we didn't, we need to add this poll to our failure timer.
-            elapsedLackOfProgress += this.pollInterval;
-        }
+		// If we've progressed, we need to update our cache and reset our failure timer.
+		if (didProgress) {
+			cachedDownloadSize = progress.downloadedSize;
+			cachedPhase = progress.phase;
+			elapsedLackOfProgress = 0;
+		} else {
+			// If we didn't, we need to add this poll to our failure timer.
+			elapsedLackOfProgress += this.pollInterval;
+		}
 
-        // Check if we've gone over our allocated time.
-        if (elapsedLackOfProgress >= this.timeout) {
-            error("running operation timed out after " + elapsedLackOfProgress + "ms");
-            return;
-        }
+		// Check if we've gone over our allocated time.
+		if (elapsedLackOfProgress >= this.timeout) {
+			error("running operation timed out after " + elapsedLackOfProgress + "ms");
+			return;
+		}
 
-        // Continue the cycle as we're not completed.
-        var currentObject = this;
-        setTimeout(function() {
-            currentObject.complete(callback);
-        }, this.pollInterval);
-    };
+		// Continue the cycle as we're not completed.
+		var currentObject = this;
+		setTimeout(function() {
+			currentObject.complete(callback);
+		}, this.pollInterval);
+	};
 }
