@@ -1,6 +1,6 @@
 function setupButtons() {
 	$(".btn").each(function(i) {
-		$(this).mouseover(function(e) {
+		$(this).mouseenter(function(e) {
 			// too bad optional chaining is too new
 			if (sound)
 				sound.playSE(SoundType.HOVER);

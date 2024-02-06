@@ -1,0 +1,8 @@
+root = true
+
+[*]
+indent_size = 4
+indent_style = space
+
+[*.{js,css,html,svg}]
+indent_style = tab
