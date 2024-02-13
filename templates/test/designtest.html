@@ -47,10 +47,8 @@
 {% endblock %}
 
 {% block footer %}
-	<div class="btn btn-test" style="width: 187px; height: 55px; float: left;">
-		<span class="btn-body">Wii Menu</span>
-	</div>
-	<div class="btn btn-test" style="width: 187px; height: 55px; float: right;">
-		<span class="btn-body">Something</span>
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Wii Menu"), id="wii-menu-btn", href="javascript:shop.returnToMenu()") }}
+		{{ osc.btn("Something", id="other-btn") }}
 	</div>
 {% endblock %}

@@ -29,6 +29,8 @@
 		}
 
 		#start-shopping-btn {
+			width: 353px;
+			height: 56px;
 			margin: auto;
 			font-size: 24px;
 		}
@@ -37,7 +39,7 @@
 
 {% block header %}
 	{{ super() }}
-	<span class="blue">Recommended Titles</span>
+	<span class="blue">{% trans %}Recommended Titles{% endtrans %}</span>
 {% endblock %}
 
 {% block content %}
@@ -45,8 +47,5 @@
 {% endblock %}
 
 {% block footer %}
-	<!-- rework how buttons work later -->
-	<div class="btn btn-test" id="start-shopping-btn" style="width: 353px; height: 56px;">
-		<span class="btn-body">{% trans %}Start Browsing{% endtrans %}</span>
-	</div>
+	{{ osc.btn(_("Start Browsing"), id="start-shopping-btn", href="/home") }}
 {% endblock %}

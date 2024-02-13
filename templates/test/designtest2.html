@@ -1,0 +1,27 @@
+{% extends "base-layout.html" %}
+
+{% block title %}Test{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+
+	</style>
+{% endblock %}
+
+{% block content %}
+	{{ osc.btn("this", img="/static/img/star.png", img_w=32) }}
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Wii Menu"), id="wii-menu-btn", style="float: left") }}
+		{{ osc.btn("Something", style="float: right") }}
+	</div>
+{% endblock %}

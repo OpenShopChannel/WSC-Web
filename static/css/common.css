@@ -29,7 +29,7 @@ body {
 
 #main-content {
 	height: 281px; /* 456 - (82 + 93) = 281px (i hate this) */
-	margin: 0px 7px;
+	padding: 0px 22px 0px 25px;
 	overflow: auto;
 }
 
@@ -47,7 +47,7 @@ body {
 #main-footer-contents {
 	width: 100%;
 	/* left margin on reference screenshot of error page is actually about 25px. much consistency, thanks nintendo */
-	padding: 0px 22px 22px 25px;
+	padding: 0px 22px 23px 25px;
 }
 
 #main-heading {
@@ -59,7 +59,6 @@ body {
 	line-height: 23px;
 	text-align: center;
 	color: #8c8c8c;
-	font-size: 16px;
 }
 
 #main-header > *, #main-footer > * {
@@ -69,6 +68,11 @@ body {
 #main-header > .dots { bottom: 0; }
 #main-footer > .dots { top: 0; }
 #main-footer > #main-footer-contents { bottom: 0; }
+
+#main-footer-btns .btn {
+	width: 187px;
+	height: 55px;
+}
 
 .osc-o { color: #34beed; }
 .osc-p { color: #34ed90; }
@@ -85,13 +89,45 @@ body {
 
 .btn {
 	display: table;
-	font-size: 18px;
 	color: #323232;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 14px;
 }
 
-/* Nintendo is so horribly inaccurate on the positioning on buttons that I'm not even going to bother */
-.btn-body {
+.btn > * {
+	display: table-row;
+}
+
+.btn > * > * {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
+}
+
+.btn-img-c {
+	height: 100%;
+}
+
+.btn-alt {
+	border-radius: 28px;
+	box-shadow: 0px 1px 2px 0px gray;
+	padding: 0;
+}
+
+/* Using this seems to *really* put noticeable lag on buttons */
+.justify-hr {
+	text-align: justify;
+}
+
+.justify-hr > * {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.justify-hr::after {
+	width: 100%;
+	display: inline-block;
+	content: "";
 }

@@ -113,7 +113,7 @@ function redrawElement(el, ms) {
 function pageFixes() {
 	if (isWiiShop) {
 		// Work around WSC bug where SVGs aren't shown after they're loaded unless page is redrawn
-		redrawElement(document.body, 50);
+		redrawElement(document.body, $(".btn-test").length * 50);
 	} else {
 		// Allow seeing correct font on desktop for easier testing and visualisation
 		document.body.style.fontFamily = "Wii NTLG PGothic";

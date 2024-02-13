@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="92" height="46" viewBox="0 0 92 46">
+	<g id="controller">
+		<path id="base" d="M 23,0 C 23,0 38.32609,1 46,1 53.67391,1 69,0 69,0 81.729973,-0.55347711 92,10.258 92,23 92,35.742 81.742,46 69,46 69,46 53.67391,45 46,45 38.32609,45 23,46 23,46 10.270026,46.553477 0,35.742 0,23 0,10.258 10.258,0 23,0 Z" fill="#34beed"/>
+		<g id="dpad" fill="#ffffff">
+			<rect id="dpad_h" width="5" height="15" x="16.75" y="14.75"/>
+			<rect id="dpad_v" width="15" height="5" x="11.75" y="19.75"/>
+		</g>
+		<g id="btn" fill="#ffffff">
+			<circle id="btn_b" cx="72.5" cy="28.5" r="3.5"/>
+			<circle id="btn_a" cx="81" cy="22" r="3.5"/>
+			<circle id="btn_y" cx="64" cy="22" r="3.5"/>
+			<circle id="btn_x" cx="72.5" cy="15.5" r="3.5"/>
+		</g>
+	</g>
+</svg>

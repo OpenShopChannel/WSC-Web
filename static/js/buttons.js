@@ -7,7 +7,7 @@ function setupButtons() {
 
 			// ditto
 			if (isWiiShop)
-				redrawElement(e.currentTarget, 100);
+				redrawElement(e.currentTarget, 50);
 		});
 
 		$(this).mousedown(function(e) {

@@ -1,0 +1,70 @@
+{% extends "base-layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+
+			$("#wii-menu-btn .btn-body").text(shop.menuBtn);
+		}
+	</script>
+
+	<style>
+		#main-content {
+			/* oh nintendo */
+			padding: 0px 24px 0px 25px;
+		}
+
+		/* if font size being 16px for buttons with icons is recurring I should just make the button template do that automatically */
+		.btns-top-category .btn {
+			font-size: 16px;
+		}
+
+		.btns-middle-category {
+			margin: 12px auto;
+		}
+
+		.btns-middle-category .btn {
+			width: 268px;
+			height: 69px;
+		}
+
+		.btns-bottom .btn {
+			width: 182px;
+			height: 56px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<div class="justify-hr btns-top-category">
+		<div>{{ osc.btn(_("Games"), href="", w="173px", h="131px", img=url_for('static', filename='img/icons/controller.svg'), img_w="92") }}</div>
+		<div>{{ osc.btn(_("Media"), href="", w="167px", h="131px", img=url_for('static', filename='img/icons/media.svg'), img_w="79") }}</div>
+		<div>{{ osc.btn(_("Utilities"), href="", w="173px", h="131px", img=url_for('static', filename='img/icons/utilities.svg'), img_w="50") }}</div>
+	</div>
+
+	{# {{ osc.btn(_("View More"), href="", w="292px", h="69px", style="margin: 12px auto;") }} -#}
+	{# should perhaps rather just use a table for these instead or something... -#}
+	<div class="justify-hr btns-middle-category">
+		<div>{{ osc.btn(_("Emulators"), href="") }}</div>
+		<div>{{ osc.btn(_("Demos"), href="") }}</div>
+	</div>
+
+	<div class="justify-hr btns-bottom">
+		<div>{{ osc.btn(_("Option 1"), class="btn-alt", href="") }}</div>
+		<div>{{ osc.btn(_("Titles You've Downloaded"), class="btn-alt", href="") }}</div>
+		<div>{{ osc.btn(_("Settings and Features"), class="btn-alt", href="") }}</div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Wii Menu"), id="wii-menu-btn", href="javascript:shop.returnToMenu()", style="float: left") }}
+		{{ osc.btn("Something", id="other-btn", style="float: right") }}
+	</div>
+{% endblock %}

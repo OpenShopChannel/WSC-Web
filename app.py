@@ -1,7 +1,7 @@
 # Hack to permit no "Connection: close".
 import no_connection_close
 
-from flask import Flask, render_template, request, redirect, Response
+from flask import Flask, render_template, request, redirect, Response, send_from_directory
 from flask_babel import Babel, gettext
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
@@ -102,6 +102,11 @@ def debug_page():
 def landing_page():
     return render_template('landing.html', motd=get_motd(),
                            featured_app=OpenShopChannel.package_by_name(get_featured_app()))
+
+
+@app.route("/home")
+def home_page():
+    return render_template('home.html')
 
 
 @app.route("/donate")

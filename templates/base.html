@@ -1,34 +1,44 @@
+{% import "macros.jinja" as osc -%}
+
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
 <head>
-	{% block head %}
+	{%- block head -%}
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>{% block title %}{% endblock %} - Open Shop Channel</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/common.css') }}">
-	{# gah, have to do this inline so I can url_for #}
+	{# gah, have to do this inline so I can url_for -#}
 	<style>
 		/* The SVG buttons should ONLY be used for easy design mockups, as they are responsive.
 		 * There are numerous problems that come with using them, such as performance and stability.
 		 * They should be rendered to images of specific dimensions once finished. */
-		.btn-test {
+		.btn {
 			background-image: url("{{ url_for('static', filename='img/buttons/button.svg') }}");
 		}
 
 		/* The hover could instead be done with SVG animations/events/whatever... if we weren't using background-image and an ancient version of Opera. */
-		.btn-test:hover {
+		.btn:hover {
 			background-image: url("{{ url_for('static', filename='img/buttons/button-hover.svg') }}");
 		}
+
+		.btn-alt {
+			background-image: url("{{ url_for('static', filename='img/buttons/option.svg') }}");
+		}
+
+		.btn-alt:hover {
+			background-image: url("{{ url_for('static', filename='img/buttons/option-hover.svg') }}");
+		}
 	</style>
-	{# JS wasn't sane enough until the 2010s, so we use jQuery so DOM stuff is less of a hassle (we can't even select an array of elements by class!) #}
+	{# JS wasn't sane enough until the 2010s, so we use jQuery so DOM stuff is less of a hassle (we can't even select an array of elements by class!) -#}
 	<script src="{{ url_for('static', filename='js/jquery-1.3.2.min.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/common.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/ec.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/ec-watchdog.js') }}"></script>
 	<script src="{{ url_for('static', filename='js/buttons.js') }}"></script>
-	{% endblock %}
+	{%- endblock -%}
 </head>
 <body onload="onLoad()">
-	{% block body %}{% endblock %}
+	{%- block body -%}{%- endblock -%}
 </body>
 </html>

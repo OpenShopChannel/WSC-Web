@@ -8,3 +8,4 @@ include/*
 lib/*
 data/featuredApp.txt
 config.py
+/old/
