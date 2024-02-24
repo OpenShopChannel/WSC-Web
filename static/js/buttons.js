@@ -11,8 +11,12 @@ function setupButtons() {
 		});
 
 		$(this).mousedown(function(e) {
-			if (sound)
-				sound.playSE(SoundType.SELECT);
+			if (sound) {
+				if ($(this).hasClass("btn-cancel"))
+					sound.playSE(SoundType.CANCEL);
+				else
+					sound.playSE(SoundType.SELECT);
+			}
 		});
 	});
 }

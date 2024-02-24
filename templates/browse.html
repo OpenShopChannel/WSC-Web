@@ -47,7 +47,7 @@
 	<h1 class="title" id="main-heading">{{ self.header_title() }}</h1>
 	{# all to later be moved to base-layout -#}
 	<div id="main-header-btns">
-		<div>{{ osc.btn(id="top-btn", href="/home", w="52px", h="55px", img=url_for('static', filename='img/icons/top.svg'), img_w="34", img_h="34") }}</div>
+		<div>{{ osc.btn(class="btn-cancel", id="top-btn", href="/home", w="52px", h="55px", img=url_for('static', filename='img/icons/top.svg'), img_w="34", img_h="34") }}</div>
 		<div class="last">{{ osc.btn(id="help-btn", href="", w="52px", h="55px", img=url_for('static', filename='img/icons/help.svg'), img_w="23", img_h="35") }}</div>
 	</div>
 {% endblock %}
@@ -74,6 +74,6 @@
 
 {% block footer %}
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), id="back-btn", href="javascript:history.back()") }}
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
 	</div>
 {% endblock %}
