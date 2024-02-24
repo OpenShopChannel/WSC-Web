@@ -29,8 +29,6 @@
 		}
 
 		#start-shopping-btn {
-			width: 353px;
-			height: 56px;
 			margin: auto;
 			font-size: 24px;
 		}
@@ -47,5 +45,5 @@
 {% endblock %}
 
 {% block footer %}
-	{{ osc.btn(_("Start Browsing"), id="start-shopping-btn", href="/home") }}
+	{{ osc.btn(_("Start Browsing"), id="start-shopping-btn", href="/home", w="353px", h="56px") }}
 {% endblock %}

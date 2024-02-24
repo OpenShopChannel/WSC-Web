@@ -41,13 +41,15 @@ body {
 
 #main-header-contents {
 	width: 100%;
-	padding: 28px 28px 0px 28px;
+	padding: 28px 19px 0px 29px;
+	z-index: 1;
 }
 
 #main-footer-contents {
 	width: 100%;
 	/* left margin on reference screenshot of error page is actually about 25px. much consistency, thanks nintendo */
 	padding: 0px 22px 23px 25px;
+	z-index: 1;
 }
 
 #main-heading {
@@ -61,6 +63,8 @@ body {
 	color: #8c8c8c;
 }
 
+
+/* :( */
 #main-header > *, #main-footer > * {
 	position: absolute;
 }
@@ -69,20 +73,37 @@ body {
 #main-footer > .dots { top: 0; }
 #main-footer > #main-footer-contents { bottom: 0; }
 
+#main-header-btns {
+	position: absolute;
+	/* ideally doing `right: 0` would go to the padding of the parent, but it doesn't */
+	top: 23px; /* 28 - 5 = 23px (ARRRGHHH) */
+	right: 19px;
+	background-color: white;
+}
+
+#main-header-btns > div {
+	float: left;
+	margin-right: 8px;
+}
+
+/* arrrrgh, no :last-* support */
+#main-header-btns > div.last {
+	margin-right: 0;
+}
+
+/* ugh */
+#main-header-btns .btn {
+	padding: 0;
+}
+
+/* TODO: move button dimensions outside CSS in preparation for using images */
 #main-footer-btns .btn {
 	width: 187px;
 	height: 55px;
 }
 
-.osc-o { color: #34beed; }
-.osc-p { color: #34ed90; }
-.osc-e { color: #edd134; }
-.osc-n { color: #ed349f; }
-
-.blue { color: #34beed; }
-
 .title {
-	color: #34beed;
+	color: #323232;
 	font-size: 28px;
 	font-weight: bold;
 }
@@ -131,3 +152,12 @@ body {
 	display: inline-block;
 	content: "";
 }
+
+.osc-o { color: #34beed; }
+.osc-p { color: #34ed90; }
+.osc-e { color: #edd134; }
+.osc-n { color: #ed349f; }
+
+.blue { color: #34beed; }
+
+.bold { font-weight: bold; }

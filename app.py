@@ -22,17 +22,20 @@ lastCheckedFeaturedApp = 0
 should_handle_ec = True
 
 
-def category_translation(category):
-    if category == "demos":
-        return gettext("Demos")
-    elif category == "utilities":
-        return gettext("Utilities")
-    elif category == "emulators":
-        return gettext("Emulators")
-    elif category == "games":
-        return gettext("Games")
-    elif category == "media":
-        return gettext("Media")
+def category_translation(category, str_type = "title"):
+    if str_type == "title":
+        if category == "games":
+            return gettext("Games")
+        elif category == "media":
+            return gettext("Media")
+        elif category == "utilities":
+            return gettext("Utilities")
+        elif category == "emulators":
+            return gettext("Emulators")
+        elif category == "demos":
+            return gettext("Demos")
+    return "Unknown"
+
 
 
 app.jinja_env.globals.update(category_translation=category_translation)
@@ -109,6 +112,11 @@ def home_page():
     return render_template('home.html')
 
 
+@app.route("/browse")
+def browse_page():
+    return render_template('browse.html')
+
+"""
 @app.route("/donate")
 def donate_page():
     return render_template('donate.html')
@@ -180,7 +188,7 @@ def random_app_page():
 @app.route("/finishdownload")
 def finish_download_page():
     return render_template("finishdownload.html")
-
+"""
 
 @app.route("/error")
 def error_page():

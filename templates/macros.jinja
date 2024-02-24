@@ -22,6 +22,8 @@
 		{%- if img|default(false) %}
 		<span><span class="btn-img-c"><img class="btn-img" src="{{ img }}"{{ cond_attr_spcd(img_w, "width") }}{{ cond_attr_spcd(img_h, "height") }}></span></span>
 		{%- endif %}
-		<span><span class="btn-body">{{ body }}</span></span>
+		{%- if body|default(false) %}
+		<span class="btn-body-c"><span class="btn-body">{{ body }}</span></span>
+		{%- endif %}
 	</a>
 {% endmacro %}

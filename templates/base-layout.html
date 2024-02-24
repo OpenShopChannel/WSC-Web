@@ -4,7 +4,7 @@
 	<div id="main-header">
 		<div id="main-header-contents">
 			{% block header -%}
-			<h1 class="title" id="main-heading">{% block headerTitle %}{{ openify("Open")|safe }} Shop Channel{% endblock %}</h1>
+			<h1 class="blue title" id="main-heading">{% block header_title %}{{ openify("Open")|safe }} Shop Channel{% endblock %}</h1>
 			{%- endblock %}
 		</div>
 		{% if dots|default(true) %}<div class="dots">･･･････････････････････････････････････････････････････････････････････････</div>{% endif %}
