@@ -122,7 +122,11 @@ If the query involves listing publishers, use publishers.html (needs to be renam
 If the query involves listing titles, use catalog.html"""
 @app.route("/search")
 def search_page():
-    return render_template('publishers.html')
+    search_type = request.args.get('type', default='titles', type=str)
+    if search_type == "publishers":
+        return render_template('publishers.html')
+    return render_template('catalog.html')
+
 
 """
 @app.route("/donate")

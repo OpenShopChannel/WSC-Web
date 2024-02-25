@@ -1,7 +1,10 @@
 {% extends "base-layout.html" %}
 
+{% set header_btns = true %}
+
 {# Rename this to a more appropriate filename later... This will be reused for subcategories once they are implemented (e.g., having a list of game genres) -#}
-{% block title %}{% block header_title %}Search by Publisher{% endblock %}{% endblock %}
+{% set title = _("Search by Publisher") %}
+{% set header_title = title %}
 
 {% block head %}
 	{{ super() }}
@@ -73,15 +76,6 @@
 			line-height: 1;
 		}
 	</style>
-{% endblock %}
-
-{% block header %}
-	<h1 class="title" id="main-heading">{{ self.header_title() }}</h1>
-	{# all to later be moved to base-layout -#}
-	<div id="main-header-btns">
-		<div>{{ osc.btn(class="btn-cancel", id="top-btn", href="/home", w="52px", h="55px", img=url_for('static', filename='img/icons/top.svg'), img_w="34", img_h="34") }}</div>
-		<div class="last">{{ osc.btn(id="help-btn", href="", w="52px", h="55px", img=url_for('static', filename='img/icons/help.svg'), img_w="23", img_h="35") }}</div>
-	</div>
 {% endblock %}
 
 {% macro btn_item(top, bottom) %}

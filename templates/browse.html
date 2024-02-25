@@ -1,6 +1,9 @@
 {% extends "base-layout.html" %}
 
-{% block title %}{% block header_title %}{{ category_translation(request.args.get("category")) }}{% endblock %}{% endblock %}
+{% set header_btns = true %}
+
+{% set title = category_translation(request.args.get("category")) %}
+{% set header_title = title %}
 
 {% block head %}
 	{{ super() }}
@@ -43,27 +46,18 @@
 	</style>
 {% endblock %}
 
-{% block header %}
-	<h1 class="title" id="main-heading">{{ self.header_title() }}</h1>
-	{# all to later be moved to base-layout -#}
-	<div id="main-header-btns">
-		<div>{{ osc.btn(class="btn-cancel", id="top-btn", href="/home", w="52px", h="55px", img=url_for('static', filename='img/icons/top.svg'), img_w="34", img_h="34") }}</div>
-		<div class="last">{{ osc.btn(id="help-btn", href="", w="52px", h="55px", img=url_for('static', filename='img/icons/help.svg'), img_w="23", img_h="35") }}</div>
-	</div>
-{% endblock %}
-
 {% block content %}
 	<p class="blue bold" id="category-description">{{ category_translation(request.args.get("category"), "description") }}</p>
 	{# could maybe use CSS table as that could semantically be more correct, but that would require more code (and doesn't matter for this) -#}
 	<table id="btn-table">
 		<tr>
 			<td>{{ osc.btn(_("Popular Titles"), href="", w="240px", h="65px") }}</td>
-			<td class="btn-table-m-left-auto">{{ osc.btn(_("Newest Additions"), href="", w="240px", h="65px") }}</td>
+			<td class="btn-table-m-left-auto">{{ osc.btn(_("Newest Additions"), href="/search?type=titles", w="240px", h="65px") }}</td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
 			{# percent width... bad! won't work later -#}
-			<td colspan="2">{{ osc.btn(_("Search by Publisher"), href="/search", w="100%", h="65px") }}</td>
+			<td colspan="2">{{ osc.btn(_("Search by Publisher"), href="/search?type=publishers", w="100%", h="65px") }}</td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
