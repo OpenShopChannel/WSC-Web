@@ -32,19 +32,16 @@
 		/* different browsers handle this differently...
 		 * - on the WSC the space on the bottom of the container is about the same as the top
 		 * - on Firefox the space on the bottom of the container is about the same as the top + that of the bottom items
-		 * - on Chrome there isn't space at the bottom of the container at all 
+		 * - on Chrome there isn't space at the bottom of the container at all
 		 * anything to do with items is just hacky */
 		.items > .item {
 			float: left;
 			margin: 0px 0px 4px 8px;
 		}
 
-		.items > .item > .btn {
-			font-size: 14px;
-		}
-
 		.btn-item {
 			padding: 0px;
+			font-size: 14px;
 		}
 
 		/* yaaay dumb hacks i have to do to bump the title down 1px and not affect everything when you hover (indicated by "yep") */

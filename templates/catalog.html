@@ -1,0 +1,86 @@
+{% extends "base-layout.html" %}
+
+{% set header_btns = true %}
+
+{% set title = _("Catalog") %}
+{% set header_title = title %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+		#main-content {
+			padding: 0px 6px 4px 6px;
+			margin: 0px 30px 0px 36px;
+			border: 1px solid #35beed;
+		}
+
+		.btn-item {
+			margin-top: 28px; /* top margin of first item is actually 27px */
+			padding: 0px 11px; /* +1 to account for button border */
+			font-size: 16px;
+		}
+
+		.btn-item > * > * {
+			text-align: left;
+		}
+
+		.btn-item .btn-img-c {
+			padding-right: 5px;
+		}
+
+		.btn-item .btn-img {
+			border: 1px solid #34beed;
+			box-sizing: content-box;
+		}
+
+		.btn-item .btn-body {
+			width: 100%;
+			vertical-align: top;
+			padding: 3px 0px;
+		}
+
+		.btn-item .sep {
+			height: 1px;
+			display: block;
+			background-color: #34beed;
+		}
+
+		.btn-item .item-author {
+			font-size: 14px;
+		}
+	</style>
+{% endblock %}
+
+{% macro btn_item(title, author, banner = url_for('static', filename='img/title_placeholder.png')) %}
+	<a class="btn btn-item" style="width: 477px; height: 84px">
+		<span>
+			{# <span class="btn-img-c"><img class="btn-img" src="{{ url_for('static', filename='img/96x72.png') }}" width="96" height="72"/></span> -#}
+			<span class="btn-img-c"><img class="btn-img" src="{{ banner }}" width="128" height="48"/></span>
+			<span class="btn-body">
+				<span class="item-title">{{ title }}</span>
+				<span class="sep"></span>
+				<span class="item-author">{{ author }}</span>
+			</span>
+		</span>
+	</a>
+{% endmacro %}
+
+{% block content %}
+	{% for i in range(8) %}
+	{{ btn_item("Danbo", "Open Shop Channel", url_for('static', filename='img/danbo.png')) }}
+	{% endfor %}
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+	</div>
+{% endblock %}

@@ -117,9 +117,6 @@ def browse_page():
     return render_template('browse.html')
 
 
-"""TODO: This should be conditional later
-If the query involves listing publishers, use publishers.html (needs to be renamed)
-If the query involves listing titles, use catalog.html"""
 @app.route("/search")
 def search_page():
     search_type = request.args.get('type', default='titles', type=str)
