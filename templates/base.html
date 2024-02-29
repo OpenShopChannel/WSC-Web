@@ -22,6 +22,15 @@
 			background-image: url("{{ url_for('static', filename='img/buttons/button-hover.svg') }}");
 		}
 
+		/* Highlighted buttons (already installed titles) */
+		.btn-hl {
+			background-image: url("{{ url_for('static', filename='img/buttons/button-hl.svg') }}");
+		}
+
+		.btn-hl:hover {
+			background-image: url("{{ url_for('static', filename='img/buttons/button-hl-hover.svg') }}");
+		}
+
 		.btn-alt {
 			background-image: url("{{ url_for('static', filename='img/buttons/option.svg') }}");
 		}

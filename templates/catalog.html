@@ -12,6 +12,8 @@
 
 		function onLoad() {
 			onLoadCommon();
+			$("#main-content").find(".item:nth-child(2) > .btn-item").addClass("btn-hl");
+			$("#main-content").find(".item:nth-child(3)").addClass("updated");
 		}
 	</script>
 
@@ -22,8 +24,25 @@
 			border: 1px solid #35beed;
 		}
 
+		.item {
+			margin-top: 5px;
+		}
+
+		.item > .update-label {
+			width: 150px;
+			height: 23px;
+			background-image: url("{{ url_for('static', filename='img/update.svg') }}");
+			margin-left: 12px;
+			text-align: center;
+			visibility: hidden;
+		}
+
+		.item.updated > .update-label {
+			visibility: visible;
+		}
+
 		.btn-item {
-			margin-top: 28px; /* top margin of first item is actually 27px */
+			/*margin-top: 28px;*/ /* top margin of first item is actually 27px */
 			padding: 0px 11px; /* +1 to account for button border */
 			font-size: 16px;
 		}
@@ -59,23 +78,25 @@
 	</style>
 {% endblock %}
 
-{% macro btn_item(title, author, banner = url_for('static', filename='img/title_placeholder.png')) %}
-	<a class="btn btn-item" style="width: 477px; height: 84px">
-		<span>
-			{# <span class="btn-img-c"><img class="btn-img" src="{{ url_for('static', filename='img/96x72.png') }}" width="96" height="72"/></span> -#}
-			<span class="btn-img-c"><img class="btn-img" src="{{ banner }}" width="128" height="48"/></span>
-			<span class="btn-body">
-				<span class="item-title">{{ title }}</span>
-				<span class="sep"></span>
-				<span class="item-author">{{ author }}</span>
+{% macro catalog_item(title, author, banner = url_for('static', filename='img/title_placeholder.png')) %}
+	<div class="item">
+		<div class="update-label blue bold">Updated!</div>
+		<a class="btn btn-item" style="width: 477px; height: 84px">
+			<span>
+				<span class="btn-img-c"><img class="btn-img" src="{{ banner }}" width="128" height="48"/></span>
+				<span class="btn-body">
+					<span class="item-title">{{ title }}</span>
+					<span class="sep"></span>
+					<span class="item-author">{{ author }}</span>
+				</span>
 			</span>
-		</span>
-	</a>
+		</a>
+	</div>
 {% endmacro %}
 
 {% block content %}
 	{% for i in range(8) %}
-	{{ btn_item("Danbo", "Open Shop Channel", url_for('static', filename='img/danbo.png')) }}
+	{{ catalog_item("Danbo", "Open Shop Channel", url_for('static', filename='img/danbo.png')) }}
 	{% endfor %}
 {% endblock %}
 
