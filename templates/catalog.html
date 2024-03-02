@@ -72,8 +72,36 @@
 			background-color: #34beed;
 		}
 
+		.btn-item:hover .sep {
+			outline: 1px solid #9de0f6;
+		}
+
 		.btn-item .item-author {
 			font-size: 14px;
+		}
+
+		/* :( */
+		#main-footer-btns > #back-btn {
+			float: left;
+		}
+
+		#main-footer-pagination {
+			float: right;
+		}
+
+		#main-footer-pagination > * {
+			float: left;
+		}
+
+		#main-footer-pagination .btn {
+			padding: 0;
+		}
+
+		#main-footer-pagination > .pages {
+			/*margin: 0px 20px;*/
+			width: 101px;
+			text-align: center;
+			color: #323232;
 		}
 	</style>
 {% endblock %}
@@ -103,5 +131,10 @@
 {% block footer %}
 	<div id="main-footer-btns">
 		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+		<div id="main-footer-pagination">
+			{{ osc.btn(id="prev-page-btn", href="/", w="52px", h="52px", img=url_for('static', filename='img/icons/left-arrow.svg'), img_w="30", img_h="30") }}
+			<span class="pages">1/2</span>
+			{{ osc.btn(id="next-page-btn", href="/", w="52px", h="52px", img=url_for('static', filename='img/icons/right-arrow.svg'), img_w="30", img_h="30") }}
+		</div>
 	</div>
 {% endblock %}
