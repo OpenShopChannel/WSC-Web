@@ -15,13 +15,14 @@
 			<use xlink:href="#btn-border-inner"/>
 		</clipPath>
 
+		<!-- used to indicate buttons that are larger than intended -->
 		<mask id="bad-area-mask">
 			<rect width="100%" height="100%" x="0" y="0" fill="white"/>
 			<rect width="241px" height="76px" x="0" y="0" fill="black"/>
 		</mask>
 		<rect id="bad-area" width="100%" height="100%" x="0" y="0" mask="url(#bad-area-mask)" fill="red"/>
 	</defs>
-	<use xlink:href="#bad-area"/> <!-- used to indicate buttons that are larger than intended -->
+	<use xlink:href="#bad-area"/>
 	<g clip-path="url(#btn-border-clip)">
 		<rect width="241px" height="76px" x="0" y="0" fill="#34beed"/>
 		<g clip-path="url(#btn-border-inner-clip)">
