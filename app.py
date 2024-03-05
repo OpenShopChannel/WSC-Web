@@ -125,6 +125,11 @@ def search_page():
     return render_template('catalog.html')
 
 
+@app.route("/title")
+def title_page():
+    return render_template('title.html')
+
+
 """
 @app.route("/donate")
 def donate_page():

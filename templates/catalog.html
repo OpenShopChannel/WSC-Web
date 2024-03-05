@@ -106,10 +106,10 @@
 	</style>
 {% endblock %}
 
-{% macro catalog_item(title, author, banner = url_for('static', filename='img/title_placeholder.png')) %}
+{% macro catalog_item(title, author, app_id, banner = url_for('static', filename='img/title_placeholder.png')) %}
 	<div class="item">
 		<div class="update-label blue bold">{% trans %}Updated!{% endtrans %}</div>
-		<a class="btn btn-item" style="width: 477px; height: 84px">
+		<a class="btn btn-item" href="/title" style="width: 477px; height: 84px">
 			<span>
 				<span class="btn-img-c"><img class="btn-img" src="{{ banner }}" width="128" height="48"/></span>
 				<span class="btn-body">
@@ -124,7 +124,7 @@
 
 {% block content %}
 	{% for i in range(8) %}
-	{{ catalog_item("Danbo", "Open Shop Channel", url_for('static', filename='img/danbo.png')) }}
+	{{ catalog_item("Danbo", "Open Shop Channel", banner=url_for('static', filename='img/danbo.png')) }}
 	{% endfor %}
 {% endblock %}
 

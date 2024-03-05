@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<!-- doesn't start at exactly the right colors when rendered, but good enough :( -->
+		<linearGradient id="btn-bg" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0%" stop-color="#ffcbb5"/>
+			<stop offset="25%" stop-color="#ff7440"/>
+			<stop offset="75%" stop-color="#ff7440"/>
+			<stop offset="100%" stop-color="#fff47b"/>
+		</linearGradient>
+
+		<rect id="btn-border" width="241px" height="76px" x="0" y="0" rx="6px" fill="none" stroke="#ffaf5b" stroke-width="2px"/>
+		<clipPath id="btn-border-clip">
+			<use xlink:href="#btn-border"/>
+		</clipPath>
+
+		<clipPath id="btn-border-bottom-clip">
+			<rect width="241px" height="4px" x="0" y="76px" transform="translate(0 -4)"/>
+		</clipPath>
+		<rect id="btn-border-bottom" width="241px" height="76px" x="0" y="0" rx="6px" clip-path="url(#btn-border-bottom-clip)" fill="none" stroke="#ffeb5e" stroke-width="2px"/>
+
+		<rect id="btn-border-inner" width="233px" height="68px" x="4px" y="4px" rx="6px" fill="none" stroke="white" stroke-width="2px"/>
+		<clipPath id="btn-border-inner-clip">
+			<use xlink:href="#btn-border-inner"/>
+		</clipPath>
+
+		<!-- used to indicate buttons that are larger than intended -->
+		<mask id="bad-area-mask">
+			<rect width="100%" height="100%" x="0" y="0" fill="white"/>
+			<rect width="241px" height="76px" x="0" y="0" fill="black"/>
+		</mask>
+		<rect id="bad-area" width="100%" height="100%" x="0" y="0" mask="url(#bad-area-mask)" fill="red"/>
+	</defs>
+	<use xlink:href="#bad-area"/>
+	<g clip-path="url(#btn-border-clip)">
+		<rect width="241px" height="76px" x="0" y="0" fill="#ff7440"/>
+		<g clip-path="url(#btn-border-inner-clip)">
+			<rect width="232px" height="68px" x="4px" y="4px" fill="url(#btn-bg)"/>
+			<use xlink:href="#btn-border-inner"/>
+		</g>
+		<use xlink:href="#btn-border"/>
+		<use xlink:href="#btn-border-bottom"/>
+	</g>
+</svg>

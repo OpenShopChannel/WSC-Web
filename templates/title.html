@@ -1,0 +1,60 @@
+{% extends "base-layout.html" %}
+
+{% set header_btns = true %}
+
+{% set title = _("Details") %}
+{% set header_title = title %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+		.btn-dl {
+			padding: 0;
+			font-size: 24px;
+			color: white;
+			line-height: 1;
+		}
+
+		.btn-dl .top {
+			padding-top: 6px;
+		}
+
+		.btn-dl .sep {
+			height: 1px;
+			display: block;
+			background-color: white;
+			margin: 0px 9px;
+		}
+
+		.btn-dl .bottom {
+			padding-bottom: 3px;
+		}
+	</style>
+{% endblock %}
+
+{% macro btn_download(top, bottom) %}
+	<a class="btn btn-dl" style="width: 241px; height: 76px">
+		<span><span class="top">{{ top }}</span></span>
+		<span><span><span class="sep"></span></span></span>
+		<span><span class="bottom">{{ bottom }}</span></span>
+	</a>
+{% endmacro %}
+
+{% block content %}
+	{{ btn_download("Download", "50 Blocks") }}
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
+		{{ osc.btn(_("More Details"), id="more-details-btn", style="float: right") }}
+	</div>
+{% endblock %}
