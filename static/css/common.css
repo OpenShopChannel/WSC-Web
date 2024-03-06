@@ -16,7 +16,7 @@ body {
 	position: absolute;
 
 	background-color: white;
-	color: black;
+	color: #323232;
 
 	font-family: "Wii NTLG PGothic JPN Regular";
 }
@@ -103,14 +103,13 @@ body {
 }
 
 .title {
-	color: #323232;
 	font-size: 28px;
 	font-weight: bold;
 }
 
 .btn {
 	display: table;
-	color: #323232;
+	color: inherit;
 	font-size: 18px;
 	text-decoration: none;
 	cursor: pointer;
