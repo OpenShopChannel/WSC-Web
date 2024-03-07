@@ -65,15 +65,15 @@
 		}
 
 		/* :( */
-		#title-details-top {
+		#title-details > .top {
 			display: table;
 		}
 
-		#title-details-top > * {
+		#title-details > .top > * {
 			display: table-row;
 		}
 
-		#title-details-top > * > * {
+		#title-details > .top > * > * {
 			display: table-cell;
 			vertical-align: middle;
 		}
@@ -85,24 +85,21 @@
 			margin: 8px 4px;
 		}
 
+		#title-details .left-col {
+			padding-right: 8px;
+		}
+
 		#title-img {
 			box-sizing: content-box;
 			border: 1px solid #34beed;
-			margin-right: 8px;
-		}
-
-		#title-badge-btn-row {
 			margin-bottom: 8px;
-		}
-
-		#title-name {
-			text-align: center;
 		}
 
 		#btn-controllers {
 			font-size: 10px;
 			font-weight: bold;
 			padding: 0;
+			margin: auto;
 		}
 	</style>
 {% endblock %}
@@ -118,22 +115,22 @@
 {% block content %}
 	<div id="category-heading">Category</div>
 	<div id="title-details">
-		<div id="title-details-top">
+		<div class="top">
 			<div>
-				<div>
+				<div class="left-col">
 					<img id="title-img" src="{{ url_for('static', filename='img/danbo.png') }}" width="128" height="48"/>
+					{{ osc.btn(_("View compatible controllers"), id="btn-controllers", w="67px", h="55px") }}
 				</div>
 				<div>
-					<div id="title-badge-btn-row">
-						{{ osc.btn(_("View compatible controllers"), id="btn-controllers", w="67px", h="55px") }}
-					</div>
-					<p id="title-release-date">Released 06/03/2024</p>
-					<p id="title-author">Open Shop Channel</p>
+					<p id="title-version"><b>{% trans %}Version{% endtrans %}:</b> 2.0.2</p>
+					<p id="title-release-date"><b>{% trans %}Released{% endtrans %}:</b> 06/03/2024</p>
+					<p id="title-author"><b>{% trans %}Author{% endtrans %}:</b> Open Shop Channel</p>
+					<p id="title-subcategories">Subcategories</p> {# would just be hidden if there are no subcategories #}
 				</div>
 			</div>
 		</div>
 		<div class="sep"></div>
-		<p class="blue bold" id="title-name">Danbo</p>
+		<p class="blue bold text-center" id="title-name">Danbo</p>
 	</div>
 	{{ btn_download(_("Download"), "50 Blocks", style="margin: auto") }}
 {% endblock %}
