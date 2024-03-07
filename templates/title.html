@@ -59,7 +59,50 @@
 		#title-details {
 			height: 196px;
 			border: 1px solid #34beed;
+			padding: 8px;
 			margin-bottom: 3px;
+			overflow: auto;
+		}
+
+		/* :( */
+		#title-details-top {
+			display: table;
+		}
+
+		#title-details-top > * {
+			display: table-row;
+		}
+
+		#title-details-top > * > * {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#title-details > .sep {
+			height: 1px;
+			display: block;
+			background-color: #34beed;
+			margin: 8px 4px;
+		}
+
+		#title-img {
+			box-sizing: content-box;
+			border: 1px solid #34beed;
+			margin-right: 8px;
+		}
+
+		#title-badge-btn-row {
+			margin-bottom: 8px;
+		}
+
+		#title-name {
+			text-align: center;
+		}
+
+		#btn-controllers {
+			font-size: 10px;
+			font-weight: bold;
+			padding: 0;
 		}
 	</style>
 {% endblock %}
@@ -75,9 +118,24 @@
 {% block content %}
 	<div id="category-heading">Category</div>
 	<div id="title-details">
-
+		<div id="title-details-top">
+			<div>
+				<div>
+					<img id="title-img" src="{{ url_for('static', filename='img/danbo.png') }}" width="128" height="48"/>
+				</div>
+				<div>
+					<div id="title-badge-btn-row">
+						{{ osc.btn(_("View compatible controllers"), id="btn-controllers", w="67px", h="55px") }}
+					</div>
+					<p id="title-release-date">Released 06/03/2024</p>
+					<p id="title-author">Open Shop Channel</p>
+				</div>
+			</div>
+		</div>
+		<div class="sep"></div>
+		<p class="blue bold" id="title-name">Danbo</p>
 	</div>
-	{{ btn_download("Download", "50 Blocks", style="margin: auto") }}
+	{{ btn_download(_("Download"), "50 Blocks", style="margin: auto") }}
 {% endblock %}
 
 {% block footer %}
