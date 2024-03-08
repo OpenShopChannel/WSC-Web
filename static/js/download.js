@@ -1,5 +1,5 @@
 /**
-  * Whether an existing download operation is ongoing.
+ * Whether an existing download operation is ongoing.
  */
 var startingDownload = false;
 

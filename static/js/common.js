@@ -118,6 +118,61 @@ function pageFixes() {
 }
 
 /**
+ * Element to scroll when buttons are pressed.
+ * @type {HTMLElement}
+ */
+var scrollTarget;
+
+/**
+ * Amount of pixels to scroll by.
+ * @type {number}
+ */
+var scrollStep = 30;
+
+/**
+ * Setup and listen to specific events on the page, as to scroll when the D-pad buttons are pressed,
+ * and to set the scroll target to the most recently hovered element that's vertically scrollable.
+ */
+function setupScrolling() {
+	// This isn't great as this doesn't work if you hover over a child of a scrollable element.
+	$(document).mouseover(function(e) {
+		var el = e.target;
+		if (el.scrollHeight > el.clientWidth)
+			scrollTarget = el;
+	});
+
+	$(document).keypress(function(e) {
+		if (!scrollTarget)
+			return;
+
+		/* The Wii Shop seems to have weird behaviour regarding scrolling with controller buttons.
+		 * Left and right always work fine and fire once when they're pressed as usual, but with up
+		 * and down they seem to be on a timer and refire. This is a weird move by Nintendo, as
+		 * utilising the keydown and keyup events would be much more appropriate than modifying the
+		 * browser behaviour for keypress.
+		 * 
+		 * Another thing we have to do is preventDefault the event for keyCode 37 (left arrow), as
+		 * for some reason that's sent in tandem with the events for the up and down buttons.
+		 * Not preventDefaulting it will result in the events for up and down only firing once and
+		 * never again unless you focus the element again by pressing A on it, as it seems to
+		 * unfocus it. This is odd because this issue is not present on Nintendo's pages.
+		 */
+		switch (e.keyCode) {
+			case 175:
+				scrollTarget.scrollTop -= scrollStep; break;
+			case 176:
+				scrollTarget.scrollTop += scrollStep; break;
+			case 178:
+				scrollTarget.scrollLeft -= scrollStep; break;
+			case 177:
+				scrollTarget.scrollLeft += scrollStep; break;
+			case 37:
+				e.preventDefault(); break;
+		}
+	});
+}
+
+/**
  * Performs common page load tasks.
  */
 function onLoadCommon() {
@@ -125,5 +180,9 @@ function onLoadCommon() {
 		initializeEC();
 	
 	setupButtons();
+
+	setupScrolling();
+	scrollTarget = $("#main-content")[0]; // Reasonable assumption to make.
+
 	pageFixes();
 }
