@@ -1,0 +1,143 @@
+{% extends "base-layout.html" %}
+
+{% set header_btns = true %}
+
+{% set title = _("Details") %}
+{% set header_title = title %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+		#main-content {
+			height: 299px; /* 281 + 9 + 9 = 299 */
+			padding: 0px 30px 0px 36px;
+			margin: -9px 0px;
+			overflow: hidden; /* this doesn't need to scroll?? why is it showing the scrollbar?? */
+		}
+
+		.btn-dl {
+			padding: 0;
+			font-size: 24px;
+			color: white;
+			line-height: 1;
+		}
+
+		.btn-dl .top {
+			padding-top: 6px;
+		}
+
+		.btn-dl .sep {
+			height: 1px;
+			display: block;
+			background-color: white;
+			margin: 0px 9px;
+		}
+
+		.btn-dl .bottom {
+			padding-bottom: 3px;
+		}
+
+		#category-heading {
+			width: 229px;
+			height: 21px;
+			background-color: #34beed; /* I give up with roundedness for now */
+			color: white;
+			padding: 0px 3px;
+			font-size: 14px;
+			font-weight: bold;
+			line-height: 25px; /* element is a fixed size, positioning like this should work well enough */
+		}
+
+		#title-details {
+			height: 196px;
+			border: 1px solid #34beed;
+			padding: 8px;
+			margin-bottom: 3px;
+			overflow: auto;
+		}
+
+		/* :( */
+		#title-details > .top {
+			display: table;
+		}
+
+		#title-details > .top > * {
+			display: table-row;
+		}
+
+		#title-details > .top > * > * {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		#title-details > .sep {
+			height: 1px;
+			display: block;
+			background-color: #34beed;
+			margin: 8px 4px;
+		}
+
+		#title-details .left-col {
+			padding-right: 8px;
+		}
+
+		#title-img {
+			box-sizing: content-box;
+			border: 1px solid #34beed;
+			margin-bottom: 8px;
+		}
+
+		#btn-controllers {
+			font-size: 10px;
+			font-weight: bold;
+			padding: 0;
+			margin: auto;
+		}
+	</style>
+{% endblock %}
+
+{% macro btn_download(top, bottom, href, style) %}
+	<a class="btn btn-dl"{{ osc.cond_attr_spcd(href, "href") }} style="width: 241px; height: 76px;{{ style }}">
+		<span><span class="top">{{ top }}</span></span>
+		<span><span><span class="sep"></span></span></span>
+		<span><span class="bottom">{{ bottom }}</span></span>
+	</a>
+{% endmacro %}
+
+{% block content %}
+	<div id="category-heading">Category</div>
+	<div id="title-details">
+		<div class="top">
+			<div>
+				<div class="left-col">
+					<img id="title-img" src="{{ url_for('static', filename='img/danbo.png') }}" width="128" height="48"/>
+					{{ osc.btn(_("View compatible controllers"), id="btn-controllers", w="67px", h="55px") }}
+				</div>
+				<div>
+					<p id="title-version"><b>{% trans %}Version{% endtrans %}:</b> 2.0.2</p>
+					<p id="title-release-date"><b>{% trans %}Released{% endtrans %}:</b> 06/03/2024</p>
+					<p id="title-author"><b>{% trans %}Author{% endtrans %}:</b> Open Shop Channel</p>
+					<p id="title-subcategories">Subcategories</p> {# would just be hidden if there are no subcategories #}
+				</div>
+			</div>
+		</div>
+		<div class="sep"></div>
+		<p class="blue bold text-center" id="title-name">Danbo</p>
+	</div>
+	{{ btn_download(_("Download"), "50 Blocks", style="margin: auto") }}
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
+		{{ osc.btn(_("More Details"), id="more-details-btn", style="float: right") }}
+	</div>
+{% endblock %}

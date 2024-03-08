@@ -125,9 +125,19 @@ def search_page():
     return render_template('catalog.html')
 
 
-@app.route("/title")
-def title_page():
-    return render_template('title.html')
+@app.route("/title/<id>")
+def title_index_page(id):
+    return render_template('title/index.html')
+
+
+@app.route("/title/<id>/controllers")
+def title_controllers_page(id):
+    return render_template('title/controllers.html')
+
+
+@app.route("/title/<id>/details")
+def title_details_page(id):
+    return render_template('title/details.html')
 
 
 """
