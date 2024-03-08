@@ -1,0 +1,74 @@
+{% extends "base-layout.html" %}
+
+{% set header_btns = true %}
+
+{% set title = _("More Details") %}
+{% set header_title = title %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+		#main-content {
+			height: 299px;
+			padding: 0px 30px 0px 36px;
+			margin: -9px 0px;
+			overflow: hidden;
+		}
+
+		#category-heading {
+			width: 229px;
+			height: 21px;
+			background-color: #34beed;
+			color: white;
+			padding: 0px 3px;
+			font-size: 14px;
+			font-weight: bold;
+			line-height: 25px;
+		}
+
+		#title-details {
+			border: 1px solid #34beed;
+		}
+
+		#title-details > .top {
+			height: 54px;
+			padding: 4px;
+			border-bottom: 1px solid #34beed;
+		}
+
+		#title-details > .bottom {
+			height: 221px; /* 299 - 21 - 2 (#title-details vertical borders) - 54 - 1 (.top bottom border) = 221  */
+			padding: 8px;
+			overflow: auto;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<div id="category-heading">Category</div>
+	<div id="title-details">
+		<div class="top">
+			<p class="blue text-center" id="title-name">Danbo</p>
+		</div>
+		<div class="bottom">
+			<p>Hi. I need a left sidebar for images.</p>
+			{% for i in range(16) %}
+			<p>I can scroll</p>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
+	</div>
+{% endblock %}
