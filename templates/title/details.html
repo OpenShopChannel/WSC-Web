@@ -49,6 +49,32 @@
 			padding: 8px;
 			overflow: auto;
 		}
+
+		#title-details-content {
+			display: table;
+		}
+
+		#title-details-content > * {
+			display: table-row;
+		}
+
+		#title-details-content > * > * {
+			display: table-cell;
+			vertical-align: top;
+		}
+
+		#title-details-content .image-col {
+			padding-right: 8px;
+		}
+
+		#title-details-content .image-col img {
+			margin-bottom: 16px; /* we don't have last-child so i can't remove this on the last image AAAAAHHHH */
+		}
+
+		#title-details-content .content-col {
+			width: 100%;
+			font-size: 18px;
+		}
 	</style>
 {% endblock %}
 
@@ -59,10 +85,20 @@
 			<p class="blue text-center" id="title-name">Danbo</p>
 		</div>
 		<div class="bottom">
-			<p>Hi. I need a left sidebar for images.</p>
-			{% for i in range(16) %}
-			<p>I can scroll</p>
-			{% endfor %}
+			<div id="title-details-content">
+				<div>
+					<div class="image-col">
+						<img src="{{ url_for('static', filename='img/danbo.png') }}" width="160" height="120"/>
+						<img src="{{ url_for('static', filename='img/danbo.png') }}" width="160" height="120"/>
+					</div>
+					<div class="content-col">
+						<p>Hi. I have a left sidebar for images and screenshots.</p>
+						{% for i in range(16) %}
+						<p>I can scroll</p>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock %}
