@@ -125,7 +125,7 @@ def search_page():
     return render_template('catalog.html')
 
 
-@app.route("/title/<id>")
+@app.route("/title/<id>/")
 def title_index_page(id):
     return render_template('title/index.html')
 
