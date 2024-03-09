@@ -4,7 +4,7 @@
 	<div id="main-header">
 		<div id="main-header-contents">
 			{% block header -%}
-			<h1 class="title{% if header_title_blue|default(false) or not header_title is defined %} blue{% endif %}" id="main-heading">{% if header_title is defined %}{{ header_title }}{% else %}{{ openify("Open")|safe }} Shop Channel{% endif %}</h1>
+			<h1 class="heading{% if header_title_blue|default(false) or not header_title is defined %} blue{% endif %}" id="main-heading">{% if header_title is defined %}{{ header_title }}{% else %}{{ openify("Open")|safe }} Shop Channel{% endif %}</h1>
 			{% if header_btns|default(false) %}
 			<div id="main-header-btns">
 				<div>{{ osc.btn(class="btn-cancel", id="top-btn", href="/home", w="52px", h="55px", img=url_for('static', filename='img/icons/top.svg'), img_w="34", img_h="34") }}</div>
