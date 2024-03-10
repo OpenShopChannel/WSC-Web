@@ -1,0 +1,67 @@
+{% extends "base-layout.html" %}
+
+{% set header_btns = true %}
+
+{% set title = _("Download Location") %}
+{% set header_title = title %}
+
+{% block head %}
+	{{ super() }}
+	<script type="text/javascript">
+		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
+
+		function onLoad() {
+			onLoadCommon();
+		}
+	</script>
+
+	<style>
+		#main-content {
+			padding: 0px 50px 0px 50px;
+		}
+
+		#content-tbl {
+			width: 100%;
+			height: 100%;
+			table-layout: fixed;
+			border-spacing: 0px;
+		}
+
+		#content-tbl > tbody > tr.text {
+			height: 80px;
+		}
+
+		#content-tbl > tbody > tr.buttons > .btn {
+			font-size: 18px;
+		}
+
+		/* stupid whitespace on table cells */
+		.m-left-auto-children > * {
+			margin-left: auto;
+		}
+
+		#nand-btn, #sd-card-btn {
+			padding: 25px;
+			font-size: 16px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	{# sometimes you ain't got no choice -#}
+	<table id="content-tbl">
+		<tr class="text">
+			<td class="text-center font-18px" colspan="2">Please choose a location to download the data to.</td>
+		</tr>
+		<tr class="buttons">
+			<td>{{ osc.btn(_("Wii System Memory"), id="nand-btn", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
+			<td class="m-left-auto-children">{{ osc.btn(_("SD Card"), id="sd-card-btn", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
+		</tr>
+	</table>
+{% endblock %}
+
+{% block footer %}
+	<div id="main-footer-btns">
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+	</div>
+{% endblock %}
