@@ -33,6 +33,10 @@
 
 {# TODO: Clicking the Wii Shop Channel header should go back to the landing page -#}
 
+{% block header %}
+	<h1 class="blue heading link" id="main-heading"><a href="/landing">{{ openify("Open")|safe }} Shop Channel</a></h1>
+{% endblock %}
+
 {% block content %}
 	<div class="justify-hr btns-top-category">
 		<div>{{ osc.btn(_("Games"), href="/browse?category=games", w="173px", h="131px", img=url_for('static', filename='img/icons/controller.svg'), img_w="92") }}</div>
