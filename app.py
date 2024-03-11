@@ -140,10 +140,15 @@ def title_details_page(id):
     return render_template('title/details.html')
 
 
-# This chould be later put inside the main title details page, just like how it was originally.
+# This could be later put inside the main title details page, just like how it was originally.
 @app.route("/title/<id>/prepare-download")
 def title_prepare_download_page(id):
     return render_template('title/prepare-download.html')
+
+
+@app.route("/title/<id>/download")
+def title_download_page(id):
+    return render_template('title/download.html')
 
 
 """

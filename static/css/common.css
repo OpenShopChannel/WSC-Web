@@ -165,6 +165,7 @@ body {
 .osc-n { color: #ed349f; }
 
 .blue { color: #34beed; }
+.red { color: #ff0000; }
 
 .bold { font-weight: bold; }
 
@@ -174,3 +175,6 @@ body {
 .font-14px { font-size: 14px; }
 .font-16px { font-size: 16px; }
 .font-18px { font-size: 18px; }
+.font-20px { font-size: 20px; }
+
+.d-none { display: none; }

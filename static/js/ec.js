@@ -16,8 +16,8 @@ const ECReturnCodes = {
  * @enum {string}
  */
 const ECRegistrationStates = {
-	REGISTERED: "R",
-	UNREGISTERED: "U"
+	REGISTERED: 'R',
+	UNREGISTERED: 'U'
 };
 
 /**

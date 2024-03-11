@@ -33,13 +33,13 @@ function installChannel() {
 		startingDownload = true;
 
 		// We do not actually support paying for titles.
-		const price = new ECPrice('0.00', 'POINTS');
+		const price = new ECPrice("0.00", "POINTS");
 		const method = new ECAccountPayment();
 
 		// Apply empty limits.
 		const limits = new ECTitleLimits();
 
-		const result = ec.purchaseTitle(_titleId, "0", price, method, limits, true);
+		const result = ec.purchaseTitle(_titleId, '0', price, method, limits, true);
 		completeOp(result, function () {
 			window.location.href = "/finishdownload";
 		});

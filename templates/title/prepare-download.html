@@ -13,6 +13,16 @@
 		function onLoad() {
 			onLoadCommon();
 		}
+
+		function goToDownload(location) {
+			if (location == "nand") {
+				// TODO: Calculate remaining space on NAND and show error if there is none
+			} else if (location == "sd") {
+				// TODO: Calculate remaining space on SD card and show error if there is none
+			}
+
+			window.location.href = "download?location=" + location;
+		}
 	</script>
 
 	<style>
@@ -54,8 +64,9 @@
 			<td class="text-center font-18px" colspan="2">{% trans %}Please choose a location to download the data to.{% endtrans %}</td>
 		</tr>
 		<tr class="buttons">
-			<td>{{ osc.btn(_("Wii System Memory"), id="nand-btn", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
-			<td class="m-left-auto-children">{{ osc.btn(_("SD Card"), id="sd-card-btn", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
+			{# mmh, should really have a way to HTML encode the hrefs -#}
+			<td>{{ osc.btn(_("Wii System Memory"), id="nand-btn", href="javascript:goToDownload(&quot;nand&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
+			<td class="m-left-auto-children">{{ osc.btn(_("SD Card"), id="sd-card-btn", href="javascript:goToDownload(&quot;sd&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
 		</tr>
 	</table>
 {% endblock %}

@@ -2,8 +2,15 @@
 
 {% set header_btns = true %}
 
-{# This is also shown as part as the download process, albeit under a different title. This should later be properly templated somehow. #}
-{% set title = _("Controller Confirmation") %}
+{# shouldn't be represented as a string but mhhhh #}
+{% set is_download = request.args.get("download") == "true" %}
+
+{% if is_download %}
+	{% set title = _("Selection Confirmation") %}
+{% else %}
+	{% set title = _("Controller Confirmation") %}
+{% endif %}
+
 {% set header_title = title %}
 
 {% block head %}
@@ -59,6 +66,9 @@
 
 {% block footer %}
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
+		{% if is_download %}
+			{{ osc.btn(_("OK"), id="ok-btn", href="download", style="float: right") }}
+		{% endif %}
 	</div>
 {% endblock %}
