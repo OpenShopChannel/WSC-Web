@@ -1,8 +1,8 @@
 {% extends "base-layout.html" %}
 
-{% set header_btns = true %}
+{% set header_btns = false %}
 
-{% set title = _("Download Confirmation") %}
+{% set title = _("Download Software") %}
 {% set header_title = title %}
 
 {% block head %}
@@ -16,128 +16,10 @@
 	</script>
 
 	<style>
-		#main-content {
-			padding: 0px 35px 0px 36px;
 
-			/* Opera on the Wii wants to always show a scrollbar when the prompt text is showing, despite there
-			 * being just enough space to fit on the page without one.
-			 * Not even Opera 9.5 on desktop does this, so we just hide the scrollbar to appease the Wii. */
-			overflow: hidden;
-		}
-
-		.confirmation-card {
-			height: 225px;
-			background-image: url("{{ url_for('static', filename='img/confirmation-card.svg') }}");
-		}
-
-		.confirmation-card > .header {
-			height: 55px;
-			border-bottom: 1px solid #34beed;
-			padding: 2px 0px;
-		}
-
-		.confirmation-card > .header .title {
-			font-size: 18px;
-			font-weight: normal;
-			text-align: center;
-			color: #34beed;
-		}
-
-		.confirmation-card > .content {
-			height: 128px; /* 225 - 55 - 42 = 128px */
-		}
-
-		.confirmation-card > .content > .storage-tbl {
-			height: 100%;
-		}
-
-		.confirmation-card > .footer {
-			height: 42px;
-			padding: 2px 4px;
-			color: white;
-		}
-
-		.storage-tbl {
-			width: 100%;
-			border-spacing: 0px;
-			line-height: 1;
-			padding: 0px 6px;
-		}
-
-		.storage-tbl th, .storage-tbl td {
-			text-align: right;
-			font-weight: normal;
-			box-sizing: content-box;
-		}
-
-		.storage-tbl td.amount {
-			width: 90px;
-			padding: 0px 7px;
-		}
-
-		.storage-tbl td.units {
-			width: 130px;
-			text-align: center;
-		}
-
-		.storage-tbl tr.sep > td > div {
-			height: 1px;
-			background-color: #34beed;
-			margin: 0px 4px;
-		}
 	</style>
 {% endblock %}
 
 {% block content %}
-	<div class="confirmation-card">
-		<div class="header">
-			<h2 class="title">Danbo</h2>
-		</div>
-		<div class="content">
-			<table class="storage-tbl">
-				<tr>
-					<th>{% trans %}NAND Open Blocks:{% endtrans %}</th>
-					<td class="amount">4096</td>
-					<td class="units">Blocks</td>
-				</tr>
-				<tr class="red">
-					<th>{% trans %}NAND Blocks to Download:{% endtrans %}</th>
-					<td class="amount">18</td>
-					<td class="units">{% trans %}Blocks{% endtrans %}</td>
-				</tr>
-				<tr>
-					<th>{% trans %}NAND Blocks after Download:{% endtrans %}</th>
-					<td class="amount">4078</td>
-					<td class="units">{% trans %}Blocks{% endtrans %}</td>
-				</tr>
-				<tr class="sep"><td colspan="3"><div></div></td></tr>
-				<tr>
-					<th>{% trans %}SD Card Open Blocks:{% endtrans %}</th>
-					<td class="amount">131072</td>
-					<td class="units">{% trans %}Blocks{% endtrans %}</td>
-				</tr>
-				<tr class="red">
-					<th>{% trans %}SD Card Blocks to Download:{% endtrans %}</th>
-					<td class="amount">16</td>
-					<td class="units">{% trans %}Blocks{% endtrans %}</td>
-				</tr>
-				<tr>
-					<th>{% trans %}SD Card Blocks after Download:{% endtrans %}</th>
-					<td class="amount">131056</td>
-					<td class="units">{% trans %}Blocks{% endtrans %}</td>
-				</tr>
-			</table>
-		</div>
-		<div class="footer">
-			<p class="bold font-14px">Downloading this software requires 18 blocks in the Wii system memory, and 16 blocks on an SD Card.</p>
-		</div>
-	</div>
-	<p class="blue bold text-center font-20px prompt">Download this software to Wii<br/>system memory now?</p>
-{% endblock %}
 
-{% block footer %}
-	<div id="main-footer-btns">
-		{{ osc.btn(_("Yes"), id="yes-btn", href="", style="float: left") }}
-		{{ osc.btn(_("No"), class="btn-cancel", id="no-btn", href="javascript:history.back()", style="float: right") }}
-	</div>
 {% endblock %}
