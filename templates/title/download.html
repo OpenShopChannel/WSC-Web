@@ -16,10 +16,48 @@
 	</script>
 
 	<style>
+		#main-content {
+			padding: 0px 20px;
+		}
 
+		#storage-tbl {
+			width: 100%;
+			border-spacing: 0px;
+		}
+
+		#storage-tbl th, #storage-tbl td {
+			text-align: right;
+			font-weight: normal;
+			box-sizing: content-box;
+		}
+
+		#storage-tbl td.amount {
+			width: 100px;
+			padding: 0px 10px 0px 20px;
+		}
+
+		#storage-tbl td.units {
+			width: 120px;
+			text-align: left;
+		}
 	</style>
 {% endblock %}
 
 {% block content %}
-
+	<div class="text-center font-18px" id="top">
+		<p>You are downloading</p>
+		<p class="blue">Danbo</p>
+	</div>
+	<table class="font-18px" id="storage-tbl">
+		<tr>
+			<th>NAND Blocks after Download:</th>
+			<td class="amount">4078</td>
+			<td class="units">Blocks</td>
+		</tr>
+		<tr>
+			<th>SD Card Blocks after Download:</th>
+			<td class="amount">131056</td>
+			<td class="units">Blocks</td>
+		</tr>
+	</table>
 {% endblock %}

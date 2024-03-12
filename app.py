@@ -223,7 +223,7 @@ def random_app_page():
 @app.route("/finishdownload")
 def finish_download_page():
     return render_template("finishdownload.html")
-"""
+
 
 @app.route("/error")
 def error_page():
@@ -233,6 +233,7 @@ def error_page():
         return redirect("/", code=302)
     else:
         return render_template('error.html', error_code=error_code, error_text=error_text)
+"""
 
 
 @app.route("/eval")
@@ -240,6 +241,7 @@ def eval_page():
     return render_template("eval.html")
 
 
+"""
 @app.errorhandler(404)
 def page_not_found(e):
     error_code = "HTTP_404"
@@ -252,6 +254,7 @@ def server_error(e):
     error_code = "HTTP_500"
     error_text = gettext("The server has encountered an error. Try again later.")
     return render_template('error.html', error_code=error_code, error_text=error_text), 500
+"""
 
 
 if __name__ == '__main__':
