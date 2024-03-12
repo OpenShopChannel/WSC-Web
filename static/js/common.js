@@ -173,6 +173,31 @@ function setupScrolling() {
 }
 
 /**
+ * Returns an object representing the query string parameters.
+ * @returns {Object} Query string split by keys and values. Value will be null if none specified.
+ */
+function getSplitQueryString() {
+	var split = location.search.substring(1).split('&');
+	var params = {};
+
+	for (var i = 0; i < split.length; i++) {
+		var equalsIndex = split[i].indexOf('=');
+
+		if (equalsIndex == -1) {
+			params[split[i]] = null;
+			continue;
+		} else if (equalsIndex == split[i].length - 1) {
+			params[split[i].substring(0, split[i].length - 1)] = null;
+			continue;
+		}
+
+		params[split[i].substring(0, equalsIndex)] = decodeURIComponent(split[i].substring(equalsIndex + 1));
+	}
+
+	return params;
+}
+
+/**
  * Performs common page load tasks.
  */
 function onLoadCommon() {

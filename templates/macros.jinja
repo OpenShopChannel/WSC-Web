@@ -18,7 +18,7 @@
 {% macro btn(body, class, id, href, w, h, img, img_w, img_h, style) %}
 	{# :( it's good enough -#}
 	<a class="btn{{ cond_str_spcd(class) }}"{{ cond_attr_spcd(id, "id") }}{{ cond_attr_spcd(href, "href") }}{% if w|default(false) or h|default(false) or style|default(false) %} style="{{ cond_prop_spcd(w, "width") }}{{ cond_prop_spcd(h, "height") }}{{ cond_str(style) }}"{% endif %}>
-		{# XHTML doesn't permit us to put block elements like div in an inline element like anchor, so we use span as it's the closest to a generic inline container -#}
+		{#- XHTML doesn't permit us to put block elements like div in an inline element like anchor, so we use span as it's the closest to a generic inline container -#}
 		{%- if img|default(false) %}
 		<span><span class="btn-vert-img-c"><img class="btn-img" src="{{ img }}"{{ cond_attr_spcd(img_w, "width") }}{{ cond_attr_spcd(img_h, "height") }}/></span></span>
 		{%- endif %}

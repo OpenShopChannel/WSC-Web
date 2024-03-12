@@ -68,7 +68,7 @@
 	<div id="main-footer-btns">
 		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
 		{% if is_download %}
-			{{ osc.btn(_("OK"), id="ok-btn", href="download", style="float: right") }}
+			{{ osc.btn(_("OK"), id="ok-btn", href="prepare-download?page=" + request.args.get("nextPage") + "&location=" + request.args.get("location"), style="float: right") }}
 		{% endif %}
 	</div>
 {% endblock %}

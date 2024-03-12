@@ -35,7 +35,12 @@
 		}
 
 		$(document).ready(function() {
-			showPage("location-select");
+			var queryParams = getSplitQueryString();
+
+			if (queryParams["page"])
+				showPage(queryParams["page"]);
+			else
+				showPage("location-select");
 		});
 
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
@@ -55,8 +60,8 @@
 
 			/* Should be conditional later, as seemingly some titles didn't show the controller selection confirmation,
 			 * and some showed an additional page, such as the Wii U Transfer Tool. */
-			if (false) {
-				window.location.href = "controllers?download=true&location=" + loc;
+			if (true) {
+				window.location.href = "controllers?download=true&location=" + loc + "&nextPage=confirmation";
 			} else {
 				showPage("confirmation");
 			}
@@ -191,7 +196,7 @@
 					<td class="text-center font-18px" colspan="2">{% trans %}Please choose a location to download the data to.{% endtrans %}</td>
 				</tr>
 				<tr class="buttons">
-					{# mmh, should really have a way to HTML encode the hrefs -#}
+					{# TODO: should really have a way to HTML encode the hrefs -#}
 					<td>{{ osc.btn(_("Wii System Memory"), id="nand-btn", href="javascript:setDownloadLocation(&quot;nand&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
 					<td class="m-left-auto-children">{{ osc.btn(_("SD Card"), id="sd-card-btn", href="javascript:setDownloadLocation(&quot;sd&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
 				</tr>
@@ -251,7 +256,7 @@
 		<div id="page-footers">
 			{# Don't hide this one by default, a Back button is a good default -#}
 			<div class="page-footer" id="location-select-page-footer">
-				{{ osc.btn(_("Back"), class="btn-cancel", href="javascript:history.back()") }}
+				{{ osc.btn(_("Back"), class="btn-cancel", href="./") }}
 			</div>
 			<div class="page-footer d-none" id="confirmation-page-footer">
 				{{ osc.btn(_("Yes"), href="", style="float: left") }}
