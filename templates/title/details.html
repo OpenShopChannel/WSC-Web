@@ -81,32 +81,38 @@
 			width: 100%;
 			font-size: 18px;
 		}
+
+		pre#title-description {
+			white-space: pre-wrap;
+			font: inherit;
+		}
 	</style>
 {% endblock %}
 
 {% block content %}
-	<div id="category-heading">Category</div>
-	<div id="title-details">
-		<div class="top">
-			<h2 class="blue text-center" id="title-name">Danbo</h2>
-		</div>
-		<div class="bottom">
-			<div id="title-details-content">
-				<div>
-					<div class="image-col">
-						<img src="{{ url_for('static', filename='img/danbo.png') }}" width="160" height="120"/>
-						<img src="{{ url_for('static', filename='img/danbo.png') }}" width="160" height="120"/>
-					</div>
-					<div class="content-col">
-						<p>Hi. I have a left sidebar for images and screenshots.</p>
-						{% for i in range(16) %}
-						<p>I can scroll</p>
-						{% endfor %}
+	{% if package is not none %}
+		<div id="category-heading">{{ category_translation(package["category"]) }}</div>
+		<div id="title-details">
+			<div class="top">
+				<h2 class="blue text-center" id="title-name">{{ package["name"] }}</h2>
+			</div>
+			<div class="bottom">
+				<div id="title-details-content">
+					<div>
+						<div class="image-col">
+							<img src="{{ url_for('static', filename='img/screenshot_placeholder.png') }}" width="160" height="120"/>
+							<img src="{{ url_for('static', filename='img/screenshot_placeholder.png') }}" width="160" height="120"/>
+						</div>
+						<div class="content-col">
+							<pre id="title-description">{{ package["description"]["long"] }}</pre>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	{% else %}
+		<p class="font-18px" style="margin-top: 1em">{% trans %}The title cannot be found.{% endtrans %}</p>
+	{% endif %}
 {% endblock %}
 
 {% block footer %}
