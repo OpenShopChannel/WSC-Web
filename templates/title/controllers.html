@@ -52,22 +52,27 @@
 {% endblock %}
 
 {% block content %}
-	<div id="title-name-container">
-		<h2 class="blue text-center" id="title-name">Danbo</h2>
-	</div>
-	<div id="title-details-container">
-		<p class="blue text-center font-14px">{% trans %}Please note the following when downloading this software:{% endtrans %}</p>
-		<div id="controllers">
-			<img src="{{ url_for('static', filename='img/badges/wiimote.svg') }}" width="56" height="41"/>
+	{% if package is not none %}
+		<div id="title-name-container">
+			<h2 class="blue text-center" id="title-name">{{ package["name"] }}</h2>
 		</div>
-		<p>{% trans %}You can use this software only with the Wii Remote.{% endtrans %}</p>
-	</div>
+		<div id="title-details-container">
+			{# TODO: Actually get and present the controller information. I'd need to recreate more icons, however. #}
+			<p class="blue text-center font-14px">{% trans %}Please note the following when downloading this software:{% endtrans %}</p>
+			<div id="controllers">
+				<img src="{{ url_for('static', filename='img/badges/wiimote.svg') }}" width="56" height="41"/>
+			</div>
+			<p>{% trans %}You can use this software only with the Wii Remote.{% endtrans %}</p>
+		</div>
+	{% else %}
+		<p class="font-18px" style="margin-top: 1em">{% trans %}The title cannot be found.{% endtrans %}</p>
+	{% endif %}
 {% endblock %}
 
 {% block footer %}
 	<div id="main-footer-btns">
 		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
-		{% if is_download %}
+		{% if is_download and package is not none %}
 			{{ osc.btn(_("OK"), id="ok-btn", href="prepare-download?page=" + request.args.get("nextPage") + "&location=" + request.args.get("location"), style="float: right") }}
 		{% endif %}
 	</div>
