@@ -114,31 +114,38 @@
 {% endmacro %}
 
 {% block content %}
-	<div id="category-heading">Category</div>
-	<div id="title-details">
-		<div class="top">
-			<div>
-				<div class="left-col">
-					<img id="title-img" src="{{ url_for('static', filename='img/danbo.png') }}" width="128" height="48"/>
-					{{ osc.btn(_("View compatible controllers"), id="btn-controllers", href="controllers", w="67px", h="55px") }}
-				</div>
+	{% if package is not none %}
+		<div id="category-heading">{{ category_translation(package["category"]) }}</div>
+		<div id="title-details">
+			<div class="top">
 				<div>
-					<p id="title-version"><b>{% trans %}Version{% endtrans %}:</b> 2.0.2</p>
-					<p id="title-release-date"><b>{% trans %}Released{% endtrans %}:</b> 06/03/2024</p>
-					<p id="title-author"><b>{% trans %}Author{% endtrans %}:</b> Open Shop Channel</p>
-					<p id="title-subcategories">Subcategories</p> {# would just be hidden if there are no subcategories #}
+					<div class="left-col">
+						<img id="title-img" src="{{ package['url']['icon'].replace('https', 'http') }}" width="128" height="48"/>
+						{{ osc.btn(_("View compatible controllers"), id="btn-controllers", href="controllers", w="67px", h="55px") }}
+					</div>
+					<div>
+						<p id="title-version"><b>{% trans %}Version{% endtrans %}:</b> {{ package["version"] }}</p>
+						<p id="title-release-date"><b>{% trans %}Released{% endtrans %}:</b> {{ package["release_date"] }}</p>
+						<p id="title-author"><b>{% trans %}Author{% endtrans %}:</b> {{ package["author"] }}</p>
+						<!-- <p id="title-subcategories">Subcategories</p> --> {# would just be hidden if there are no subcategories #}
+					</div>
 				</div>
 			</div>
+			<div class="sep"></div>
+			<p class="blue bold text-center" id="title-name">{{ package["name"] }}</p>
 		</div>
-		<div class="sep"></div>
-		<p class="blue bold text-center" id="title-name">Danbo</p>
-	</div>
-	{{ btn_download(_("Download"), "50 Blocks", "prepare-download", "margin: auto") }}
+		{# TODO: Retrieve download size. Should be the total size for both menu title and actual app. #}
+		{{ btn_download(_("Download"), "0 Blocks", "prepare-download", "margin: auto") }}
+	{% else %}
+		<p class="font-18px" style="margin-top: 1em">{% trans %}The title cannot be found.{% endtrans %}</p>
+	{% endif %}
 {% endblock %}
 
 {% block footer %}
 	<div id="main-footer-btns">
 		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
-		{{ osc.btn(_("More Details"), id="more-details-btn", href="details", style="float: right") }}
+		{% if package is not none %}
+			{{ osc.btn(_("More Details"), id="more-details-btn", href="details", style="float: right") }}
+		{% endif %}
 	</div>
 {% endblock %}

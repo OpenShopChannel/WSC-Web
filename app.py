@@ -125,30 +125,36 @@ def search_page():
     return render_template('catalog.html')
 
 
-@app.route("/title/<id>/")
-def title_index_page(id):
-    return render_template('title/index.html')
+# TODO: Return HTTP 404 if package not found
+@app.route("/title/<slug>/")
+def title_index_page(slug):
+    package = OpenShopChannel.package_by_name(slug)
+    return render_template('title/index.html', package=package)
 
 
-@app.route("/title/<id>/controllers")
-def title_controllers_page(id):
-    return render_template('title/controllers.html')
+@app.route("/title/<slug>/controllers")
+def title_controllers_page(slug):
+    package = OpenShopChannel.package_by_name(slug)
+    return render_template('title/controllers.html', package=package)
 
 
-@app.route("/title/<id>/details")
-def title_details_page(id):
-    return render_template('title/details.html')
+@app.route("/title/<slug>/details")
+def title_details_page(slug):
+    package = OpenShopChannel.package_by_name(slug)
+    return render_template('title/details.html', package=package)
 
 
 # This could be later put inside the main title details page, just like how it was originally.
-@app.route("/title/<id>/prepare-download")
-def title_prepare_download_page(id):
-    return render_template('title/prepare-download.html')
+@app.route("/title/<slug>/prepare-download")
+def title_prepare_download_page(slug):
+    package = OpenShopChannel.package_by_name(slug)
+    return render_template('title/prepare-download.html', package=package)
 
 
-@app.route("/title/<id>/download")
-def title_download_page(id):
-    return render_template('title/download.html')
+@app.route("/title/<slug>/download")
+def title_download_page(slug):
+    package = OpenShopChannel.package_by_name(slug)
+    return render_template('title/download.html', package=package)
 
 
 """
