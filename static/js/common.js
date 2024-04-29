@@ -9,7 +9,7 @@ var ec = new ECommerceInterface();
 var info = ec.getDeviceInfo();
 var NWC24 = new wiiNwc24();
 var sound = new wiiSound();
-var keypad = new wiiKeyboard();
+var keyboard = new wiiKeyboard();
 
 /**
  * Enum describing the available wallpapers that show in 16:9.

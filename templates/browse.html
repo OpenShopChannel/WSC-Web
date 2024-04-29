@@ -13,6 +13,16 @@
 		function onLoad() {
 			onLoadCommon();
 		}
+
+		function doSearch() {
+			SearchQuery.blur();
+			var searchValue = SearchQuery.value;
+			SearchQuery.value = '';
+
+			if(searchValue) {
+				window.location.href = "/search?category={{ category }}&type=title&query=" + searchValue;
+			}
+		}
 	</script>
 
 	<style>
@@ -52,16 +62,21 @@
 	<table id="btn-table">
 		<tr>
 			<td>{{ osc.btn(_("Popular Titles"), href="", w="240px", h="65px") }}</td>
-			<td class="btn-table-m-left-auto">{{ osc.btn(_("Newest Additions"), href="/search?type=titles", w="240px", h="65px") }}</td>
+			<td class="btn-table-m-left-auto">{{ osc.btn(_("Newest Additions"), href="/search?category=" + category + "&type=newest", w="240px", h="65px") }}</td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
 			{# percent width... bad! won't work later -#}
-			<td colspan="2">{{ osc.btn(_("Search by Publisher"), href="/search?type=publishers", w="100%", h="65px") }}</td>
+			<td colspan="2">{{ osc.btn(_("Search by Publisher"), href="/search?category=" + category + "&type=publishers", w="100%", h="65px") }}</td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
-			<td colspan="2">{{ osc.btn(_("Search by Title"), href="", w="100%", h="65px") }}</td>
+			<td colspan="2">
+				{{ osc.btn(_("Search by Title"), w="100%", h="65px") }}
+				<input type="text" style="position:absolute; top:277px; left:-400px; width:970px; height:65px; background: none; border: 0pt; font-size: 1pt; color: #FFFFFF;"
+					   name="SearchQuery" maxlength="50" id="SearchQuery" onmousedown="keyboard.call(KeyboardType.DEFAULT_NO_RETURN, 5, false, 'Enter the name of the title you want.');"
+				       onchange="doSearch();" />
+			</td>
 		</tr>
 	</table>
 {% endblock %}

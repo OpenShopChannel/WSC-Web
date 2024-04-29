@@ -41,8 +41,8 @@ class API:
     def get_packages(self):
         return self.packages
 
-    def filter_packages(self, category=None):
-        filtered = filter_packages(self.packages, category=category)
+    def filter_packages(self, category=None, name=None):
+        filtered = filter_packages(self.packages, category=category, name=name)
         return filtered
 
     def package_by_name(self, name):

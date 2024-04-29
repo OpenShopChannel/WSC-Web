@@ -114,15 +114,21 @@ def home_page():
 
 @app.route("/browse")
 def browse_page():
-    return render_template('browse.html')
+    category = request.args.get('category', default='games', type=str)
+    return render_template('browse.html', category=category)
 
 
 @app.route("/search")
 def search_page():
-    search_type = request.args.get('type', default='titles', type=str)
+    query = request.args.get('query', default=None, type=str)
+    search_type = request.args.get('type', default='title', type=str)
+    category = request.args.get('category', default='games', type=str)
+
     if search_type == "publishers":
         return render_template('publishers.html')
-    return render_template('catalog.html')
+
+    packages = OpenShopChannel.filter_packages(category, query)
+    return render_template('catalog.html', packages=packages)
 
 
 # TODO: Return HTTP 404 if package not found
