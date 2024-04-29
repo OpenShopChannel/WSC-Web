@@ -1,7 +1,7 @@
 # Hack to permit no "Connection: close".
 import no_connection_close
 
-from flask import Flask, render_template, request, redirect, Response, send_from_directory
+from flask import Flask, render_template, request
 from flask_babel import Babel, gettext
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
