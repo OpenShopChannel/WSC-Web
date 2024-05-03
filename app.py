@@ -1,7 +1,7 @@
 # Hack to permit no "Connection: close".
 import no_connection_close
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 from flask_babel import Babel, gettext
 from werkzeug.urls import url_encode
 from urllib.request import Request, urlopen
@@ -131,10 +131,12 @@ def search_page():
     return render_template('catalog.html', packages=packages)
 
 
-# TODO: Return HTTP 404 if package not found
 @app.route("/title/<slug>/")
 def title_index_page(slug):
     package = OpenShopChannel.package_by_name(slug)
+    if not package:
+        return Response(status=404, response="<h1>Unknown Title</h1>")
+
     return render_template('title/index.html', package=package)
 
 
