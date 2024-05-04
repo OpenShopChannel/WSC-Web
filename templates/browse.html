@@ -12,14 +12,22 @@
 
 		function onLoad() {
 			onLoadCommon();
+
+			$(titleSearchIn).mousedown(function() {
+				keyboard.call(KeyboardType.DEFAULT_NO_RETURN, 5, false, "{% trans %}Enter the name of the title you want.{% endtrans %}");
+			});
+
+			$(titleSearchIn).change(function(e) {
+				doSearch();
+			});
 		}
 
 		function doSearch() {
-			SearchQuery.blur();
-			var searchValue = SearchQuery.value;
-			SearchQuery.value = '';
+			titleSearchIn.blur();
+			var searchValue = titleSearchIn.value;
+			titleSearchIn.value = "";
 
-			if(searchValue) {
+			if (searchValue) {
 				window.location.href = "/search?category={{ category }}&type=title&query=" + searchValue;
 			}
 		}
@@ -53,6 +61,28 @@
 		.btn-table-gap {
 			height: 20px;
 		}
+
+		#titleSearchC {
+			position: relative;
+			overflow: hidden; /* gah */
+		}
+
+		#titleSearchIn {
+			position: absolute;
+
+			width: 100%;
+			height: 100%;
+			text-align: center;
+
+			background: none;
+			border: none;
+			color: inherit;
+			font: inherit;
+			margin: 0;
+			padding: 0;
+
+			opacity: 0;
+		}
 	</style>
 {% endblock %}
 
@@ -72,10 +102,10 @@
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
 			<td colspan="2">
-				{{ osc.btn(_("Search by Title"), w="100%", h="65px") }}
-				<input type="text" style="position:absolute; top:277px; left:-400px; width:970px; height:65px; background: none; border: 0pt; font-size: 1pt; color: #FFFFFF;"
-					   name="SearchQuery" maxlength="50" id="SearchQuery" onmousedown="keyboard.call(KeyboardType.DEFAULT_NO_RETURN, 5, false, 'Enter the name of the title you want.');"
-				       onchange="doSearch();" />
+				<div id="titleSearchC">
+					<input type="text" id="titleSearchIn" maxlength="50"/>
+					{{ osc.btn(_("Search by Title"), w="100%", h="65px") }}
+				</div>
 			</td>
 		</tr>
 	</table>

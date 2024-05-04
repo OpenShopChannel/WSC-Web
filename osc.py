@@ -36,7 +36,7 @@ class API:
     packages = None
 
     def load_packages(self):
-        self.packages = requests.get(f"{config.REPOMAN_HOST}/api/v3/contents", timeout=1).json()
+        self.packages = requests.get(f"{config.REPOMAN_HOST}/api/v3/contents", timeout=2).json()
 
     def get_packages(self):
         return self.packages
