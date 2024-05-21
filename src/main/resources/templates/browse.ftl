@@ -1,6 +1,6 @@
 <#import "includes/base-layout.ftl" as layout>
 <#assign categoryName=category?capitalize/>
-<@layout.header.header title=categoryName>
+<@layout.header.header categoryName>
     <script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 

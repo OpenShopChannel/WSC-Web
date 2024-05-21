@@ -1,13 +1,6 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{# Rename this to a more appropriate filename later... This will be reused for subcategories once they are implemented (e.g., having a list of game genres) -#}
-{% set title = _("Search by Publisher") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
+<#import "includes/base-layout.ftl" as layout>
+<#-- Rename this to a more appropriate filename later... This will be reused for subcategories once they are implemented (e.g., having a list of game genres) -->
+<@layout.header.header "Search by Publisher">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
@@ -73,27 +66,30 @@
 			line-height: 1;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% macro btn_item(top, bottom) %}
+<@layout.navigation headerTitle="Search by Publisher" headerBtns=true/>
+
+<#macro btnItem top bottom>
 	<a class="btn btn-item" style="width: 233px; height: 51px">
-		<span><span class="top">{{ top }}</span></span>
+		<span><span class="top">${top}</span></span>
 		<span><span><span class="sep"></span></span></span>
-		<span><span class="bottom">{{ bottom }}</span></span>
+		<span><span class="bottom">${bottom}</span></span>
 	</a>
-{% endmacro %}
+</#macro>
 
-{% block content %}
+<@layout.page>
 	<div class="items">
-		{% for i in range(8) %}
-		<div class="item">{{ btn_item("A Publisher", "Titles: 12") }}</div>
-		<div class="item">{{ btn_item("Filler", "Titles: 6") }}</div>
-		{% endfor %}
+        <#-- TODO make this actually work -->
+		<#list 1..8 as i>
+		<div class="item"><@btnItem "A Publisher" "Titles: 12"/></div>
+		<div class="item"><@btnItem "Filler" "Titles: 6"/></div>
+		</#list>
 	</div>
-{% endblock %}
+</@layout.page>
 
-{% block footer %}
+<@layout.footer>
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()"/>
 	</div>
-{% endblock %}
+</@layout.footer>

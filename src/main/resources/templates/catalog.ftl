@@ -116,7 +116,7 @@
 
 <@layout.page>
     <#list packages as package>
-	<@catalogItem package.slug() package.name() package.author() AssetUtil.getIcon(package).url()?replace("https", "http")/>
+	<@catalogItem package.slug() package.name() package.author() AssetUtil.getWSCIconUrl(package)/>
 	</#list>
 </@layout.page>
 

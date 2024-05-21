@@ -1,13 +1,6 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{% set title = _("More Details") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
-	<script type="text/javascript">
+<#import "../includes/base-layout.ftl" as layout>
+<@layout.header.header "More Details">
+    <script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
 		function onLoad() {
@@ -16,7 +9,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			height: 299px;
 			padding: 0px 30px 0px 36px;
@@ -87,36 +80,38 @@
 			font: inherit;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% block content %}
-	{% if package is not none %}
-		<div id="category-heading">{{ category_translation(package["category"]) }}</div>
+<@layout.navigation headerTitle="More Details" headerBtns=true/>
+
+<@layout.page>
+	<#if package??>
+		<div id="category-heading">${package.category()?capitalize}</div>
 		<div id="title-details">
 			<div class="top">
-				<h2 class="blue text-center" id="title-name">{{ package["name"] }}</h2>
+				<h2 class="blue text-center" id="title-name">${package.name()}</h2>
 			</div>
 			<div class="bottom">
 				<div id="title-details-content">
 					<div>
 						<div class="image-col">
-							<img src="{{ url_for('static', filename='img/screenshot_placeholder.png') }}" width="160" height="120"/>
-							<img src="{{ url_for('static', filename='img/screenshot_placeholder.png') }}" width="160" height="120"/>
+							<img src="/static/img/screenshot_placeholder.png" width="160" height="120"/>
+							<img src="/static/img/screenshot_placeholder.png" width="160" height="120"/>
 						</div>
 						<div class="content-col">
-							<pre id="title-description">{{ package["description"]["long"] }}</pre>
+							<pre id="title-description">${package.description().longDesc()}</pre>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	{% else %}
-		<p class="font-18px" style="margin-top: 1em">{% trans %}The title cannot be found.{% endtrans %}</p>
-	{% endif %}
-{% endblock %}
+	<#else>
+		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>
+	</#if>
+</@layout.page>
 
-{% block footer %}
+<@layout.footer>
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()"/>
 	</div>
-{% endblock %}
+</@layout.footer>

@@ -1,12 +1,7 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{% set title = _("Details") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
+<#import "../includes/base-layout.ftl" as layout>
+<#assign AssetUtil=statics['org.oscwii.shop.utils.AssetUtil']>
+<#assign FormatUtil=statics['org.oscwii.shop.utils.FormatUtil']>
+<@layout.header.header (package.name())!"">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
@@ -16,7 +11,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			height: 299px; /* 281 + 9 + 9 = 299 */
 			padding: 0px 30px 0px 36px;
@@ -103,49 +98,53 @@
 			margin: auto;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% macro btn_download(top, bottom, href, style) %}
-	<a class="btn btn-dl"{{ osc.cond_attr_spcd(href, "href") }} style="width: 241px; height: 76px;{{ style }}">
-		<span><span class="top">{{ top }}</span></span>
+<@layout.navigation headerTitle="Details" headerBtns=true/>
+
+<#macro btnDownload top bottom href style="">
+	<a class="btn btn-dl" href="${href}" style="width: 241px; height: 76px;${style}">
+		<span><span class="top">${top}</span></span>
 		<span><span><span class="sep"></span></span></span>
-		<span><span class="bottom">{{ bottom }}</span></span>
+		<span><span class="bottom">${bottom}</span></span>
 	</a>
-{% endmacro %}
+</#macro>
 
-{% block content %}
-	{% if package is not none %}
-		<div id="category-heading">{{ category_translation(package["category"]) }}</div>
+<@layout.page>
+	<#if package??>
+		<div id="category-heading">${package.category()?capitalize}</div>
 		<div id="title-details">
 			<div class="top">
 				<div>
 					<div class="left-col">
-						<img id="title-img" src="{{ package['url']['icon'].replace('https', 'http') }}" width="128" height="48"/>
-						{{ osc.btn(_("View compatible controllers"), id="btn-controllers", href="controllers", w="67px", h="55px") }}
+						<img id="title-img" src="${AssetUtil.getWSCIconUrl(package)}" width="128" height="48"/>
+						<@layout.osc.btn body="View compatible controllers" id="btn-controllers" href="controllers" w="67px" h="55px"/>
 					</div>
 					<div>
-						<p id="title-version"><b>{% trans %}Version{% endtrans %}:</b> {{ package["version"] }}</p>
-						<p id="title-release-date"><b>{% trans %}Released{% endtrans %}:</b> {{ package["release_date"] }}</p>
-						<p id="title-author"><b>{% trans %}Author{% endtrans %}:</b> {{ package["author"] }}</p>
-						<!-- <p id="title-subcategories">Subcategories</p> --> {# would just be hidden if there are no subcategories #}
+						<p id="title-version"><b>Version:</b> ${package.version()}</p>
+						<p id="title-release-date"><b>Released:</b> ${FormatUtil.date(package.releaseDate())}</p>
+						<p id="title-author"><b>Author:</b> ${package.author()}</p>
+                        <#if package.authors()?size gt 0>
+                        <p id="title-developers"><b>Developers:</b> ${package.authors()?join(", ")}</p>
+                        </#if>
+						<!-- <p id="title-subcategories">Subcategories</p> --> <#-- would just be hidden if there are no subcategories -->
 					</div>
 				</div>
 			</div>
 			<div class="sep"></div>
-			<p class="blue bold text-center" id="title-name">{{ package["name"] }}</p>
+			<p class="blue bold text-center" id="title-name">${package.name()}</p>
 		</div>
-		{# TODO: Retrieve download size. Should be the total size for both menu title and actual app. #}
-		{{ btn_download(_("Download"), "0 Blocks", "prepare-download", "margin: auto") }}
-	{% else %}
-		<p class="font-18px" style="margin-top: 1em">{% trans %}The title cannot be found.{% endtrans %}</p>
-	{% endif %}
-{% endblock %}
+		<@btnDownload "Download" "0 Blocks" "prepare-download" "margin: auto"/>
+	<#else>
+		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>
+	</#if>
+</@layout.page>
 
-{% block footer %}
+<@layout.footer>
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()", style="float: left") }}
-		{% if package is not none %}
-			{{ osc.btn(_("More Details"), id="more-details-btn", href="details", style="float: right") }}
-		{% endif %}
+		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()" style="float: left"/>
+		<#if package??>
+			<@layout.osc.btn body="More Details" id="more-details-btn" href="details" style="float: right"/>
+		</#if>
 	</div>
-{% endblock %}
+</@layout.footer>

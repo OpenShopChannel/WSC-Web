@@ -1,12 +1,5 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = false %}
-
-{% set title = _("Download Software") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
+<#import "../includes/base-layout.ftl" as layout>
+<@layout.header.header "Download Software">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
@@ -15,7 +8,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			padding: 0px 20px;
 		}
@@ -41,14 +34,18 @@
 			text-align: left;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% block content %}
+<@layout.navigation headerTitle="Download Software" headerBtns=true/>
+
+<@layout.page>
+    <#if package??>
 	<div class="text-center font-18px" id="top">
 		<p>You are downloading</p>
-		<p class="blue">Danbo</p>
+		<p class="blue">${package.name()}</p>
 	</div>
 	<table class="font-18px" id="storage-tbl">
+        <#-- TODO actually implement these counters -->
 		<tr>
 			<th>NAND Blocks after Download:</th>
 			<td class="amount">4078</td>
@@ -60,4 +57,7 @@
 			<td class="units">Blocks</td>
 		</tr>
 	</table>
-{% endblock %}
+	<#else>
+		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>
+	</#if>
+</@layout.page>

@@ -1,17 +1,10 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{% set title = _("Download") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
+<#import "../includes/base-layout.ftl" as layout>
+<@layout.header.header "Download">
 	<script type="text/javascript">
 		// TODO: Sanitise/escape the translations!
 		const pageTitles = {
-			"location-select": "{% trans %}Download Location{% endtrans %}",
-			"confirmation": "{% trans %}Download Confirmation{% endtrans %}"
+			"location-select": "Download Location",
+			"confirmation": "Download Confirmation"
 		}
 
 		var titleInfo = {
@@ -35,9 +28,9 @@
 		}
 
 		$(document).ready(function() {
-			var queryParams = getSplitQueryString();
+            const queryParams = getSplitQueryString();
 
-			if (queryParams["page"])
+            if (queryParams["page"])
 				showPage(queryParams["page"]);
 			else
 				showPage("location-select");
@@ -50,9 +43,9 @@
 		}
 
 		function setDownloadLocation(loc) {
-			if (loc == "nand") {
+			if (loc === "nand") {
 				// TODO: Calculate remaining space on NAND for title and show error if there is none
-			} else if (loc == "sd") {
+			} else if (loc === "sd") {
 				// TODO: Calculate remaining space on SD card for title and show error if there is none
 			}
 
@@ -68,7 +61,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			padding: 0px;
 			margin: 0px;
@@ -126,7 +119,7 @@
 
 		#confirmation-card {
 			height: 225px;
-			background-image: url("{{ url_for('static', filename='img/confirmation-card.svg') }}");
+			background-image: url("/static/img/confirmation-card.svg");
 		}
 
 		#confirmation-card > .header {
@@ -185,20 +178,23 @@
 			margin: 0px 4px;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% block content %}
+<@layout.navigation headerTitle="Download" headerBtns=true/>
+
+<@layout.page>
+    <#if package??>
 	<div id="pages">
 		<div class="page d-none" id="location-select-page">
-			{# sometimes you ain't got no choice -#}
+			<#-- sometimes you ain't got no choice -->
 			<table id="location-select-tbl">
 				<tr class="text">
-					<td class="text-center font-18px" colspan="2">{% trans %}Please choose a location to download the data to.{% endtrans %}</td>
+					<td class="text-center font-18px" colspan="2">Please choose a location to download the data to.</td>
 				</tr>
 				<tr class="buttons">
-					{# TODO: should really have a way to HTML encode the hrefs -#}
-					<td>{{ osc.btn(_("Wii System Memory"), id="nand-btn", href="javascript:setDownloadLocation(&quot;nand&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
-					<td class="m-left-auto-children">{{ osc.btn(_("SD Card"), id="sd-card-btn", href="javascript:setDownloadLocation(&quot;sd&quot;)", w="228px", h="176px", img=url_for('static', filename='img/blank.gif')) }}</td>
+					<#-- TODO: should really have a way to HTML encode the hrefs -->
+					<td><@layout.osc.btn body="Wii System Memory" id="nand-btn" href="javascript:setDownloadLocation(&quot;nand&quot;)" w="228px" h="176px" img="/static/img/blank.gif"/></td>
+					<td class="m-left-auto-children"><@layout.osc.btn body="SD Card" id="sd-card-btn" href="javascript:setDownloadLocation(&quot;sd&quot;)" w="228px" h="176px" img="/static/img/blank.gif"/></td>
 				</tr>
 			</table>
 		</div>
@@ -208,37 +204,38 @@
 					<h2 class="title">Danbo</h2>
 				</div>
 				<div class="content">
+                    <#-- TODO actually implement these counters -->
 					<table id="storage-tbl">
 						<tr>
-							<th>{% trans %}NAND Open Blocks:{% endtrans %}</th>
+							<th>NAND Open Blocks:</th>
 							<td class="amount">4096</td>
 							<td class="units">Blocks</td>
 						</tr>
 						<tr class="red">
-							<th>{% trans %}NAND Blocks to Download:{% endtrans %}</th>
+							<th>NAND Blocks to Download:</th>
 							<td class="amount">18</td>
-							<td class="units">{% trans %}Blocks{% endtrans %}</td>
+							<td class="units">Blocks</td>
 						</tr>
 						<tr>
-							<th>{% trans %}NAND Blocks after Download:{% endtrans %}</th>
+							<th>NAND Blocks after Download:</th>
 							<td class="amount">4078</td>
-							<td class="units">{% trans %}Blocks{% endtrans %}</td>
+							<td class="units">Blocks</td>
 						</tr>
 						<tr class="sep"><td colspan="3"><div></div></td></tr>
 						<tr>
-							<th>{% trans %}SD Card Open Blocks:{% endtrans %}</th>
+							<th>SD Card Open Blocks:</th>
 							<td class="amount">131072</td>
-							<td class="units">{% trans %}Blocks{% endtrans %}</td>
+							<td class="units">Blocks</td>
 						</tr>
 						<tr class="red">
-							<th>{% trans %}SD Card Blocks to Download:{% endtrans %}</th>
+							<th>SD Card Blocks to Download:</th>
 							<td class="amount">16</td>
-							<td class="units">{% trans %}Blocks{% endtrans %}</td>
+							<td class="units">Blocks</td>
 						</tr>
 						<tr>
-							<th>{% trans %}SD Card Blocks after Download:{% endtrans %}</th>
+							<th>SD Card Blocks after Download:</th>
 							<td class="amount">131056</td>
-							<td class="units">{% trans %}Blocks{% endtrans %}</td>
+							<td class="units">Blocks</td>
 						</tr>
 					</table>
 				</div>
@@ -249,19 +246,23 @@
 			<p class="blue bold text-center font-20px prompt">Download this software to Wii<br/>system memory now?</p>
 		</div>
 	</div>
-{% endblock %}
+    <#else>
+		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>
+	</#if>
+</@layout.page>
 
-{% block footer %}
+<@layout.footer>
 	<div id="main-footer-btns">
 		<div id="page-footers">
-			{# Don't hide this one by default, a Back button is a good default -#}
+			<#-- Don't hide this one by default, a Back button is a good default -->
 			<div class="page-footer" id="location-select-page-footer">
-				{{ osc.btn(_("Back"), class="btn-cancel", href="./") }}
+				<@layout.osc.btn body="Back" class="btn-cancel" href="./"/>
 			</div>
 			<div class="page-footer d-none" id="confirmation-page-footer">
-				{{ osc.btn(_("Yes"), href="", style="float: left") }}
-				{{ osc.btn(_("No"), class="btn-cancel", href="javascript:showPage(&quot;location-select&quot;)", style="float: right") }}
+                <#-- TODO download -->
+				<@layout.osc.btn body="Yes" href="" style="float: left"/>
+				<@layout.osc.btn body="No" class="btn-cancel" href="javascript:showPage(&quot;location-select&quot;)" style="float: right"/>
 			</div>
 		</div>
 	</div>
-{% endblock %}
+</@layout.footer>
