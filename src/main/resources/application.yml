@@ -1,0 +1,22 @@
+server:
+  port: 8080
+
+sentry:
+  dsn: ""
+  environment: "production"
+  # It is recommended to lower this value from the default of 1.0 on production
+  traces-sample-rate: 1.0
+
+spring:
+  application:
+    name: "WSC-Web"
+
+shop-server:
+  api-host: "https://hbb1.oscwii.org"
+  handle-ec: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    # org.springframework.beans: TRACE
