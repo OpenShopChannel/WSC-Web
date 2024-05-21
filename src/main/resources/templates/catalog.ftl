@@ -1,13 +1,7 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{% set title = _("Catalog") %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
-	<script type="text/javascript">
+<#import "includes/base-layout.ftl" as layout>
+<#assign AssetUtil=statics['org.oscwii.shop.utils.AssetUtil']>
+<@layout.header.header "Catalog">
+    <script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
 		function onLoad() {
@@ -17,7 +11,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			padding: 0px 6px 4px 6px;
 			margin: 0px 30px 0px 36px;
@@ -31,7 +25,7 @@
 		.item > .update-label {
 			width: 150px;
 			height: 23px;
-			background-image: url("{{ url_for('static', filename='img/update.svg') }}");
+			background-image: url("static/img/update.svg");
 			margin-left: 12px;
 			text-align: center;
 			visibility: hidden;
@@ -100,37 +94,39 @@
 			text-align: center;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% macro catalog_item(title, author, app_id, banner = url_for('static', filename='img/title_placeholder.png')) %}
+<@layout.navigation headerTitle="Catalog" headerBtns=true/>
+
+<#macro catalogItem slug title author banner="static/img/title_placeholder.png">
 	<div class="item">
-		<div class="update-label blue bold">{% trans %}Updated!{% endtrans %}</div>
-		<a class="btn btn-item" href="/title/{{ app_id }}/" style="width: 477px; height: 84px">
+		<div class="update-label blue bold">Updated!</div>
+		<a class="btn btn-item" href="/title/${slug}/" style="width: 477px; height: 84px">
 			<span>
-				<span class="btn-img-c"><img class="btn-img" src="{{ banner }}" width="128" height="48"/></span>
+				<span class="btn-img-c"><img class="btn-img" src="${banner}" width="128" height="48"/></span>
 				<span class="btn-body">
-					<span class="item-title">{{ title }}</span>
+					<span class="item-title">${title}</span>
 					<span class="sep"></span>
-					<span class="item-author">{{ author }}</span>
+					<span class="item-author">${author}</span>
 				</span>
 			</span>
 		</a>
 	</div>
-{% endmacro %}
+</#macro>
 
-{% block content %}
-	{% for package in packages %}
-	{{ catalog_item(package["name"], package["author"], package["slug"], package["url"]["icon"].replace("https", "http")) }}
-	{% endfor %}
-{% endblock %}
+<@layout.page>
+    <#list packages as package>
+	<@catalogItem package.slug() package.name() package.author() AssetUtil.getIcon(package).url()?replace("https", "http")/>
+	</#list>
+</@layout.page>
 
-{% block footer %}
+<@layout.footer>
 	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()"/>
 		<div id="main-footer-pagination">
-			{{ osc.btn(id="prev-page-btn", href="/", w="52px", h="52px", img=url_for('static', filename='img/icons/left-arrow.svg'), img_w="30", img_h="30") }}
+			<@layout.osc.btn id="prev-page-btn" href="/" w="52px" h="52px" img="static/img/icons/left-arrow.svg" img_w="30" img_h="30"/>
 			<span class="pages">1/2</span>
-			{{ osc.btn(id="next-page-btn", href="/", w="52px", h="52px", img=url_for('static', filename='img/icons/right-arrow.svg'), img_w="30", img_h="30") }}
+			<@layout.osc.btn id="next-page-btn" href="/" w="52px" h="52px" img="static/img/icons/right-arrow.svg" img_w="30" img_h="30"/>
 		</div>
 	</div>
-{% endblock %}
+</@layout.footer>

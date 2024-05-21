@@ -1,13 +1,7 @@
-{% extends "base-layout.html" %}
-
-{% set header_btns = true %}
-
-{% set title = category_translation(request.args.get("category")) %}
-{% set header_title = title %}
-
-{% block head %}
-	{{ super() }}
-	<script type="text/javascript">
+<#import "includes/base-layout.ftl" as layout>
+<#assign categoryName=category?capitalize/>
+<@layout.header.header title=categoryName>
+    <script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
 		function onLoad() {
@@ -28,12 +22,12 @@
 			titleSearchIn.value = "";
 
 			if (searchValue) {
-				window.location.href = "/search?category={{ category }}&type=title&query=" + searchValue;
+				window.location.href = "/search?category=${category}&type=title&query=" + searchValue;
 			}
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		/* 38px */
 		#main-content {
 			padding: 0px 19px 0px 29px;
@@ -84,35 +78,37 @@
 			opacity: 0;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% block content %}
-	<p class="blue bold" id="category-description">{{ category_translation(request.args.get("category"), "description") }}</p>
-	{# could maybe use CSS table as that could semantically be more correct, but that would require more code (and doesn't matter for this) -#}
+<@layout.navigation headerTitle=categoryName headerBtns=true/>
+
+<@layout.page>
+	<p class="blue bold" id="category-description">Unknown</p>
+	<#-- could maybe use CSS table as that could semantically be more correct, but that would require more code (and doesn't matter for this) -->
 	<table id="btn-table">
 		<tr>
-			<td>{{ osc.btn(_("Popular Titles"), href="", w="240px", h="65px") }}</td>
-			<td class="btn-table-m-left-auto">{{ osc.btn(_("Newest Additions"), href="/search?category=" + category + "&type=newest", w="240px", h="65px") }}</td>
+			<td><@layout.osc.btn body="Popular Titles" href="" w="240px" h="65px"/></td>
+			<td class="btn-table-m-left-auto"><@layout.osc.btn body="Newest Additions" href="/search?category=" + category + "&type=newest" w="240px" h="65px"/></td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
-			{# percent width... bad! won't work later -#}
-			<td colspan="2">{{ osc.btn(_("Search by Publisher"), href="/search?category=" + category + "&type=publishers", w="100%", h="65px") }}</td>
+			<#-- percent width... bad! won't work later -->
+			<td colspan="2"><@layout.osc.btn body="Search by Publisher" href="/search?category=" + category + "&type=publishers" w="100%" h="65px"/></td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
 		<tr>
 			<td colspan="2">
 				<div id="titleSearchC">
 					<input type="text" id="titleSearchIn" maxlength="50"/>
-					{{ osc.btn(_("Search by Title"), w="100%", h="65px") }}
+					<@layout.osc.btn body="Search by Title" w="100%" h="65px"/>
 				</div>
 			</td>
 		</tr>
 	</table>
-{% endblock %}
+</@layout.page>
 
-{% block footer %}
-	<div id="main-footer-btns">
-		{{ osc.btn(_("Back"), class="btn-cancel", id="back-btn", href="javascript:history.back()") }}
+<@layout.footer>
+    <div id="main-footer-btns">
+		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()"/>
 	</div>
-{% endblock %}
+</@layout.footer>
