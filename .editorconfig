@@ -4,5 +4,5 @@ root = true
 indent_size = 4
 indent_style = space
 
-[*.{js,css,html,svg,jinja}]
+[*.{js,css,html,svg,ftl}]
 indent_style = tab

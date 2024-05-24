@@ -45,7 +45,6 @@
 			<h2 class="blue text-center" id="title-name">${package.name()}</h2>
 		</div>
 		<div id="title-details-container">
-			<#-- TODO: Actually get and present the controller information. I'd need to recreate more icons, however. -->
 			<p class="blue text-center font-14px">Please note the following when downloading this software:</p>
 			<div id="controllers">
                 <#list controllers as controller>
