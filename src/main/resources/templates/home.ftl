@@ -28,7 +28,7 @@
 </@layout.header.header>
 
 <@layout.navigation showTitle=false>
-    <h1 class="blue heading link" id="main-heading"><a href="/landing">${TemplateUtil.openify("Open")} Shop Channel</a></h1>
+    <h1 class="blue heading link" id="main-heading"><a href="/landing">${FormatUtil.openify("Open")} Shop Channel</a></h1>
 </@layout.navigation>
 
 <@layout.page>
