@@ -1,4 +1,5 @@
 <#import "../includes/base-layout.ftl" as layout>
+<#global FormatUtil=statics['org.oscwii.shop.utils.FormatUtil']>
 <@layout.header.header "Controller Support">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
@@ -47,9 +48,13 @@
 			<#-- TODO: Actually get and present the controller information. I'd need to recreate more icons, however. -->
 			<p class="blue text-center font-14px">Please note the following when downloading this software:</p>
 			<div id="controllers">
-				<img src="/static/img/badges/wiimote.svg" width="56" height="41"/>
+                <#list controllers as controller>
+                <#if !(controller == "sdhc" || controller == "unknown")>
+                    <img src="/static/img/badges/${controller}.gif" width="68" height="51"/>
+				</#if>
+				</#list>
 			</div>
-			<p>You can use this software only with the Wii Remote.</p>
+			<p>${FormatUtil.peripheralsDescription(package)}.</p>
 		</div>
 	<#else>
 		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>

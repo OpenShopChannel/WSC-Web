@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/title/{slug}/")
@@ -25,7 +26,11 @@ public class TitleController extends BaseController
     public String controllers(Model model, @RequestParam Optional<Boolean> download,
                               @RequestParam Optional<String> location, @RequestParam Optional<String> nextPage)
     {
-        model.addAttribute("isDownload", download.orElse(false))
+        Package app = (Package) model.getAttribute("package");
+        // Doing this to remove the duplicates
+        Set<String> controllers = app == null ? Set.of() : Set.copyOf(app.peripherals());
+        model.addAttribute("controllers", controllers)
+            .addAttribute("isDownload", download.orElse(false))
             .addAttribute("location", location.orElse(""))
             .addAttribute("nextPage", nextPage.orElse(""));
         return "title/controllers";
