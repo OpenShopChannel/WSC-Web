@@ -1,8 +1,10 @@
 package org.oscwii.shop.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.NestedConfigurationProperty;
 
 @ConfigurationProperties(prefix = "shop-server")
-public record ShopServerConfig(String apiHost, boolean handleEc)
+public record ShopServerConfig(String apiHost, @NestedConfigurationProperty ContentConfig contentConfig,
+                               boolean handleEc)
 {
 }

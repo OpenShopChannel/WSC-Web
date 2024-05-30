@@ -363,6 +363,12 @@ function wiiSDCard() {
      * @returns Number
      */
     this.hasProgressFinished = function () {}
+
+	/**
+	 *
+	 * @returns Number
+	 */
+	this.getFreeKBytes = function () {}
 }
 
 /**
@@ -372,6 +378,18 @@ function wiiSDCard() {
  * @constructor
  */
 function ECDeviceInfo() {
+	/**
+	 * The amount of used blocks in the device.
+	 * @type {number}
+	 */
+	this.usedBlocks = 0;
+
+	/**
+	 * The total amount of blocks on the device
+	 * @type {number}
+	 */
+	this.totalBlocks = 0;
+
     /**
      * The state of the console's registration.
      * To populate, please call ec.checkDeviceStatus();

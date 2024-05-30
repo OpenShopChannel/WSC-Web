@@ -9,7 +9,7 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
 		#main-content {
 			padding: 3px 7px;
 			margin: 0px 30px 0px 36px;

@@ -10,6 +10,7 @@ var info = ec.getDeviceInfo();
 var NWC24 = new wiiNwc24();
 var sound = new wiiSound();
 var keyboard = new wiiKeyboard();
+var sdCard = new wiiSDCard();
 
 /**
  * Enum describing the available wallpapers that show in 16:9.

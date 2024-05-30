@@ -64,7 +64,7 @@
 	<div id="main-footer-btns">
 		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()" style="float: left"/>
 		<#if isDownload && package??>
-			<@layout.osc.btn body="OK" id="ok-btn" href="prepare-download?page=${nextPage}&location=${location}" style="float: right;"/>
+			<@layout.osc.btn body="OK" id="ok-btn" href="prepare-download" style="float: right;"/>
 		</#if>
 	</div>
 </@layout.footer>

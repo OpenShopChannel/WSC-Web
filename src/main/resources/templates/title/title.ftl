@@ -102,11 +102,11 @@
 
 <@layout.navigation headerTitle="Details" headerBtns=true/>
 
-<#macro btnDownload top bottom href style="">
+<#macro btnDownload label blocks href style="">
 	<a class="btn btn-dl" href="${href}" style="width: 241px; height: 76px;${style}">
-		<span><span class="top">${top}</span></span>
+		<span><span class="top">${label}</span></span>
 		<span><span><span class="sep"></span></span></span>
-		<span><span class="bottom">${bottom}</span></span>
+		<span><span class="bottom">${blocks} ${(blocks == 1)?then("Block", "Blocks")}</span></span>
 	</a>
 </#macro>
 
@@ -134,7 +134,7 @@
 			<div class="sep"></div>
 			<p class="blue bold text-center" id="title-name">${package.name()}</p>
 		</div>
-		<@btnDownload "Download" "0 Blocks" "prepare-download" "margin: auto"/>
+		<@btnDownload "Download" blocks "controllers?download=true" "margin: auto"/>
 	<#else>
 		<p class="font-18px" style="margin-top: 1em">The title cannot be found.</p>
 	</#if>
