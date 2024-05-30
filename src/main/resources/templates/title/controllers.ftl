@@ -1,5 +1,4 @@
 <#import "../includes/base-layout.ftl" as layout>
-<#global FormatUtil=statics['org.oscwii.shop.utils.FormatUtil']>
 <@layout.header.header "Controller Support">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);

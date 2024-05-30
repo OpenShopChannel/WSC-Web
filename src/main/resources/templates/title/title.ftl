@@ -1,6 +1,5 @@
 <#import "../includes/base-layout.ftl" as layout>
 <#assign AssetUtil=statics['org.oscwii.shop.utils.AssetUtil']>
-<#assign FormatUtil=statics['org.oscwii.shop.utils.FormatUtil']>
 <@layout.header.header (package.name())!"">
 	<script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
