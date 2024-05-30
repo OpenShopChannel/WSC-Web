@@ -16,6 +16,8 @@
                 <div class="last"><@osc.btn id="help-btn" w="52px" h="55px" img="/static/img/icons/help.svg" img_w="23" img_h="35"/></div>
             </div>
             </#if>
+			<#-- TODO only enable when not running in prod mode -->
+			<a href="/debug">Debug</a>
         </div>
         <#if dots><div class="dots">･･･････････････････････････････････････････････････････････････････････････</div></#if>
     </div>

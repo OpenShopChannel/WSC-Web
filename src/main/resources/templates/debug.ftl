@@ -1,9 +1,5 @@
-{% extends "base.html" %}
-
-{% set title = _("Debug") %}
-
-{% block head %}
-	{{ super() }}
+<#import "includes/base-layout.ftl" as layout>
+<@layout.header.header "Debug">
 	<script type="text/javascript">
 		function setLanguage() {
 			var lang = $("#languagesPicker").val();
@@ -18,19 +14,26 @@
 		}
 	</script>
 
-	<style>
+	<style type="text/css">
+		#main-content {
+			height: 340px; !important;
+		}
+
 		#forceLanguageLabel {
 			display: inline-block;
 		}
 
 		#consoleOutput {
 			display: block;
+			height: 250px;
 			width: 100%;
 		}
 	</style>
-{% endblock %}
+</@layout.header.header>
 
-{% block body %}
+<@layout.navigation dots=true showTitle=false/>
+
+<@layout.page>
 	<a href="javascript:history.back()">Go back</a>
 
 	<p>Current language: {{ request.cookies.get('language') }}</p>
@@ -46,4 +49,5 @@
 	<button type="button" onclick="setLanguage()" id="languagesSubmitButton">Apply</button>
 
 	<textarea id="consoleOutput" rows="20" readonly>EC logging</textarea>
-{% endblock %}
+</@layout.page>
+</body>

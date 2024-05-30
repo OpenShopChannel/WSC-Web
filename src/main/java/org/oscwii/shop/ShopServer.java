@@ -39,6 +39,13 @@ public class ShopServer
         return "initial";
     }
 
+    @GetMapping("/debug")
+    public String debug()
+    {
+        // TODO only enable when not running in prod mode
+        return "debug";
+    }
+
     @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.HOURS)
     public void refreshCatalog()
     {
