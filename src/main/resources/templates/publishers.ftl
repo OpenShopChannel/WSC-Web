@@ -15,6 +15,7 @@
 			margin: 0px 30px 0px 36px;
 			border: 1px solid #35beed;
 			background-color: #c4fbff;
+			width: 490px;
 		}
 
 		.items {
@@ -70,20 +71,18 @@
 
 <@layout.navigation headerTitle="Search by Publisher" headerBtns=true/>
 
-<#macro btnItem top bottom>
-	<a class="btn btn-item" style="width: 233px; height: 51px">
-		<span><span class="top">${top}</span></span>
+<#macro btnItem name titles>
+	<a class="btn btn-item" href="/search?category=${category}&type=publishers&query=${name?url}" style="width: 233px; height: 51px">
+		<span><span class="top">${name}</span></span>
 		<span><span><span class="sep"></span></span></span>
-		<span><span class="bottom">${bottom}</span></span>
+		<span><span class="bottom">${titles}</span></span>
 	</a>
 </#macro>
 
 <@layout.page>
 	<div class="items">
-        <#-- TODO make this actually work -->
-		<#list 1..8 as i>
-		<div class="item"><@btnItem "A Publisher" "Titles: 12"/></div>
-		<div class="item"><@btnItem "Filler" "Titles: 6"/></div>
+		<#list publishers as publisher, titles>
+		<div class="item"><@btnItem publisher "Titles: ${titles}"/></div>
 		</#list>
 	</div>
 </@layout.page>
