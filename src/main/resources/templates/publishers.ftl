@@ -11,7 +11,7 @@
 
 	<style type="text/css">
 		#main-content {
-			padding: 3px 7px;
+			padding: 3px 0px;
 			margin: 0px 30px 0px 36px;
 			border: 1px solid #35beed;
 			background-color: #c4fbff;

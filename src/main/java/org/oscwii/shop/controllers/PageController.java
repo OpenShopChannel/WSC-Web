@@ -14,6 +14,8 @@ import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import static java.lang.String.CASE_INSENSITIVE_ORDER;
+
 @Controller
 public class PageController extends BaseController
 {
@@ -40,24 +42,34 @@ public class PageController extends BaseController
     public String search(@RequestParam(required = false) String query, @RequestParam String type,
                          @RequestParam String category, Model model)
     {
+        Comparator<Package> sortingCriteria = Comparator.comparing(Package::name);
         model.addAttribute("category", category);
 
-        if(type.equals("publishers"))
+        switch(type)
         {
-            if(query == null)
-                return listPublishers(model, category);
-            else
-                return publisherSearch(model, category, query);
+            case "popular":
+                // TODO RepoMan: implement download counter
+                //sortingCriteria = Comparator.comparing(Package::downloads).reversed();
+                break;
+            case "newest":
+                sortingCriteria = Comparator.comparing(Package::releaseDate).reversed();
+                break;
+            case "publishers":
+                if(query == null)
+                    return listPublishers(model, category);
+                else
+                    return publisherSearch(model, category, query);
         }
 
-        List<Package> packages = api.filterPackages(category, query);
+        List<Package> packages = api.filterPackages(category, query)
+            .stream().sorted(sortingCriteria).toList();
         model.addAttribute("packages", packages);
         return "catalog";
     }
 
     private String listPublishers(Model model, String category)
     {
-        Map<String, Integer> publishers = new TreeMap<>();
+        Map<String, Integer> publishers = new TreeMap<>(CASE_INSENSITIVE_ORDER);
         List<Package> packages = api.filterPackages(category, null);
 
         List<String> authors = packages.stream()

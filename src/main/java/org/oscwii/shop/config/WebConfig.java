@@ -11,6 +11,7 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 import static freemarker.template.Configuration.VERSION_2_3_32;
 
@@ -28,6 +29,7 @@ public class WebConfig implements WebMvcConfigurer
         objectWrapper.setExposeFields(true);
 
         freeMarkerConfigurer.afterPropertiesSet();
+        freeMarkerConfigurer.getConfiguration().setURLEscapingCharset(StandardCharsets.US_ASCII.name());
         freeMarkerConfigurer.getConfiguration().setObjectWrapper(objectWrapper);
         freeMarkerConfigurer.getConfiguration().setSharedVariable("statics", objectWrapper.getStaticModels());
         return freeMarkerConfigurer;
