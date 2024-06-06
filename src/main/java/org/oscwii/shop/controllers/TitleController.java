@@ -56,8 +56,8 @@ public class TitleController extends BaseController
     @GetMapping("prepare-download")
     public String prepareDownload(Package app, Model model)
     {
-        long appSize = app.titleInfo().tmdSize() + app.titleInfo().contentsSize();
-        long totalSize = DownloadUtil.getTotalAppSize(app);
+        long appSize = app == null ? 0 : app.titleInfo().tmdSize() + app.titleInfo().contentsSize();
+        long totalSize = app == null ? 0 : DownloadUtil.getTotalAppSize(app);
         long installerSize = totalSize - appSize;
 
         model.addAttribute("appBlocks", DownloadUtil.getBlockSize(appSize))

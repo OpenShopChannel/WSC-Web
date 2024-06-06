@@ -10,7 +10,7 @@
 		}
 
 		const titleInfo = {
-			"titleId": "${package.titleInfo().titleId()}",
+			"titleId": "<#if package??>${package.titleInfo().titleId()}</#if>",
 			"appBlocks": ${appBlocks},
 			"installerBlocks": ${installerBlocks},
 			"requiredTotalBlocks": ${totalBlocks}

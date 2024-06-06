@@ -14,7 +14,7 @@
 			$("#sdInstall").text(getAndClearSessionValue("sBlInstall"));
 			<#-- TODO DEV:block HOME button -->
 			<#-- TODO download to SD card -->
-			<#if handleEc>
+			<#if handleEc && package??>
 			preDownload("${package.titleInfo().titleId()}", function () {
 				<#-- Timeout so the text appears after the Mario fade-out animation -->
 				setTimeout(onDownloadFinish, 750);
