@@ -29,7 +29,7 @@ public class TitleController extends BaseController
     @GetMapping
     public String details(Package app, Model model)
     {
-        model.addAttribute("blocks", DownloadUtil.getTotalBlockSize(app));
+        model.addAttribute("blocks", app == null ? 0 : DownloadUtil.getTotalBlockSize(app));
         return "title/title";
     }
 
@@ -67,7 +67,7 @@ public class TitleController extends BaseController
     }
 
     @GetMapping("download")
-    public String download()
+    public String download(@RequestParam @ModelAttribute("location") String location)
     {
         return "title/download";
     }

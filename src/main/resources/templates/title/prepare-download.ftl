@@ -1,6 +1,8 @@
 <#import "../includes/base-layout.ftl" as layout>
 <@layout.header.header "Download">
 	<script type="text/javascript">
+		var downloadLocation = "nand";
+
 		// TODO: Sanitise/escape the translations!
 		const pageTitles = {
 			"location-select": "Download Location",
@@ -46,6 +48,7 @@
 		}
 
 		function setDownloadLocation(loc) {
+			downloadLocation = loc;
 			const freeNandBlocks = ec.getDeviceInfo().totalBlocks - ec.getDeviceInfo().usedBlocks
 			const freeSdBlocks = Math.floor(sdCard.getFreeKBytes() / 1024) * 8;
 			var hasSpace = true;
@@ -92,6 +95,15 @@
 			if (!hasSpace)
 				$("#btnDl").addClass("d-none");
 			showPage("confirmation");
+
+			// Used for download page
+			ec.setSessionValue("nBlDl", nandBlocksAfterDownload.toString());
+			ec.setSessionValue("nBlInstall", nandBlocksAfterInstall.toString());
+			ec.setSessionValue("sBlInstall", remainingSdBlocks.toString());
+		}
+
+		function goToDownload() {
+			window.location.href = "download?location=" + downloadLocation;
 		}
 	</script>
 
@@ -302,8 +314,7 @@
 				<@layout.osc.btn body="Back" class="btn-cancel" href="./"/>
 			</div>
 			<div class="page-footer d-none" id="confirmation-page-footer">
-                <#-- TODO download -->
-				<@layout.osc.btn id="btnDl" body="Yes" href="" style="float: left"/>
+				<@layout.osc.btn id="btnDl" body="Yes" href="javascript:goToDownload()" style="float: left"/>
 				<@layout.osc.btn body="No" class="btn-cancel" href="javascript:showPage(&quot;location-select&quot;)" style="float: right"/>
 			</div>
 		</div>

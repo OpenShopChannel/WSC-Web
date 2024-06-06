@@ -9,7 +9,7 @@ var startingDownload = false;
 var _titleId = "";
 
 
-function preDownload(titleId) {
+function preDownload(titleId, callback) {
 	_titleId = titleId;
 	// TODO: Allow installation to the SD Card.
 	/*
@@ -22,13 +22,13 @@ function preDownload(titleId) {
 
 	pollSDProgress(noop, installChannel);
 	 */
-	installChannel();
+	installChannel(callback);
 }
 
 /**
  * Installs a channel for the given title ID.
  */
-function installChannel() {
+function installChannel(callback) {
 	if (!startingDownload) {
 		startingDownload = true;
 
@@ -40,8 +40,8 @@ function installChannel() {
 		const limits = new ECTitleLimits();
 
 		const result = ec.purchaseTitle(_titleId, '0', price, method, limits, true);
-		completeOp(result, function () {
-			window.location.href = "/finishdownload";
-		});
+		completeOp(result, callback);
+		// TODO ranks
+		shop.setSCARank(1);
 	}
 }

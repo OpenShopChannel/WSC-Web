@@ -338,6 +338,23 @@ function ECommerceInterface() {
      * @param {string} titleId
      */
     this.downloadTitle = function (titleId) {}
+
+	/**
+	 * For the current EC object, get a value for the given name from an internal store.
+	 *
+	 * This key will persist within the internal store for the duration of the channel's runtime.
+	 *
+	 * @param {string} name
+	 */
+	this.getSessionValue = function(name) {}
+
+	/**
+	 * Sets the key for `name` to `value` within the internal store.
+	 *
+	 * @param {string} name
+	 * @param {string} value
+	 */
+	this.setSessionValue = function(name, value) {}
 }
 
 /**

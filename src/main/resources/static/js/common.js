@@ -212,3 +212,14 @@ function onLoadCommon() {
 
 	pageFixes();
 }
+
+/**
+ * Utility function to retrieve a session value from EC and then remove it.
+ * @param {string} name
+ * @returns {string}
+ */
+function getAndClearSessionValue(name) {
+	const value = ec.getSessionValue(name);
+	ec.setSessionValue(name, "");
+	return value;
+}
