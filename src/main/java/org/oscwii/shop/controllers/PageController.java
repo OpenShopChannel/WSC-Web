@@ -1,6 +1,7 @@
 package org.oscwii.shop.controllers;
 
 import org.oscwii.api.Package;
+import org.oscwii.shop.utils.Paginator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,10 +41,11 @@ public class PageController extends BaseController
 
     @GetMapping("/search")
     public String search(@RequestParam(required = false) String query, @RequestParam String type,
-                         @RequestParam String category, Model model)
+                         @RequestParam String category,
+                         @RequestParam(defaultValue = "1") int page, Model model)
     {
-        Comparator<Package> sortingCriteria = Comparator.comparing(Package::name);
         model.addAttribute("category", category);
+        Comparator<Package> sortingCriteria = Comparator.comparing(Package::name);
 
         switch(type)
         {
@@ -58,12 +60,17 @@ public class PageController extends BaseController
                 if(query == null)
                     return listPublishers(model, category);
                 else
-                    return publisherSearch(model, category, query);
+                    return publisherSearch(page, model, category, query);
         }
 
         List<Package> packages = api.filterPackages(category, query)
-            .stream().sorted(sortingCriteria).toList();
-        model.addAttribute("packages", packages);
+            .stream()
+            .sorted(sortingCriteria)
+            .toList();
+        Paginator<Package> paginator = new Paginator<>(packages);
+        model.addAttribute("packages", paginator.paginate(page))
+            .addAttribute("currentPage", page)
+            .addAttribute("pages", paginator.getNumberOFPages());
         return "catalog";
     }
 
@@ -85,14 +92,17 @@ public class PageController extends BaseController
         return "publishers";
     }
 
-    private String publisherSearch(Model model, String category, String query)
+    private String publisherSearch(int page, Model model, String category, String query)
     {
         List<Package> packages = api.filterPackages(category, null)
             .stream()
             .filter(pkg -> pkg.author().equalsIgnoreCase(query))
             .sorted(Comparator.comparing(Package::author))
             .toList();
-        model.addAttribute("packages", packages);
+        Paginator<Package> paginator = new Paginator<>(packages);
+        model.addAttribute("packages", paginator.paginate(page))
+            .addAttribute("currentPage", page)
+            .addAttribute("pages", paginator.getNumberOFPages());
         return "catalog";
     }
 }

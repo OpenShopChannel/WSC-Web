@@ -9,6 +9,14 @@
 			$("#main-content").find(".item:nth-child(2) > .btn-item").addClass("btn-hl");
 			$("#main-content").find(".item:nth-child(3)").addClass("updated");
 		}
+
+		function goToPage(page) {
+			if (location.href.indexOf('page=') > -1) {
+				location.href = location.href.replace('page=' + ${currentPage}, 'page=' + page);
+			} else {
+				location.href = location.href + '&page=' + page;
+			}
+		}
 	</script>
 
 	<style type="text/css">
@@ -123,10 +131,16 @@
 <@layout.footer>
 	<div id="main-footer-btns">
 		<@layout.osc.btn body="Back" class="btn-cancel" id="back-btn" href="javascript:history.back()"/>
+		<#if pages gt 1>
 		<div id="main-footer-pagination">
-			<@layout.osc.btn id="prev-page-btn" href="/" w="52px" h="52px" img="static/img/icons/left-arrow.svg" img_w="30" img_h="30"/>
-			<span class="pages">1/2</span>
-			<@layout.osc.btn id="next-page-btn" href="/" w="52px" h="52px" img="static/img/icons/right-arrow.svg" img_w="30" img_h="30"/>
+			<#if currentPage != 1>
+			<@layout.osc.btn id="prev-page-btn" href="javascript:goToPage(${currentPage - 1})" w="52px" h="52px" img="static/img/icons/left-arrow.svg" img_w="30" img_h="30"/>
+			</#if>
+			<span class="pages">${currentPage}/${pages}</span>
+			<#if currentPage != pages>
+			<@layout.osc.btn id="next-page-btn" href="javascript:goToPage(${currentPage + 1})" w="52px" h="52px" img="static/img/icons/right-arrow.svg" img_w="30" img_h="30"/>
+			</#if>
 		</div>
+		</#if>
 	</div>
 </@layout.footer>

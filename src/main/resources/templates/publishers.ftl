@@ -15,7 +15,7 @@
 			margin: 0px 30px 0px 36px;
 			border: 1px solid #35beed;
 			background-color: #c4fbff;
-			width: 490px;
+			/*width: 490px;*/
 		}
 
 		.items {
