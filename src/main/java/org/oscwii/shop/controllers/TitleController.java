@@ -75,6 +75,6 @@ public class TitleController extends BaseController
     @ModelAttribute("package")
     private Package getPackage(@PathVariable String slug)
     {
-        return api.getBySlug(slug);
+        return catalog.getBySlug(slug);
     }
 }

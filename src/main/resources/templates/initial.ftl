@@ -1,8 +1,10 @@
 <#import "includes/base-layout.ftl" as layout>
 <@layout.header.header "Connecting">
     <script type="text/javascript">
+		<#if handleEc>
         const info = ec.getDeviceInfo();
         document.cookie = "language=" + info.language;
+		</#if>
 
         shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 

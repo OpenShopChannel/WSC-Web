@@ -1,7 +1,9 @@
 package org.oscwii.shop.controllers;
 
 import org.oscwii.api.Package;
+import org.oscwii.shop.services.RTitlesService;
 import org.oscwii.shop.utils.Paginator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +22,19 @@ import static java.lang.String.CASE_INSENSITIVE_ORDER;
 @Controller
 public class PageController extends BaseController
 {
-    @GetMapping("/landing")
-    public String landing()
+    private final RTitlesService recommendedTitles;
+
+    @Autowired
+    public PageController(RTitlesService recommendedTitles)
     {
+        this.recommendedTitles = recommendedTitles;
+    }
+
+    @GetMapping("/landing")
+    public String landing(Model model)
+    {
+        model.addAttribute("catalog", catalog)
+            .addAttribute("rTitles", recommendedTitles.getPages());
         return "landing";
     }
 
@@ -63,7 +75,7 @@ public class PageController extends BaseController
                     return publisherSearch(page, model, category, query);
         }
 
-        List<Package> packages = api.filterPackages(category, query)
+        List<Package> packages = catalog.filterPackages(category, query)
             .stream()
             .sorted(sortingCriteria)
             .toList();
@@ -77,7 +89,7 @@ public class PageController extends BaseController
     private String listPublishers(Model model, String category)
     {
         Map<String, Integer> publishers = new TreeMap<>(CASE_INSENSITIVE_ORDER);
-        List<Package> packages = api.filterPackages(category, null);
+        List<Package> packages = catalog.filterPackages(category, null);
 
         List<String> authors = packages.stream()
             .map(Package::author)
@@ -94,7 +106,7 @@ public class PageController extends BaseController
 
     private String publisherSearch(int page, Model model, String category, String query)
     {
-        List<Package> packages = api.filterPackages(category, null)
+        List<Package> packages = catalog.filterPackages(category, null)
             .stream()
             .filter(pkg -> pkg.author().equalsIgnoreCase(query))
             .sorted(Comparator.comparing(Package::author))

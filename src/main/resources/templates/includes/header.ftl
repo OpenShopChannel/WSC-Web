@@ -20,7 +20,7 @@
             background-image: url("/static/img/buttons/button-hover.svg");
         }
 
-        /* Highlighted buttons (already installed titles) */
+        /* Highlighted buttons (already installed apps) */
         .btn-hl {
             background-image: url("/static/img/buttons/button-hl.svg");
         }

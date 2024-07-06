@@ -2,8 +2,8 @@ package org.oscwii.shop;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.oscwii.api.OSCAPI;
 import org.oscwii.shop.config.ShopServerConfig;
+import org.oscwii.shop.services.CatalogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,15 +20,15 @@ import java.util.concurrent.TimeUnit;
 @ConfigurationPropertiesScan(value = "org.oscwii.shop.config")
 public class ShopServer
 {
+    private final CatalogService catalog;
     private final Logger logger;
-    private final OSCAPI api;
     private final ShopServerConfig config;
 
     @Autowired
-    public ShopServer(OSCAPI api, ShopServerConfig config)
+    public ShopServer(CatalogService catalog, ShopServerConfig config)
     {
+        this.catalog = catalog;
         this.logger = LogManager.getLogger(ShopServer.class);
-        this.api = api;
         this.config = config;
     }
 
@@ -49,10 +49,8 @@ public class ShopServer
     @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.HOURS)
     public void refreshCatalog()
     {
-        api.fetchRepositoryInformation();
-        api.fetchPackages();
-        api.fetchFeaturedApp();
-        logger.info("Fetched {} packages from the catalog", api.getPackages().size());
+        catalog.refresh();
+        logger.info("Fetched {} packages from the catalog", catalog.getPackages().size());
     }
 
     public static void main(String[] args)

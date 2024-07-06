@@ -76,13 +76,13 @@
             <span class="blue">Recommended Titles</span>
 </@layout.navigation>
 
-<#macro recommendedTitle slug title author banner="static/img/title_placeholder.png">
+<#macro recommendedTitle slug name author banner="static/img/title_placeholder.png">
 	<div class="item">
 		<a class="btn btn-item" href="/title/${slug}/" style="width: 233px; height: 51px">
 			<span>
 				<span class="btn-img-c"><img class="btn-img" src="${banner}" width="128" height="48"/></span>
 				<span class="btn-body">
-					<span class="item-title">${title}</span>
+					<span class="item-title">${name}</span>
 					<span class="item-author">${author}</span>
 				</span>
 			</span>
@@ -91,12 +91,20 @@
 </#macro>
 
 <@layout.page>
-	<div class="items">
-		<@recommendedTitle slug="danbo" title="Danbo" author="Danbo"/>
-		<@recommendedTitle slug="danbo2" title="Danbo2" author="Danbo"/>
-		<@recommendedTitle slug="danbo3" title="Danbo3" author="Danbo"/>
-		<@recommendedTitle slug="danbo4" title="Danbo4" author="Danbo"/>
-	</div>
+	<#assign first=true>
+	<#list rTitles as page>
+		<div id="${page.id()}" class="items${first?then("", " d-none")}">
+			<#assign first=false>
+			<#list page.apps() as title>
+				<#if title == "unknown">
+					<@recommendedTitle title "Unknown" "Unknown"/>
+				<#else>
+					<#assign app=catalog.getBySlug(title)>
+					<@recommendedTitle app.slug() app.name() app.author()/>
+				</#if>
+			</#list>
+		</div>
+	</#list>
 </@layout.page>
 
 <@layout.footer dots=false>
