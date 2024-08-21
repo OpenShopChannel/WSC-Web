@@ -3,7 +3,7 @@
 <#global FormatUtil=statics['org.oscwii.shop.utils.FormatUtil']>
 
 <#macro navigation dots=true headerBtns=false headerTitleBlue=false headerTitle="" showTitle=true>
-<body onload="onLoad()">
+<body onload="onPreload()">
     <div id="main-header">
         <div id="main-header-contents">
             <#if showTitle>
@@ -16,8 +16,9 @@
                 <div class="last"><@osc.btn id="help-btn" w="52px" h="55px" img="/static/img/icons/help.svg" img_w="23" img_h="35"/></div>
             </div>
             </#if>
-			<#-- TODO only enable when not running in prod mode -->
+			<#if isDevelopment>
 			<a href="/debug">Debug</a>
+			</#if>
         </div>
         <#if dots><div class="dots">･･･････････････････････････････････････････････････････････････････････････</div></#if>
     </div>

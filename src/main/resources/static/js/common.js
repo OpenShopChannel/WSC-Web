@@ -89,8 +89,11 @@ const KeyboardType = {
  */
 function error(message) {
 	// TODO: should this become an enum of errors for easier localization?
-	trace("An error occurred: " + message);
-	window.location.href = "/debug";
+	trace("An error occurred: " + message + "(" + code + ")");
+	// If debug is enabled, go to console
+	if (isDevelopment) {
+		window.location.href = "/debug";
+	}
 }
 
 /**

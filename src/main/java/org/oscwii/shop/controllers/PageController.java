@@ -30,6 +30,14 @@ public class PageController extends BaseController
         this.recommendedTitles = recommendedTitles;
     }
 
+    @GetMapping("/debug")
+    public String debug()
+    {
+        if(!isDevelopment())
+            return "redirect:/";
+        return "debug";
+    }
+
     @GetMapping("/landing")
     public String landing(Model model)
     {

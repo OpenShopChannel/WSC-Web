@@ -12,6 +12,12 @@ public abstract class BaseController
     @Autowired
     protected CatalogService catalog;
 
+    @ModelAttribute("isDevelopment")
+    protected boolean isDevelopment()
+    {
+        return config.development();
+    }
+
     @ModelAttribute("handleEc")
     protected boolean handleEc()
     {

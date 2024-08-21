@@ -14,8 +14,9 @@ spring:
 shop-server:
   api-host: "https://hbb1.oscwii.org"
   contents:
-      nandloader-path: "contents/00000001"
-      appinstaller-path: "contents/00000002"
+    nandloader-path: "contents/00000001"
+    appinstaller-path: "contents/00000002"
+  development: true
   handle-ec: true
 
 logging:

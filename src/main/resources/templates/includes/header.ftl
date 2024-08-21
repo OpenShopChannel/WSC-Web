@@ -63,6 +63,15 @@
     <script src="/static/js/ec-watchdog.js" type="text/javascript"></script>
     <script src="/static/js/buttons.js" type="text/javascript"></script>
 
+	<script type="text/javascript">
+		var isDevelopment = false;
+
+		function onPreload() {
+			isDevelopment = ${isDevelopment};
+			onLoad();
+		}
+	</script>
+
     <#nested>
 </head>
 </#macro>

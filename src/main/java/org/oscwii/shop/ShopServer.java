@@ -30,20 +30,17 @@ public class ShopServer
         this.catalog = catalog;
         this.logger = LogManager.getLogger(ShopServer.class);
         this.config = config;
+
+        if(config.development())
+            logger.info("Server is running on development mode, debug will be enabled");
     }
 
     @GetMapping
     public String initial(Model model)
     {
-        model.addAttribute("handleEc", config.handleEc());
+        model.addAttribute("handleEc", config.handleEc())
+            .addAttribute("isDevelopment", config.development());
         return "initial";
-    }
-
-    @GetMapping("/debug")
-    public String debug()
-    {
-        // TODO only enable when not running in prod mode
-        return "debug";
     }
 
     @Scheduled(fixedDelay = 1, timeUnit = TimeUnit.HOURS)
