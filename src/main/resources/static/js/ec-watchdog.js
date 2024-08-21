@@ -27,7 +27,7 @@ function ECWatchdog(timeout) {
 
 	// However, we can't listen beneath the minimal poll interval.
 	if (this.pollInterval > timeout) {
-		error("You can't watch beneath the minimal poll interval, every 1 second.");
+		error(ErrorCodes.GENERIC_ERROR, "You can't watch beneath the minimal poll interval, every 1 second.");
 	}
 
 	/**
@@ -66,7 +66,7 @@ function ECWatchdog(timeout) {
 		const status = progress.status;
 		if (status < 0 && status !== ECReturnCodes.ONGOING) {
 			// Uh oh...
-			error("requested operation to complete came in with status " + status);
+			error(ErrorCodes.EC_ERROR, "requested operation to complete came in with status " + status);
 			return;
 		} else if (status === 0) {
 			// We're free!
@@ -100,7 +100,7 @@ function ECWatchdog(timeout) {
 
 		// Check if we've gone over our allocated time.
 		if (elapsedLackOfProgress >= this.timeout) {
-			error("running operation timed out after " + elapsedLackOfProgress + "ms");
+			error(ErrorCodes.EC_TIMEOUT, "running operation timed out after " + elapsedLackOfProgress + "ms");
 			return;
 		}
 

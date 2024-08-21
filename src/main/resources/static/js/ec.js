@@ -122,7 +122,7 @@ function doRegistrationDosido(callback) {
 				callback();
 			});
 		} else {
-			error("Unknown EC registration state passed.");
+			error(ErrorCodes.EC_FAILED_REGISTRATION, "Unknown EC registration state passed.");
 		}
 	});
 }

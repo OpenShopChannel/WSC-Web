@@ -1,5 +1,5 @@
 /** @type {boolean} */
-const isWiiShop = navigator.userAgent.indexOf("Wii Shop") != -1;
+const isWiiShop = navigator.userAgent.indexOf("Wii Shop") !== -1;
 
 /**
  * Channel interfaces
@@ -85,14 +85,17 @@ const KeyboardType = {
  * Hastily displays an error message within logging.
  * Please rewrite this function later.
  *
+ * @param {number} code The error code.
  * @param {string} message The message to display.
  */
-function error(message) {
+function error(code, message) {
 	// TODO: should this become an enum of errors for easier localization?
 	trace("An error occurred: " + message + "(" + code + ")");
-	// If debug is enabled, go to console
+	// If debug is enabled, go to console, else show error page
 	if (isDevelopment) {
 		window.location.href = "/debug";
+	} else {
+		window.location.href = "/error?code=" + code;
 	}
 }
 
@@ -225,4 +228,16 @@ function getAndClearSessionValue(name) {
 	const value = ec.getSessionValue(name);
 	ec.setSessionValue(name, "");
 	return value;
+}
+
+/**
+ * Enum describing error codes.
+ * @readonly
+ * @enum {number}
+ */
+const ErrorCodes = {
+	GENERIC_ERROR: 1000,
+	EC_ERROR: 2000,
+	EC_TIMEOUT: 2001,
+	EC_FAILED_REGISTRATION: 2002
 }
