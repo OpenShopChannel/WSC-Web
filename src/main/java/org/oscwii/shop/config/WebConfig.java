@@ -29,6 +29,7 @@ public class WebConfig implements WebMvcConfigurer
         objectWrapper.setExposeFields(true);
 
         freeMarkerConfigurer.afterPropertiesSet();
+        freeMarkerConfigurer.getConfiguration().setBooleanFormat("c");
         freeMarkerConfigurer.getConfiguration().setURLEscapingCharset(StandardCharsets.US_ASCII.name());
         freeMarkerConfigurer.getConfiguration().setObjectWrapper(objectWrapper);
         freeMarkerConfigurer.getConfiguration().setSharedVariable("statics", objectWrapper.getStaticModels());
