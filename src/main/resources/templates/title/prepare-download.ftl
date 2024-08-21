@@ -239,9 +239,9 @@
 					<td class="text-center font-18px" colspan="2">Please choose a location to download the data to.</td>
 				</tr>
 				<tr class="buttons">
-					<#-- TODO: should really have a way to HTML encode the hrefs -->
-					<td><@layout.osc.btn body="Wii System Memory" id="nand-btn" href="javascript:setDownloadLocation(&quot;nand&quot;)" w="228px" h="176px" img="/static/img/blank.gif"/></td>
-					<td class="m-left-auto-children"><@layout.osc.btn body="SD Card" id="sd-card-btn" href="javascript:setDownloadLocation(&quot;sd&quot;)" w="228px" h="176px" img="/static/img/blank.gif"/></td>
+					<#-- These are encoded automatically by the button -->
+					<td><@layout.osc.btn body="Wii System Memory" id="nand-btn" href="javascript:setDownloadLocation(\"nand\")" w="228px" h="176px" img="/static/img/blank.gif"/></td>
+					<td class="m-left-auto-children"><@layout.osc.btn body="SD Card" id="sd-card-btn" href="javascript:setDownloadLocation(\"sd\")" w="228px" h="176px" img="/static/img/blank.gif"/></td>
 				</tr>
 			</table>
 		</div>
