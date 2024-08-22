@@ -30,5 +30,5 @@ application.yml
 application-staging.yml
 application-dev.yml
 contents/
-data/
+/data/
 target/

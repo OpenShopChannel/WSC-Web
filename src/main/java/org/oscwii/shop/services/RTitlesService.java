@@ -5,14 +5,16 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import org.oscwii.api.Package;
+import org.oscwii.shop.ShopServer;
 import org.oscwii.shop.model.RTitlesPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Reader;
 import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class RTitlesService
     private final List<RTitlesPage> pages;
 
     @Autowired
-    public RTitlesService(CatalogService catalog, Gson gson)
+    public RTitlesService(CatalogService catalog, Gson gson) throws IOException
     {
         this.catalog = catalog;
         this.gson = gson;
@@ -101,11 +103,22 @@ public class RTitlesService
         return catalog.getNewestPackages().get(category);
     }
 
-    private List<RTitlesPage> loadTitles()
+    private List<RTitlesPage> loadTitles() throws IOException
     {
         List<RTitlesPage> pages = new LinkedList<>();
 
-        try(Reader reader = Files.newBufferedReader(Paths.get("data", "recommended.json")))
+        Path file = Path.of("data", "recommended.json");
+        if(Files.notExists(file))
+        {
+            try(InputStream res = ShopServer.class.getResourceAsStream("data/recommended.json"))
+            {
+                if(res == null)
+                    throw new IllegalStateException("Could not find recommended.json in resources!");
+                Files.copy(res, file);
+            }
+        }
+
+        try(Reader reader = Files.newBufferedReader(file))
         {
             JsonArray root = gson.fromJson(reader, JsonArray.class);
             for(JsonElement element : root.asList())
@@ -118,10 +131,6 @@ public class RTitlesService
                     gson.fromJson(obj.getAsJsonArray("apps"), String[].class));
                 pages.add(page);
             }
-        }
-        catch(IOException e)
-        {
-            throw new RuntimeException(e);
         }
 
         return pages;
