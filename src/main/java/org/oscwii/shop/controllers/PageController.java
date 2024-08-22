@@ -70,8 +70,7 @@ public class PageController extends BaseController
         switch(type)
         {
             case "popular":
-                // TODO RepoMan: implement download counter
-                //sortingCriteria = Comparator.comparing(Package::downloads).reversed();
+                sortingCriteria = Comparator.comparing(Package::downloads).reversed();
                 break;
             case "newest":
                 sortingCriteria = Comparator.comparing(Package::releaseDate).reversed();

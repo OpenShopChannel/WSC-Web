@@ -126,6 +126,9 @@
                         <#if package.authors()?size gt 0>
                         <p id="title-developers"><b>Developers:</b> ${package.authors()?join(", ")}</p>
                         </#if>
+						<#-- TODO at the moment this only accounts for downloads via RepoMan, need a way
+						to tell RepoMan about downloads via Shop -->
+						<p id="title-downloads"><b>Downloads:</b> ${package.downloads()}</p>
 						<!-- <p id="title-subcategories">Subcategories</p> --> <#-- would just be hidden if there are no subcategories -->
 					</div>
 				</div>

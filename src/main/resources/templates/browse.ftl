@@ -87,7 +87,7 @@
 	<#-- could maybe use CSS table as that could semantically be more correct, but that would require more code (and doesn't matter for this) -->
 	<table id="btn-table">
 		<tr>
-			<td><@layout.osc.btn body="Popular Titles" href="" w="240px" h="65px"/></td>
+			<td><@layout.osc.btn body="Popular Titles" href="/search?category=" + category + "&type=popular" w="240px" h="65px"/></td>
 			<td class="btn-table-m-left-auto"><@layout.osc.btn body="Newest Additions" href="/search?category=" + category + "&type=newest" w="240px" h="65px"/></td>
 		</tr>
 		<tr class="btn-table-gap"><td></td></tr>
