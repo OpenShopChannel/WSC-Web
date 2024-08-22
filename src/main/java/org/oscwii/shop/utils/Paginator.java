@@ -20,7 +20,7 @@ public class Paginator<T>
         this.pages = (int) Math.ceil((double) items.size() / itemsPerPage);
     }
 
-    public int getNumberOFPages()
+    public int getNumberOfPages()
     {
         return pages;
     }

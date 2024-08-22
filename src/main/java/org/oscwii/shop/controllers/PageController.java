@@ -89,7 +89,7 @@ public class PageController extends BaseController
         Paginator<Package> paginator = new Paginator<>(packages);
         model.addAttribute("packages", paginator.paginate(page))
             .addAttribute("currentPage", page)
-            .addAttribute("pages", paginator.getNumberOFPages());
+            .addAttribute("pages", paginator.getNumberOfPages());
         return "catalog";
     }
 
@@ -121,7 +121,7 @@ public class PageController extends BaseController
         Paginator<Package> paginator = new Paginator<>(packages);
         model.addAttribute("packages", paginator.paginate(page))
             .addAttribute("currentPage", page)
-            .addAttribute("pages", paginator.getNumberOFPages());
+            .addAttribute("pages", paginator.getNumberOfPages());
         return "catalog";
     }
 }
