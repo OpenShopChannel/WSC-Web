@@ -96,7 +96,6 @@ function wiiKeyboard() {
 
 /**
  * Represents the wiiSound object type inserted into the engine on any Wii.
- * This object allows using a native keyboard.
  * You should instantiate it without any parameters.
  *
  * @constructor
@@ -117,7 +116,6 @@ function wiiSound() {
 
 /**
  * Represents the ECTitleInfo object type inserted into the engine on any Wii.
- * This object allows using a native keyboard.
  * While this can be instantiated alone, it's not recommended.
  *
  * @see ECommerceInterface.getTitleInfo

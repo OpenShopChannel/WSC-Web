@@ -7,6 +7,15 @@
 		function onLoad() {
 			onLoadCommon();
 			scrollTarget = $("#title-details")[0];
+
+			var consoleTitle = ec.getTitleInfo("${package.titleInfo().titleId()}");
+			if (consoleTitle !== ECReturnCodes.TITLE_NOT_INSTALLED && consoleTitle.isOnDevice) {
+				if (consoleTitle.version > ${package.titleInfo().titleVersion()}) {
+					$("#dl-button").children("span").children("#label").text("Update")
+				} else {
+					$("#dl-button").addClass("d-none");
+				}
+			}
 		}
 	</script>
 
@@ -102,8 +111,8 @@
 <@layout.navigation headerTitle="Details" headerBtns=true/>
 
 <#macro btnDownload label blocks href style="">
-	<a class="btn btn-dl" href="${href}" style="width: 241px; height: 76px;${style}">
-		<span><span class="top">${label}</span></span>
+	<a id="dl-button" class="btn btn-dl" href="${href}" style="width: 241px; height: 76px;${style}">
+		<span><span id="label" class="top">${label}</span></span>
 		<span><span><span class="sep"></span></span></span>
 		<span><span class="bottom">${blocks} ${(blocks == 1)?then("Block", "Blocks")}</span></span>
 	</a>

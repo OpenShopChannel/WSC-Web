@@ -35,6 +35,6 @@ public class Paginator<T>
     {
         int start = (pageNum - 1) * itemsPerPage;
         int end = Math.min(pageNum * itemsPerPage, items.size());
-        return items.subList(start, end);
+        return start < 0 || end <= 0 ? List.of() : items.subList(start, end);
     }
 }

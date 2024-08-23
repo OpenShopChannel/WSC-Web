@@ -4,10 +4,33 @@
     <script type="text/javascript">
 		shop.setWallpaper(WallpaperType.DOTTED_HORIZONTAL_LINES);
 
+		var titles = [];
+		function ECTitle(tId, slug, version) {
+			this.tId = tId;
+			this.slug = slug;
+			this.version = version;
+		}
+
 		function onLoad() {
 			onLoadCommon();
+
+			if (isWiiShop) {
+				<#list packages as package>
+				titles.push(new ECTitle("${package.titleInfo().titleId()}", "${package.slug()}", ${package.titleInfo().titleVersion()}));
+				</#list>
+
+				for (var i = 0; i < titles.length; i++) {
+					var title = titles[i];
+					var consoleTitle = ec.getTitleInfo(title.tId);
+					if (consoleTitle !== ECReturnCodes.TITLE_NOT_INSTALLED && consoleTitle.isOnDevice) {
+						if (consoleTitle.version > title.version) {
+							$("#main-content").find(".item:nth-child(" + (i + 1) + ")").addClass("updated");
+						}
+					}
+				}
+			}
+
 			$("#main-content").find(".item:nth-child(2) > .btn-item").addClass("btn-hl");
-			$("#main-content").find(".item:nth-child(3)").addClass("updated");
 		}
 
 		function goToPage(page) {
@@ -106,7 +129,7 @@
 
 <@layout.navigation headerTitle="Catalog" headerBtns=true/>
 
-<#macro catalogItem slug title author banner="static/img/title_placeholder.png">
+<#macro catalogItem slug title author titleId banner="static/img/title_placeholder.png">
 	<div class="item">
 		<div class="update-label blue bold">Updated!</div>
 		<a class="btn btn-item" href="/title/${slug}/" style="width: 477px; height: 84px">
@@ -124,7 +147,7 @@
 
 <@layout.page>
     <#list packages as package>
-	<@catalogItem package.slug() package.name() package.author() AssetUtil.getWSCIconUrl(package)/>
+	<@catalogItem package.slug() package.name() package.author() package.titleInfo().titleId() AssetUtil.getWSCIconUrl(package)/>
 	</#list>
 </@layout.page>
 
