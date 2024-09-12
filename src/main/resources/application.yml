@@ -18,6 +18,7 @@ shop-server:
     appinstaller-path: "contents/00000002"
   development: true
   handle-ec: true
+  repoman-access-token: "ChangeMe"
 
 logging:
   level:

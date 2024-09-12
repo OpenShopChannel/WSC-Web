@@ -28,6 +28,7 @@
 			if(progress.errCode === 0) {
 				$("#summary").text("You downloaded");
 				$("#download-result-success").removeClass("d-none");
+				notifyDownload("${package.slug()}", "${token}");
 			} else {
 				$("#download-summary").addClass("d-none");
 				$("#summary").text("Download failed").addClass("red");

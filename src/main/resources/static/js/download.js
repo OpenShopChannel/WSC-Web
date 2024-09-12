@@ -8,7 +8,6 @@ var startingDownload = false;
  */
 var _titleId = "";
 
-
 function preDownload(titleId, callback) {
 	_titleId = titleId;
 	// TODO: Allow installation to the SD Card.
@@ -44,4 +43,19 @@ function installChannel(callback) {
 		// TODO ranks
 		shop.setSCARank(1);
 	}
+}
+
+function notifyDownload(title, token) {
+	$.post("/stat/download/" + title + "?token=" + token)
+		.done(function() {
+			if(isDevelopment) {
+				trace("Successfully notified download to API for title: " + title);
+			}
+		})
+		.fail(function () {
+			trace("Failed to notify download to API for title: " + title);
+			if(isDevelopment) {
+				error(ErrorCodes.API_DOWNLOAD_NOTIFICATION_FAILED, "Failed to notify download to API for title: " + title);
+			}
+		});
 }

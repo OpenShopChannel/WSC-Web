@@ -2,6 +2,7 @@ package org.oscwii.shop.controllers;
 
 import org.oscwii.api.Package;
 import org.oscwii.shop.config.ContentConfig;
+import org.oscwii.shop.services.DownloadService;
 import org.oscwii.shop.utils.DownloadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,9 +21,12 @@ import java.util.Set;
 @RequestMapping("/title/{slug}/")
 public class TitleController extends BaseController
 {
+    private final DownloadService downloadService;
+
     @Autowired
-    public TitleController(ContentConfig contentConfig)
+    public TitleController(ContentConfig contentConfig, DownloadService downloadService)
     {
+        this.downloadService = downloadService;
         DownloadUtil.setConfig(contentConfig);
     }
 
@@ -67,8 +71,14 @@ public class TitleController extends BaseController
     }
 
     @GetMapping("download")
-    public String download(@RequestParam @ModelAttribute("location") String location)
+    public String download(Package app, @RequestParam @ModelAttribute("location") String location, Model model)
     {
+        if(app != null)
+        {
+            String token = downloadService.generateToken(app.slug());
+            model.addAttribute("token", token);
+        }
+
         return "title/download";
     }
 
