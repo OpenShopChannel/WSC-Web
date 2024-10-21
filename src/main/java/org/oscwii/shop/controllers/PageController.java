@@ -1,9 +1,7 @@
 package org.oscwii.shop.controllers;
 
 import org.oscwii.api.Package;
-import org.oscwii.shop.services.RTitlesService;
 import org.oscwii.shop.utils.Paginator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,13 +20,13 @@ import static java.lang.String.CASE_INSENSITIVE_ORDER;
 @Controller
 public class PageController extends BaseController
 {
-    private final RTitlesService recommendedTitles;
+    /*private final RTitlesService recommendedTitles;
 
     @Autowired
     public PageController(RTitlesService recommendedTitles)
     {
         this.recommendedTitles = recommendedTitles;
-    }
+    }*/
 
     @GetMapping("/debug")
     public String debug()
@@ -42,7 +40,9 @@ public class PageController extends BaseController
     public String landing(Model model)
     {
         model.addAttribute("catalog", catalog)
-            .addAttribute("rTitles", recommendedTitles.getPages());
+            .addAttribute("featuredPackage", catalog.getFeaturedApp())
+            .addAttribute("newestPackages", catalog.getNewestPackages());
+            //.addAttribute("rTitles", recommendedTitles.getPages())
         return "landing";
     }
 
