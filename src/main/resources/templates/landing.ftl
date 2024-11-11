@@ -91,6 +91,11 @@
 			line-height: 1;
 		}
 
+		.btn-img-c {
+			width: 128px;
+			height: 48px;
+		}
+
 		#main-header-contents {
 			text-align: center;
 		}
