@@ -113,7 +113,7 @@
 
 <#macro recommendedTitle slug name author category categoryId banner="static/img/title_placeholder.png">
 	<div class="item">
-		<div class="category-heading category-heading-${categoryId}"${category}</div>
+		<div class="category-heading category-heading-${categoryId}">${category}</div>
 		<a class="btn btn-item" href="/title/${slug}/" style="width: 250px; height: 51px">
 			<span>
 				<span class="btn-img-c">
