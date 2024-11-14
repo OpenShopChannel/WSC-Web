@@ -1,0 +1,180 @@
+html {
+	/* Makes visualising the boundaries of the page easier */
+	background-color: gray;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 608px;
+	height: 456px;
+
+	position: absolute;
+
+	background-color: white;
+	color: #323232;
+
+	font-family: "Wii NTLG PGothic Regular", sans-serif;
+}
+
+#main-header {
+	width: 100%;
+	height: 82px;
+	position: relative;
+}
+
+#main-content {
+	height: 281px; /* 456 - (82 + 93) = 281px (i hate this) */
+	padding: 0px 22px 0px 25px;
+	overflow: auto;
+}
+
+#main-footer {
+	width: 100%;
+	height: 93px;
+	position: relative;
+}
+
+#main-header-contents {
+	width: 100%;
+	padding: 28px 19px 0px 29px;
+	z-index: 1;
+}
+
+#main-footer-contents {
+	width: 100%;
+	/* left margin on reference screenshot of error page is actually about 25px. much consistency, thanks nintendo */
+	padding: 0px 22px 23px 25px;
+	z-index: 1;
+}
+
+#main-heading {
+	/* line-height: 1; */
+}
+
+.dots {
+	width: 100%;
+	line-height: 23px;
+	text-align: center;
+	color: #8c8c8c;
+}
+
+
+/* :( */
+#main-header > *, #main-footer > * {
+	position: absolute;
+}
+#main-header > #main-header-contents { top: 0; }
+#main-header > .dots { bottom: 0; }
+#main-footer > .dots { top: 0; }
+#main-footer > #main-footer-contents { bottom: 0; }
+
+#main-header-btns {
+	position: absolute;
+	/* ideally doing `right: 0` would go to the padding of the parent, but it doesn't */
+	top: 23px; /* 28 - 5 = 23px (ARRRGHHH) */
+	right: 19px;
+	background-color: white;
+}
+
+#main-header-btns > div {
+	float: left;
+	margin-right: 8px;
+}
+
+/* arrrrgh, no :last-* support */
+#main-header-btns > div.last {
+	margin-right: 0;
+}
+
+/* ugh */
+#main-header-btns .btn {
+	padding: 0;
+}
+
+/* TODO: move button dimensions outside CSS in preparation for using images */
+#main-footer-btns .btn {
+	width: 187px;
+	height: 55px;
+}
+
+.heading {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.heading.link > a {
+	width: 100%;
+	display: inline-block;
+	text-decoration: none;
+	color: inherit;
+}
+
+.btn {
+	display: table;
+	color: inherit;
+	font-size: 18px;
+	text-decoration: none;
+	cursor: pointer;
+	padding: 14px;
+}
+
+.btn > * {
+	display: table-row;
+}
+
+.btn > * > * {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.btn-vert-img-c {
+	height: 100%;
+}
+
+.btn-alt {
+	border-radius: 28px;
+	box-shadow: 0px 1px 2px 0px gray;
+	padding: 0;
+}
+
+/* Using this seems to *really* put noticeable lag on buttons */
+.justify-hr {
+	text-align: justify;
+}
+
+.justify-hr > * {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.justify-hr::after {
+	width: 100%;
+	display: inline-block;
+	content: "";
+}
+
+.osc-o { color: #34beed; }
+.osc-p { color: #34ed90; }
+.osc-e { color: #edd134; }
+.osc-n { color: #ed349f; }
+
+.blue { color: #34beed; }
+.red { color: #ff0000; }
+
+.bold { font-weight: bold; }
+
+.text-center { text-align: center; }
+
+/* mmh */
+.font-14px { font-size: 14px; }
+.font-16px { font-size: 16px; }
+.font-18px { font-size: 18px; }
+.font-20px { font-size: 20px; }
+
+.d-none { display: none; }

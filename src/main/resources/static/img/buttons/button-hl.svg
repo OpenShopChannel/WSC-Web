@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<linearGradient id="btn-bg" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="40%" stop-color="#d9f4fc" stop-opacity="0"/>
+			<stop offset="100%" stop-color="#bce1ee"/>
+		</linearGradient>
+		<linearGradient id="btn-b-bg" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0%" stop-color="#d9f4fc"/>
+			<stop offset="100%" stop-color="#cef0fb"/>
+		</linearGradient>
+		<rect id="btn-border" width="100%" height="100%" x="0" y="0" rx="7" fill="none" stroke="#24ace7" stroke-width="2"/>
+		<clipPath id="btn-border-clip">
+			<use xlink:href="#btn-border"/>
+		</clipPath>
+		<clipPath id="btn-b-clip">
+			<rect width="100%" height="10" x="0" y="100%" transform="translate(0 -10)"/>
+			<rect width="10" height="100%" x="0" y="0"/>
+			<rect width="10" height="100%" x="100%" y="0" transform="translate(-10 0)"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#btn-border-clip)">
+		<rect width="100%" height="100%" x="0" y="0" fill="url(#btn-b-bg)"/>
+		<rect width="100%" height="100%" x="0" y="0" clip-path="url(#btn-b-clip)" fill="url(#btn-bg)"/>
+		<use xlink:href="#btn-border"/>
+	</g>
+</svg>

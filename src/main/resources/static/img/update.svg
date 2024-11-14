@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<defs>
+		<rect id="border" width="100%" height="200%" x="0" y="0" rx="7" fill="none" stroke="#34beed" stroke-width="2"/>
+		<clipPath id="border-clip">
+			<use xlink:href="#border"/>
+		</clipPath>
+	</defs>
+	<g clip-path="url(#border-clip)">
+		<use xlink:href="#border"/>
+	</g>
+</svg>

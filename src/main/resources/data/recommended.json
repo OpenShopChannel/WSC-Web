@@ -1,0 +1,27 @@
+[
+    {
+        "id": "recommendedTitles-1",
+        "title": "Recommended Titles",
+        "subtitle": "",
+        "apps": [
+            "danbo", "danbo2", "danbo3", "danbo4"
+        ]
+    },
+    {
+        "id": "recommendedTitles-2",
+        "title": "Recommended Titles 2",
+        "subtitle": "",
+        "apps": [
+            "danbo5", "danbo6", "danbo7", "danbo8"
+        ]
+    },
+    {
+        "id": "recommendedTitles-3",
+        "title": "Highlights",
+        "subtitle": "",
+        "dynamic": true,
+        "apps": [
+            "osc:featuredapp", "osc:latest", "osc:latest:games", "osc:latest:utilities"
+        ]
+    }
+]
