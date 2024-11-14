@@ -1,7 +1,10 @@
 package org.oscwii.shop.controllers;
 
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.http.HttpServletRequest;
 import org.oscwii.api.Package;
 import org.oscwii.shop.utils.Paginator;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -18,7 +22,7 @@ import java.util.stream.Collectors;
 import static java.lang.String.CASE_INSENSITIVE_ORDER;
 
 @Controller
-public class PageController extends BaseController
+public class PageController extends BaseController implements ErrorController
 {
     /*private final RTitlesService recommendedTitles;
 
@@ -34,6 +38,23 @@ public class PageController extends BaseController
         if(!isDevelopment())
             return "redirect:/";
         return "debug";
+    }
+
+    @GetMapping("/error")
+    public String handleError(HttpServletRequest request, Model model, @RequestParam(value = "code") Optional<Integer> ecError)
+    {
+        Object code = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+        if(code != null)
+            if((int) code == 404)
+                return "error/404";
+
+        if(ecError.isPresent())
+        {
+            model.addAttribute("code", ecError.get());
+            return "error/ecerror";
+        }
+
+        return "error/500";
     }
 
     @GetMapping("/landing")
